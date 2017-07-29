@@ -23,6 +23,8 @@ class Calendar extends Component {
       visibleEvents: []
     };
 
+    //test
+
     this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
