@@ -31,7 +31,7 @@ class CalendarRow extends Component {
         transitionEnterTimeout={500}
         className="event-row clearfix"
       >
-        <Spinner name="circle" fadeIn="quarter" />
+        {/*<Spinner name="circle" fadeIn="quarter" /> */}
         <div className="col-xs-2">
           <div className="date-info">
             <div className="custom-dayOfWeek">
@@ -61,8 +61,8 @@ class CalendarRow extends Component {
             </Link>
           </h3>
           <br />
-          newDate:
-          {event.sortedDates && event.sortedDates[0][0]}
+          {/*newDate:
+          {event.sortedDates && event.sortedDates[0][0]} */}
           <div>
             {event.body}...
             <Link

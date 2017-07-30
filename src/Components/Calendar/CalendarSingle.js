@@ -21,7 +21,7 @@ class CalendarSingle extends Component {
     const self = this;
     axios
       .get(
-        "http://nick:eventcalendar@finley-day.com/api/calendar/views/calendar_json.json?uuid=" +
+        "http://finley-day.com/api/calendar/views/calendar_json.json?uuid=" +
           UUID
       )
       //http://alphawcc.dev/api/calendar/views/calendar_json.json?parameters[uuid]=97014f68-b7d3-4d9f-89c4-869e58d9c8ac

@@ -128,7 +128,7 @@ class Calendar extends Component {
     const self = this;
     axios
       .get(
-        "http://nick:eventcalendar@finley-day.com/api/calendar/views/calendar_json.json"
+        "http://finley-day.com/api/calendar/views/calendar_json.json?gCm82fz5RDXxSWkfXBL1APfBOBIKY851LO2cVSY9S_A"
       )
       .then(function(response) {
         self.setState({
