@@ -21,7 +21,10 @@ class CalendarList extends Component {
     // Add date object for calendar format
     function addDateFormat() {
       eventArray.events.map(function(e) {
+        //console.log(e.sortedDates[0]);
+        //e.start = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
         e.start = new Date(e.date.slice(0, 10).split("-").join());
+        //e.end = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
         e.end = new Date(e.date.slice(0, 10).split("-").join());
         return null;
       });
@@ -167,7 +170,6 @@ class CalendarList extends Component {
               events={eventCalendarArray}
               onSelectEvent={event =>
                 handleEvent(event.title, event, self, self.props.history)}
-              //defaultDate={new Date(2015, 3, 1)}
             />}
       </div>
     );

@@ -127,9 +127,7 @@ class Calendar extends Component {
   getEvents() {
     const self = this;
     axios
-      .get(
-        "http://finley-day.com/api/calendar/views/calendar_json.json?gCm82fz5RDXxSWkfXBL1APfBOBIKY851LO2cVSY9S_A"
-      )
+      .get("http://finley-day.com/api/calendar/views/calendar_json.json")
       .then(function(response) {
         self.setState({
           events: response.data,
@@ -140,7 +138,7 @@ class Calendar extends Component {
         console.log(error);
       })
       .then(function(response) {
-        self.handleEventDate(self);
+        //self.handleEventDate(self); //removed date repeat field
         self.getEventTypes(self);
         self.getAudienceTypes(self);
       })

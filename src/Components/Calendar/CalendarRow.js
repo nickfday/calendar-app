@@ -61,8 +61,9 @@ class CalendarRow extends Component {
             </Link>
           </h3>
           <br />
-          {/*newDate:
-          {event.sortedDates && event.sortedDates[0][0]} */}
+          {/*Start Date: {event.sortedDates && event.sortedDates[0][0]} <br />
+          <br />
+          End Date: {event.sortedDates && event.sortedDates[0][1]} */}
           <div>
             {event.body}...
             <Link

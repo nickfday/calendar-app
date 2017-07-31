@@ -2,6 +2,7 @@
   "name": "wcc-calendar-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://calendar.finley-day.com",
   "dependencies": {
     "axios": "^0.16.1",
     "bootstrap": "^3.3.7",
