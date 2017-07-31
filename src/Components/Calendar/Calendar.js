@@ -138,9 +138,9 @@ class Calendar extends Component {
         console.log(error);
       })
       .then(function(response) {
-        //self.handleEventDate(self); //removed date repeat field
         self.getEventTypes(self);
         self.getAudienceTypes(self);
+        self.handleEventDate(self); //removed date repeat field
       })
       .catch(function(error) {
         console.log(error);
