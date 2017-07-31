@@ -151,15 +151,18 @@ class Calendar extends Component {
     //const self = this;
     var updatedevents = self.state.events.slice();
     updatedevents.map(function(i) {
-      i.splitDates = [];
-      i.sortedDates = [];
-      i.splitDates.push(i.date_repeat.split(", "));
-      i.splitDates[0].map(function(y) {
-        i.sortedDates.push(y.split(" to "));
+      console.log(i);
+      if (i.date_repeat) {
+        i.splitDates = [];
+        i.sortedDates = [];
+        i.splitDates.push(i.date_repeat.split(", "));
+        i.splitDates[0].map(function(y) {
+          i.sortedDates.push(y.split(" to "));
+          return null;
+        });
         return null;
-      });
-      return null;
-      //i.date = i.sortedDates;
+        //i.date = i.sortedDates;
+      }
     });
 
     self.setState({
@@ -189,11 +192,14 @@ class Calendar extends Component {
   getAudienceTypes() {
     let audienceTypes = [];
     this.state.events.map(eventItem => {
-      eventItem.audience.split(", ").map(audienceType => {
-        if (audienceTypes.indexOf(audienceType) === -1)
-          audienceTypes.push(audienceType);
+      if (eventItem.audience) {
+        eventItem.audience.split(", ").map(audienceType => {
+          if (audienceTypes.indexOf(audienceType) === -1)
+            audienceTypes.push(audienceType);
+          return false;
+        });
         return false;
-      });
+      }
       return false;
     });
     this.setState({

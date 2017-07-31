@@ -7,6 +7,29 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class CalendarList extends Component {
+  addDateFormat() {
+    //console.log(this.props);
+    this.props.events.events.map(function(e) {
+      //console.log(e.sortedDates);
+      if (e.sortedDates) {
+        e.start = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
+        e.end = new Date(e.sortedDates[0][1].slice(0, 10).split("-").join());
+      } else {
+        e.start = new Date(e.date.slice(0, 10).split("-").join());
+        e.end = new Date(e.date.slice(0, 10).split("-").join());
+      }
+      return null;
+    });
+  }
+
+  componentDidMount() {
+    this.addDateFormat();
+  }
+
+  componentDidUpdate() {
+    this.addDateFormat();
+  }
+
   render() {
     let eventArray = this.props.events;
     let eventItems = [];
@@ -16,14 +39,21 @@ class CalendarList extends Component {
     let matchedTag = [];
     let eventCalendarArray = [];
 
-    addDateFormat();
+    //addDateFormat();
 
     // Add date object for calendar format
     function addDateFormat() {
       eventArray.events.map(function(e) {
         //console.log(e.sortedDates[0]);
         //e.start = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
-        e.start = new Date(e.date.slice(0, 10).split("-").join());
+        if (e.date.sortedDates) {
+          e.start = new Date(
+            e.sortedDates[0][0].slice(0, 10).split("-").join()
+          );
+        } else {
+          e.start = new Date(e.date.slice(0, 10).split("-").join());
+        }
+
         //e.end = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
         e.end = new Date(e.date.slice(0, 10).split("-").join());
         return null;
@@ -115,7 +145,19 @@ class CalendarList extends Component {
       //Date Filter condition
       let selectedStartDate = moment(eventArray.startDate);
       let selectedEndDate = moment(eventArray.endDate);
-      let rowDate = moment(eventItem.date);
+
+      function checkDate() {
+        let rowDate = null;
+        //console.log(eventItem.sortedDates);
+        if (eventItem.sortedDates) {
+          rowDate = moment(eventItem.sortedDates[0][0]);
+        } else {
+          rowDate = moment(eventItem.date);
+        }
+        return rowDate;
+      }
+      //let rowDate = moment(eventItem.date);
+      let rowDate = checkDate();
 
       //Search filter condition
       if (!searchFilter(eventArray.titleText, eventItem.title)) {
