@@ -8,7 +8,7 @@ BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class CalendarList extends Component {
   addDateFormat() {
-    //console.log(this.props);
+    console.log(this.props);
     this.props.events.events.map(function(e) {
       //console.log(e.sortedDates);
       if (e.sortedDates) {
@@ -137,6 +137,19 @@ class CalendarList extends Component {
       history.push(`/event/${event.uuid}`);
     }
 
+    function checkDate(eventItem) {
+      let rowDate = null;
+      //console.log(eventItem.sortedDates);
+      if (eventItem.sortedDates) {
+        rowDate = moment(eventItem.sortedDates[0][0]);
+      } else {
+        rowDate = moment(eventItem.date);
+      }
+      return rowDate;
+    }
+
+    // Begin Loop of Events  -------------------------------------------
+
     // Filter Listings
     eventArray.events.forEach((eventItem, index) => {
       var audienceMatch = true;
@@ -146,18 +159,8 @@ class CalendarList extends Component {
       let selectedStartDate = moment(eventArray.startDate);
       let selectedEndDate = moment(eventArray.endDate);
 
-      function checkDate() {
-        let rowDate = null;
-        //console.log(eventItem.sortedDates);
-        if (eventItem.sortedDates) {
-          rowDate = moment(eventItem.sortedDates[0][0]);
-        } else {
-          rowDate = moment(eventItem.date);
-        }
-        return rowDate;
-      }
       //let rowDate = moment(eventItem.date);
-      let rowDate = checkDate();
+      let rowDate = checkDate(eventItem);
 
       //Search filter condition
       if (!searchFilter(eventArray.titleText, eventItem.title)) {

@@ -12,12 +12,23 @@ class CalendarRow extends Component {
   componentWillMount() {
     //alert('mount');
   }
+  componentWillUpdate() {
+    //getEventMoment();
+  }
+
+  getEventMoment() {
+    if (this.props.events.sortedDates) {
+      return moment(this.props.events.sortedDates[0][0]);
+    }
+  }
 
   render() {
     const event = this.props.events;
 
     const eventURL = event.uuid.replace(/\s+/g, "-").toLowerCase();
-    const eventDateMoment = moment(event.date);
+    let eventDateMoment = moment(event.date);
+
+    //let eventDateMoment = this.getEventMoment();
 
     // console.log(event.sortedDates);
 
