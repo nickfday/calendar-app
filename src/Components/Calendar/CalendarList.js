@@ -65,27 +65,6 @@ class CalendarList extends Component {
     let matchedTag = [];
     let eventCalendarArray = [];
 
-    //addDateFormat();
-
-    // Add date object for calendar format
-    function addDateFormat() {
-      eventArray.events.map(function(e) {
-        //console.log(e.sortedDates[0]);
-        //e.start = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
-        if (e.date.sortedDates) {
-          e.start = new Date(
-            e.sortedDates[0][0].slice(0, 10).split("-").join()
-          );
-        } else {
-          e.start = new Date(e.date.slice(0, 10).split("-").join());
-        }
-
-        //e.end = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
-        e.end = new Date(e.date.slice(0, 10).split("-").join());
-        return null;
-      });
-    }
-
     function checkDate(eventItem) {
       let rowDate = null;
       //console.log(eventItem.sortedDates);
@@ -158,11 +137,6 @@ class CalendarList extends Component {
         );
       }
     }
-
-    //function handleEvent(title, event, self, history) {
-    //  history.event = event;
-    //  history.push(`/event/${event.uuid}`);
-    //}
 
     // Begin Loop of Events <-------------------------------------------
 
