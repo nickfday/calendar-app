@@ -47,6 +47,45 @@ class CalendarList extends Component {
         rowDate = moment(eventItem.date);
     }
     return rowDate;
+    }
+
+    filterMultiSelect(
+    selectVal,
+    itemVal,
+    eventItem,
+    uniqueArray,
+    matchedTag,
+    match
+) {
+    matchedTag = [];
+    var uniqueMatched = [];
+    match = true;
+    // loop sorted selected audience
+    Object.keys(selectVal).sort().map(selectedTag => {
+        if (itemVal != null) {
+            //loop all sorted tags
+            itemVal.split(", ").sort().map(tag => {
+                //if selected audience value == tag push onto matched event
+                if (selectVal[selectedTag].value === tag) {
+                    matchedTag.push(itemVal);
+                    return false;
+                } else {
+                    return false;
+                }
+            });
+            return false;
+        }
+        return false;
+    });
+    //Show eventItems
+    if (matchedTag.length === selectVal.length) {
+        uniqueMatched.push(eventItem);
+    }
+
+    if (uniqueMatched.length === 0) {
+        match = false;
+    }
+    return match;
 }
 
 
@@ -96,43 +135,7 @@ class CalendarList extends Component {
 
 
 
-    function filterMultiSelect(
-      selectVal,
-      itemVal,
-      eventItem,
-      uniqueArray,
-      match
-    ) {
-      matchedTag = [];
-      var uniqueMatched = [];
-      match = true;
-      // loop sorted selected audience
-      Object.keys(selectVal).sort().map(selectedTag => {
-        if (itemVal != null) {
-          //loop all sorted tags
-          itemVal.split(", ").sort().map(tag => {
-            //if selected audience value == tag push onto matched event
-            if (selectVal[selectedTag].value === tag) {
-              matchedTag.push(itemVal);
-              return false;
-            } else {
-              return false;
-            }
-          });
-          return false;
-        }
-        return false;
-      });
-      //Show eventItems
-      if (matchedTag.length === selectVal.length) {
-        uniqueMatched.push(eventItem);
-      }
 
-      if (uniqueMatched.length === 0) {
-        match = false;
-      }
-      return match;
-    }
 
     function renderItem(item) {
       self.props.events.visibleEvents.concat(item);
@@ -172,20 +175,22 @@ class CalendarList extends Component {
       }
 
       //Select Event Type
-      eventMatch = filterMultiSelect(
+      eventMatch = this.filterMultiSelect(
         self.props.events.selectedEventTypes,
         eventItem.event_type,
         eventItem,
-        this.eventMatch
+        this.eventMatch,
+        matchedTag
       );
 
       //Select Audience Type
-      audienceMatch = filterMultiSelect(
+      audienceMatch = this.filterMultiSelect(
         self.props.events.selectedAudienceTypes,
         eventItem.audience,
         eventItem,
         uniqueAudienceMatched,
-        this.audienceMatch
+        this.audienceMatch,
+        matchedTag
       );
 
       // Compare Audience + Event
