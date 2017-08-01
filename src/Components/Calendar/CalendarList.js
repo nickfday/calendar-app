@@ -33,6 +33,11 @@ class CalendarList extends Component {
       }
     }
 
+   handleEvent(title, event, self, history) {
+      history.event = event;
+      history.push(`/event/${event.uuid}`);
+    }
+
   componentDidMount() {
     this.addDateFormat();
   }
@@ -40,6 +45,16 @@ class CalendarList extends Component {
   componentDidUpdate() {
     this.addDateFormat();
   }
+
+
+
+
+
+
+
+
+
+
 
   render() {
     let eventArray = this.props.events;
@@ -144,10 +159,10 @@ class CalendarList extends Component {
       }
     }
 
-    function handleEvent(title, event, self, history) {
-      history.event = event;
-      history.push(`/event/${event.uuid}`);
-    }
+    //function handleEvent(title, event, self, history) {
+    //  history.event = event;
+    //  history.push(`/event/${event.uuid}`);
+    //}
 
     // Begin Loop of Events <-------------------------------------------
 
@@ -217,7 +232,7 @@ class CalendarList extends Component {
               //events={events}
               events={eventCalendarArray}
               onSelectEvent={event =>
-                handleEvent(event.title, event, self, self.props.history)}
+                this.handleEvent(event.title, event, self, self.props.history)}
             />}
       </div>
     );
