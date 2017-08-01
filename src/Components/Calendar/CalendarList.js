@@ -22,6 +22,17 @@ class CalendarList extends Component {
     });
   }
 
+  searchFilter(searchVal, itemVal) {
+      if (
+        searchVal !== "" &&
+        itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
   componentDidMount() {
     this.addDateFormat();
   }
@@ -58,6 +69,17 @@ class CalendarList extends Component {
         e.end = new Date(e.date.slice(0, 10).split("-").join());
         return null;
       });
+    }
+
+    function checkDate(eventItem) {
+      let rowDate = null;
+      //console.log(eventItem.sortedDates);
+      if (eventItem.sortedDates) {
+        rowDate = moment(eventItem.sortedDates[0][0]);
+      } else {
+        rowDate = moment(eventItem.date);
+      }
+      return rowDate;
     }
 
     function filterMultiSelect(
@@ -104,6 +126,7 @@ class CalendarList extends Component {
       eventItems.push(<CalendarRow events={item} key={item.uuid} />);
       eventCalendarArray.push(item);
     }
+
     function noResults(eventItems, self) {
       if (eventItems.length === 0) {
         eventItems.push(
@@ -121,36 +144,13 @@ class CalendarList extends Component {
       }
     }
 
-    function searchFilter(searchVal, itemVal) {
-      if (
-        searchVal !== "" &&
-        itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-
     function handleEvent(title, event, self, history) {
       history.event = event;
       history.push(`/event/${event.uuid}`);
     }
 
-    function checkDate(eventItem) {
-      let rowDate = null;
-      //console.log(eventItem.sortedDates);
-      if (eventItem.sortedDates) {
-        rowDate = moment(eventItem.sortedDates[0][0]);
-      } else {
-        rowDate = moment(eventItem.date);
-      }
-      return rowDate;
-    }
+    // Begin Loop of Events <-------------------------------------------
 
-    // Begin Loop of Events  -------------------------------------------
-
-    // Filter Listings
     eventArray.events.forEach((eventItem, index) => {
       var audienceMatch = true;
       var eventMatch = true;
@@ -162,20 +162,22 @@ class CalendarList extends Component {
       //let rowDate = moment(eventItem.date);
       let rowDate = checkDate(eventItem);
 
-      //Search filter condition
-      if (!searchFilter(eventArray.titleText, eventItem.title)) {
+      //Search by Name
+      if (!this.searchFilter(eventArray.titleText, eventItem.title)) {
         return;
       }
 
-      if (!searchFilter(eventArray.addressText, eventItem.location)) {
+      //Search by Address
+      if (!this.searchFilter(eventArray.addressText, eventItem.location)) {
         return;
       }
 
+      // Filter Dates
       if (selectedStartDate > rowDate || selectedEndDate < rowDate) {
         return;
       }
 
-      //Event Filter Condition
+      //Select Event Type
       eventMatch = filterMultiSelect(
         self.props.events.selectedEventTypes,
         eventItem.event_type,
@@ -183,7 +185,7 @@ class CalendarList extends Component {
         this.eventMatch
       );
 
-      //Audience Filter condition
+      //Select Audience Type
       audienceMatch = filterMultiSelect(
         self.props.events.selectedAudienceTypes,
         eventItem.audience,
@@ -192,13 +194,14 @@ class CalendarList extends Component {
         this.audienceMatch
       );
 
+      // Compare Audience + Event
       if (audienceMatch && eventMatch) {
         renderItem(eventItem);
       } else {
         return;
       }
-      // end event loop
     });
+    // End Loop of Events  ------------------------------------------->
 
     noResults(eventItems, this);
 
