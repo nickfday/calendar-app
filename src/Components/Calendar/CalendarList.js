@@ -106,6 +106,13 @@ class CalendarList extends Component {
     }
 }
 
+    renderItem(self, eventItems, eventItem, eventCalendarArray) {
+    self.props.events.visibleEvents.concat(eventItem);
+
+    eventItems.push(<CalendarRow events={eventItem} key={eventItem.uuid} />);
+    eventCalendarArray.push(eventItem);
+}
+
   componentDidMount() {
     this.addDateFormat();
   }
@@ -137,12 +144,7 @@ class CalendarList extends Component {
 
 
 
-    function renderItem(item) {
-      self.props.events.visibleEvents.concat(item);
 
-      eventItems.push(<CalendarRow events={item} key={item.uuid} />);
-      eventCalendarArray.push(item);
-    }
 
 
 
@@ -195,7 +197,7 @@ class CalendarList extends Component {
 
       // Compare Audience + Event
       if (audienceMatch && eventMatch) {
-        renderItem(eventItem);
+        this.renderItem(self, eventItems, eventItem, eventCalendarArray);
       } else {
         return;
       }
