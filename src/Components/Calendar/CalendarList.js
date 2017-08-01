@@ -21,95 +21,94 @@ class CalendarList extends Component {
   }
 
   searchFilter(searchVal, itemVal) {
-      if (
-        searchVal !== "" &&
-        itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
-      ) {
-        return false;
-      } else {
-        return true;
-      }
+    if (
+      searchVal !== "" &&
+      itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
+    ) {
+      return false;
+    } else {
+      return true;
     }
+  }
 
-   handleEvent(title, event, self, history) {
-      history.event = event;
-      history.push(`/event/${event.uuid}`);
-    }
+  handleEvent(title, event, self, history) {
+    history.event = event;
+    history.push(`/event/${event.uuid}`);
+  }
 
-   checkDate(eventItem) {
+  checkDate(eventItem) {
     let rowDate = null;
     //console.log(eventItem.sortedDates);
     if (eventItem.sortedDates) {
-        rowDate = moment(eventItem.sortedDates[0][0]);
+      rowDate = moment(eventItem.sortedDates[0][0]);
     } else {
-        rowDate = moment(eventItem.date);
+      rowDate = moment(eventItem.date);
     }
     return rowDate;
-    }
+  }
 
-    filterMultiSelect(
+  filterMultiSelect(
     selectVal,
     itemVal,
     eventItem,
     uniqueArray,
     matchedTag,
     match
-) {
+  ) {
     matchedTag = [];
     var uniqueMatched = [];
     match = true;
     // loop sorted selected audience
     Object.keys(selectVal).sort().map(selectedTag => {
-        if (itemVal != null) {
-            //loop all sorted tags
-            itemVal.split(", ").sort().map(tag => {
-                //if selected audience value == tag push onto matched event
-                if (selectVal[selectedTag].value === tag) {
-                    matchedTag.push(itemVal);
-                    return false;
-                } else {
-                    return false;
-                }
-            });
+      if (itemVal != null) {
+        //loop all sorted tags
+        itemVal.split(", ").sort().map(tag => {
+          //if selected audience value == tag push onto matched event
+          if (selectVal[selectedTag].value === tag) {
+            matchedTag.push(itemVal);
             return false;
-        }
+          } else {
+            return false;
+          }
+        });
         return false;
+      }
+      return false;
     });
     //Show eventItems
     if (matchedTag.length === selectVal.length) {
-        uniqueMatched.push(eventItem);
+      uniqueMatched.push(eventItem);
     }
 
     if (uniqueMatched.length === 0) {
-        match = false;
+      match = false;
     }
     return match;
-}
+  }
 
-
-    noResults(eventItems, self, noResultsText) {
+  noResults(eventItems, self, noResultsText) {
     if (eventItems.length === 0) {
-        eventItems.push(
-            <div className="eventItem" key={"no results"}>
-                <div className="col-sm-12">
-                    <p>
-                        {noResultsText}{" "}
-                        <a href="" onClick={self.props.handleReset}>
-                            Reset
-                        </a>
-                    </p>
-                </div>
-            </div>
-        );
+      eventItems.push(
+        <div className="eventItem" key={"no results"}>
+          <div className="col-sm-12">
+            <p>
+              {noResultsText}{" "}
+              <a href="" onClick={self.props.handleReset}>
+                Reset
+              </a>
+            </p>
+          </div>
+        </div>
+      );
     }
-}
+  }
 
-    renderItem(self, eventItems, eventItem, eventCalendarArray) {
+  renderItem(self, eventItems, eventItem, eventCalendarArray) {
     self.props.events.visibleEvents.concat(eventItem);
 
     eventItems.push(<CalendarRow events={eventItem} key={eventItem.uuid} />);
     eventCalendarArray.push(eventItem);
-}
+  }
 
   componentDidMount() {
     this.addDateFormat();
@@ -119,32 +118,14 @@ class CalendarList extends Component {
     this.addDateFormat();
   }
 
-
-
-
-
-
-
-
-
-
-
   render() {
-    let eventArray = this.props.events;
+    const eventArray = this.props.events;
     let eventItems = [];
     const noResultsText = "No results - please adjust filters";
-    let self = this;
+    const self = this;
     let uniqueAudienceMatched = [];
     let matchedTag = [];
     let eventCalendarArray = [];
-
-
-
-
-
-
-
-
 
     // Begin Loop of Events <-------------------------------------------
 
