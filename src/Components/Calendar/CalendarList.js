@@ -49,6 +49,24 @@ class CalendarList extends Component {
     return rowDate;
 }
 
+
+    noResults(eventItems, self, noResultsText) {
+    if (eventItems.length === 0) {
+        eventItems.push(
+            <div className="eventItem" key={"no results"}>
+                <div className="col-sm-12">
+                    <p>
+                        {noResultsText}{" "}
+                        <a href="" onClick={self.props.handleReset}>
+                            Reset
+                        </a>
+                    </p>
+                </div>
+            </div>
+        );
+    }
+}
+
   componentDidMount() {
     this.addDateFormat();
   }
@@ -123,22 +141,7 @@ class CalendarList extends Component {
       eventCalendarArray.push(item);
     }
 
-    function noResults(eventItems, self) {
-      if (eventItems.length === 0) {
-        eventItems.push(
-          <div className="eventItem" key={"no results"}>
-            <div className="col-sm-12">
-              <p>
-                {noResultsText}{" "}
-                <a href="" onClick={self.props.handleReset}>
-                  Reset
-                </a>
-              </p>
-            </div>
-          </div>
-        );
-      }
-    }
+
 
     // Begin Loop of Events <-------------------------------------------
 
@@ -194,7 +197,7 @@ class CalendarList extends Component {
     });
     // End Loop of Events  ------------------------------------------->
 
-    noResults(eventItems, this);
+    this.noResults(eventItems, this, noResultsText);
 
     //if list view toggle show eventItems else render calendar component
     return (
