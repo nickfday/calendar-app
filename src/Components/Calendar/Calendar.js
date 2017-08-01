@@ -151,7 +151,6 @@ class Calendar extends Component {
     //const self = this;
     var updatedevents = self.state.events.slice();
     updatedevents.map(function(i) {
-      console.log(i);
       if (i.date_repeat) {
         i.splitDates = [];
         i.sortedDates = [];
@@ -161,8 +160,8 @@ class Calendar extends Component {
           return null;
         });
         return null;
-        //i.date = i.sortedDates;
       }
+      return null;
     });
 
     self.setState({

@@ -8,9 +8,7 @@ BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class CalendarList extends Component {
   addDateFormat() {
-    console.log(this.props);
     this.props.events.events.map(function(e) {
-      //console.log(e.sortedDates);
       if (e.sortedDates) {
         e.start = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
         e.end = new Date(e.sortedDates[0][1].slice(0, 10).split("-").join());
