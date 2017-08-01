@@ -38,6 +38,17 @@ class CalendarList extends Component {
       history.push(`/event/${event.uuid}`);
     }
 
+   checkDate(eventItem) {
+    let rowDate = null;
+    //console.log(eventItem.sortedDates);
+    if (eventItem.sortedDates) {
+        rowDate = moment(eventItem.sortedDates[0][0]);
+    } else {
+        rowDate = moment(eventItem.date);
+    }
+    return rowDate;
+}
+
   componentDidMount() {
     this.addDateFormat();
   }
@@ -65,16 +76,7 @@ class CalendarList extends Component {
     let matchedTag = [];
     let eventCalendarArray = [];
 
-    function checkDate(eventItem) {
-      let rowDate = null;
-      //console.log(eventItem.sortedDates);
-      if (eventItem.sortedDates) {
-        rowDate = moment(eventItem.sortedDates[0][0]);
-      } else {
-        rowDate = moment(eventItem.date);
-      }
-      return rowDate;
-    }
+
 
     function filterMultiSelect(
       selectVal,
@@ -149,7 +151,7 @@ class CalendarList extends Component {
       let selectedEndDate = moment(eventArray.endDate);
 
       //let rowDate = moment(eventItem.date);
-      let rowDate = checkDate(eventItem);
+      let rowDate = this.checkDate(eventItem);
 
       //Search by Name
       if (!this.searchFilter(eventArray.titleText, eventItem.title)) {
