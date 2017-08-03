@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { searchFilter, filterMultiSelect } from "../Misc/Helper";
+import { DemoCalendarRow } from "./DemoCalendarRow";
 import moment from "moment";
 
 const EventRow = props => {
@@ -47,7 +48,7 @@ const EventFilters = props => {
     return false;
 
   return (
-    <EventRow
+    <DemoCalendarRow
       event={props.event}
       startDate={props.startDate}
       endDate={props.endDate}
