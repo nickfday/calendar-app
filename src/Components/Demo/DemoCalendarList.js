@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { searchFilter, filterMultiSelect } from "../Misc/Helper";
+import moment from "moment";
 
 const EventRow = props => {
   return (
@@ -38,28 +39,12 @@ const EventFilters = props => {
   )
     return false;
 
-  // Object.keys(props.eventState.selectedEventTypes).map(selectedTag => {
-  //   console.log(selectedTag);
-  //   //loop all sorted tags
-  //   if (props.event.event_type != null) {
-  //     props.event.event_type.split(", ").sort().map(itemTag => {
-  //       //if selected audience value == tag push onto matched event
-  //       console.log(itemTag);
-  //       if (
-  //         props.eventState.selectedEventTypes[selectedTag].value === itemTag
-  //       ) {
-  //         matchedTag.push(props.event.event_type);
-  //         return false;
-  //       } else {
-  //         return false;
-  //       }
-  //     });
-  //   }
-  // });
-
-  // if (matchedTag.length !== props.eventState.selectedEventTypes.length) {
-  //   return false;
-  // }
+  //Date Filter
+  if (
+    moment(props.eventState.startDate) > moment(props.startDate) ||
+    moment(props.eventState.endDate) < moment(props.endDate)
+  )
+    return false;
 
   return (
     <EventRow
