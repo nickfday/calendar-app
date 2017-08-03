@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { searchFilter } from "../Misc/Helper";
+import { searchFilter, filterMultiSelect } from "../Misc/Helper";
 
 const EventRow = props => {
   return (
@@ -10,8 +10,6 @@ const EventRow = props => {
 };
 
 const EventFilters = props => {
-  console.log(props);
-
   //Search by Name
   if (!searchFilter(props.eventState.titleText, props.event.title)) {
     return false;
@@ -21,6 +19,47 @@ const EventFilters = props => {
   if (!searchFilter(props.eventState.addressText, props.event.location)) {
     return false;
   }
+
+  //Event filter
+  if (
+    !filterMultiSelect(
+      props.eventState.selectedEventTypes,
+      props.event.event_type
+    )
+  )
+    return false;
+
+  //Audience Filter
+  if (
+    !filterMultiSelect(
+      props.eventState.selectedAudienceTypes,
+      props.event.audience
+    )
+  )
+    return false;
+
+  // Object.keys(props.eventState.selectedEventTypes).map(selectedTag => {
+  //   console.log(selectedTag);
+  //   //loop all sorted tags
+  //   if (props.event.event_type != null) {
+  //     props.event.event_type.split(", ").sort().map(itemTag => {
+  //       //if selected audience value == tag push onto matched event
+  //       console.log(itemTag);
+  //       if (
+  //         props.eventState.selectedEventTypes[selectedTag].value === itemTag
+  //       ) {
+  //         matchedTag.push(props.event.event_type);
+  //         return false;
+  //       } else {
+  //         return false;
+  //       }
+  //     });
+  //   }
+  // });
+
+  // if (matchedTag.length !== props.eventState.selectedEventTypes.length) {
+  //   return false;
+  // }
 
   return (
     <EventRow
@@ -39,19 +78,15 @@ class DemoCalendarList extends Component {
 
     // Format Dates
     updatedevents.map(i => {
-      console.log(i.title);
       i.formattedDate = [];
       i.date_repeat.split(", ").map(y => {
         i.formattedDate.push(y.split(" to "));
       });
     });
-    console.log(updatedevents);
 
     // newArray based on start date
     updatedevents.map(i => {
-      console.log(i.title);
       i.formattedDate.map(z => {
-        console.log(z);
         dateArray.push([z, i]);
       });
     });
