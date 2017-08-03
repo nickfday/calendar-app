@@ -17,3 +17,14 @@ export function splitMap(string, separator, className) {
     );
   }
 }
+
+export function searchFilter(searchVal, itemVal) {
+  console.log("active");
+  if (
+    searchVal !== "" &&
+    itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
+  ) {
+    return false;
+  }
+  return true;
+}
