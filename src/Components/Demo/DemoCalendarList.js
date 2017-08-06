@@ -2,14 +2,8 @@ import React, { Component } from "react";
 import { searchFilter, filterMultiSelect } from "../Misc/Helper";
 import { DemoCalendarRow } from "./DemoCalendarRow";
 import moment from "moment";
-
-const EventRow = props => {
-  return (
-    <div>
-      {props.event.title} - {props.startDate} - {props.endDate}
-    </div>
-  );
-};
+import Pagination from "react-js-pagination";
+import ReactPaginate from "react-paginate";
 
 const EventFilters = props => {
   //Search by Name
@@ -57,6 +51,17 @@ const EventFilters = props => {
 };
 
 class DemoCalendarList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 1
+    };
+  }
+
+  handlePageChange(pageNumber) {
+    this.setState({ activePage: pageNumber });
+  }
+
   render() {
     var self = this;
     let dateArray = [];
@@ -77,24 +82,43 @@ class DemoCalendarList extends Component {
       });
     });
 
-    // list events
-    let listEvents = dateArray.map(i => {
-      return (
-        <div>
-          <EventFilters
-            eventState={this.props.eventState}
-            event={i[1]}
-            startDate={i[0][0]}
-            endDate={i[0][1]}
-          />
-        </div>
-      );
+    dateArray.sort(function(a, b) {
+      return moment(a[0][0]) < moment(b[0][0]);
     });
+
+    // list events
+    let activePage = this.state.activePage;
+    let itemsCountPerPage = 5;
+
+    let listEvents = dateArray
+      .sort()
+      .slice(
+        activePage * itemsCountPerPage - itemsCountPerPage,
+        activePage * itemsCountPerPage
+      )
+      .map(i => {
+        return (
+          <div>
+            <EventFilters
+              eventState={this.props.eventState}
+              event={i[1]}
+              startDate={i[0][0]}
+              endDate={i[0][1]}
+            />
+          </div>
+        );
+      });
 
     return (
       <div>
         {listEvents}
-        <br />
+        <Pagination
+          activePage={this.state.activePage}
+          itemsCountPerPage={5}
+          totalItemsCount={dateArray.length}
+          pageRangeDisplayed={5}
+          onChange={this.handlePageChange.bind(this)}
+        />
       </div>
     );
   }
