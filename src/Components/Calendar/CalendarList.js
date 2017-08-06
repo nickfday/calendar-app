@@ -26,9 +26,8 @@ class CalendarList extends Component {
       itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
     ) {
       return false;
-    } else {
-      return true;
     }
+    return true;
   }
 
   handleEvent(title, event, self, history) {
@@ -105,6 +104,10 @@ class CalendarList extends Component {
 
   renderItem(self, eventItems, eventItem, eventCalendarArray) {
     self.props.events.visibleEvents.concat(eventItem);
+    //console.log(eventItem);
+    // eventItem.sortedDates.map(function(i) {
+    //   console.log("hi");
+    // });
 
     eventItems.push(<CalendarRow events={eventItem} key={eventItem.uuid} />);
     eventCalendarArray.push(eventItem);
@@ -130,8 +133,8 @@ class CalendarList extends Component {
     // Begin Loop of Events <-------------------------------------------
 
     eventArray.events.forEach((eventItem, index) => {
-      var audienceMatch = true;
-      var eventMatch = true;
+      let audienceMatch = true;
+      let eventMatch = true;
 
       //Date Filter condition
       let selectedStartDate = moment(eventArray.startDate);
