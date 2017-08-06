@@ -1,9 +1,14 @@
 import React from "react";
 import "./style/DemoCalendarRow.css";
-import CSSTransitionGroup from "react-addons-css-transition-group";
-import moment from "moment";
 import BSModal from "../Misc/BSModal";
+import CSSTransitionGroup from "react-addons-css-transition-group";
+import { Link } from "react-router-dom";
+import moment from "moment";
 import { splitMap } from "../Misc/Helper";
+
+// export const DemoCalendarSingle = props => {
+//   return <div>Single</div>;
+// };
 
 export const DemoCalendarRow = props => {
   return (
@@ -35,7 +40,13 @@ export const DemoCalendarRow = props => {
 
       <div className="event-info col-xs-7">
         <h3>
-          {props.event.title}
+          <Link
+            to={{
+              pathname: `/event/${props.event.uuid}`
+            }}
+          >
+            {props.event.title}
+          </Link>
         </h3>
         <div>
           {props.event.body}
