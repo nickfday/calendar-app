@@ -3,12 +3,14 @@ import Filter from "./Filter/Filter";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import CalendarList from "./CalendarList";
+import DemoCalendarList from "../Demo/DemoCalendarList";
 var Loader = require("react-loader");
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activePage: 1,
       events: [],
       loaded: false,
       titleText: "",
@@ -23,7 +25,7 @@ class Calendar extends Component {
       visibleEvents: []
     };
 
-    //test
+    this.handlePageChange = this.handlePageChange.bind(this);
 
     this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
@@ -39,6 +41,12 @@ class Calendar extends Component {
 
     this.handleReset = this.handleReset.bind(this);
     this.handleSort = this.handleSort.bind(this);
+  }
+
+  handlePageChange(pageNo) {
+    this.setState({
+      activePage: pageNo
+    });
   }
 
   handleCalendarViewSwitch() {
@@ -164,10 +172,9 @@ class Calendar extends Component {
       return null;
     });
 
-    self.setState({
+    self.setState(() => ({
       events: updatedevents
-      //events: null
-    });
+    }));
   }
 
   getEventTypes() {
@@ -265,13 +272,21 @@ class Calendar extends Component {
             </div>
 
             <div className="col-sm-9">
-              <CalendarList
+              <DemoCalendarList
+                events={this.state.events}
+                eventState={this.state}
+                activePage={this.state.activePage}
+                handlePage={this.handlePageChange}
+                handleVisibleEventsChange={this.handleVisibleEventsChange}
+                visibleEvents={this.state.visibleEvents}
+              />
+              {/*<CalendarList
                 events={this.state}
                 handleReset={this.handleReset}
                 history={this.props.history}
                 location={this.props.location}
                 props={this.props}
-              />
+              />*/}
             </div>
           </div>
         </Loader>
