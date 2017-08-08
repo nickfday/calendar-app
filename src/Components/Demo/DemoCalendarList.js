@@ -3,7 +3,6 @@ import { searchFilter, filterMultiSelect } from "../Misc/Helper";
 import { DemoCalendarRow } from "./DemoCalendarRow";
 import moment from "moment";
 import Pagination from "react-js-pagination";
-import CalendarRow from "../Calendar/CalendarRow";
 import BigCalendar from "react-big-calendar";
 
 class DemoCalendarList extends Component {
@@ -19,7 +18,6 @@ class DemoCalendarList extends Component {
   }
 
   handleEvent(title, event, self, history) {
-    history.event = event;
     history.push(`/event/${event.uuid}`);
   }
 
@@ -82,6 +80,8 @@ class DemoCalendarList extends Component {
 
       filteredCalenderEvents.push({
         title: event.title,
+        uuid: event.uuid,
+        event: event,
         //allDay: true,
         start: new Date(startDate),
         end: new Date(endDate)
@@ -102,6 +102,8 @@ class DemoCalendarList extends Component {
       activePage * itemsCountPerPage
     );
 
+    console.log(this.props.history);
+
     return (
       <div>
         {this.props.isListViewOn
@@ -118,15 +120,15 @@ class DemoCalendarList extends Component {
             </div>
           : <div>
               <BigCalendar
+                //{...this.props}
                 events={filteredCalenderEvents}
-                onSelectEvent={event => alert(event.title)}
-                // onSelectEvent={event =>
-                //   this.handleEvent(
-                //     event.title,
-                //     event,
-                //     self,
-                //     self.props.history
-                //   )}
+                onSelectEvent={event =>
+                  this.handleEvent(
+                    event.title,
+                    event,
+                    self,
+                    this.props.history
+                  )}
               />
             </div>}
       </div>
