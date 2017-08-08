@@ -279,6 +279,7 @@ class Calendar extends Component {
                 handlePage={this.handlePageChange}
                 handleVisibleEventsChange={this.handleVisibleEventsChange}
                 visibleEvents={this.state.visibleEvents}
+                isListViewOn={this.state.isListViewOn}
               />
               {/*<CalendarList
                 events={this.state}
