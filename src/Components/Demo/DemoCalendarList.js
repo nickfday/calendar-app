@@ -3,6 +3,8 @@ import { searchFilter, filterMultiSelect } from "../Misc/Helper";
 import { DemoCalendarRow } from "./DemoCalendarRow";
 import moment from "moment";
 import Pagination from "react-js-pagination";
+import CalendarRow from "../Calendar/CalendarRow";
+import BigCalendar from "react-big-calendar";
 
 class DemoCalendarList extends Component {
   constructor(props) {
@@ -16,6 +18,11 @@ class DemoCalendarList extends Component {
     this.setState({ activePage: pageNumber });
   }
 
+  handleEvent(title, event, self, history) {
+    history.event = event;
+    history.push(`/event/${event.uuid}`);
+  }
+
   render() {
     var self = this;
     let dateArray = [];
@@ -24,6 +31,8 @@ class DemoCalendarList extends Component {
     // Format Dates
     updatedevents.map(i => {
       i.formattedDate = [];
+      i.start = new Date("2017-08-08 11:00:00");
+      i.end = new Date("2017-09-08 11:00:00");
       i.date_repeat.split(", ").map(y => {
         i.formattedDate.push(y.split(" to "));
       });
@@ -70,9 +79,17 @@ class DemoCalendarList extends Component {
           endDate={endDate}
         />
       );
+
+      filteredCalenderEvents.push({
+        title: event.title,
+        //allDay: true,
+        start: new Date(startDate),
+        end: new Date(endDate)
+      });
     }
 
     let filteredEvents = [];
+    let filteredCalenderEvents = [];
 
     let listEvents = dateArray.sort().map(i => {
       filterEvents(this.props.eventState, i[1], i[0][0], i[0][1]);
@@ -87,14 +104,31 @@ class DemoCalendarList extends Component {
 
     return (
       <div>
-        {filteredEvents}
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={5}
-          totalItemsCount={filteredEventsCount}
-          pageRangeDisplayed={5}
-          onChange={this.handlePageChange.bind(this)}
-        />
+        {this.props.isListViewOn
+          ? <div>
+              {filteredEvents}
+
+              <Pagination
+                activePage={this.state.activePage}
+                itemsCountPerPage={5}
+                totalItemsCount={filteredEventsCount}
+                pageRangeDisplayed={5}
+                onChange={this.handlePageChange.bind(this)}
+              />
+            </div>
+          : <div>
+              <BigCalendar
+                events={filteredCalenderEvents}
+                onSelectEvent={event => alert(event.title)}
+                // onSelectEvent={event =>
+                //   this.handleEvent(
+                //     event.title,
+                //     event,
+                //     self,
+                //     self.props.history
+                //   )}
+              />
+            </div>}
       </div>
     );
   }
