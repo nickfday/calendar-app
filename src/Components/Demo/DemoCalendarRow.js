@@ -42,7 +42,12 @@ export const DemoCalendarRow = props => {
         <h3>
           <Link
             to={{
-              pathname: `/event/${props.event.uuid}`
+              pathname: `/event/${props.event.uuid}`,
+              state: {
+                events: props.event,
+                startDate: props.startDate,
+                endDate: props.endDate
+              }
             }}
           >
             {props.event.title}
