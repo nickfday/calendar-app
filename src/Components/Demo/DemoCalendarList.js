@@ -4,6 +4,7 @@ import { DemoCalendarRow } from "./DemoCalendarRow";
 import moment from "moment";
 import Pagination from "react-js-pagination";
 import BigCalendar from "react-big-calendar";
+import CSSTransitionGroup from "react-addons-css-transition-group";
 
 class DemoCalendarList extends Component {
   constructor(props) {
@@ -102,8 +103,6 @@ class DemoCalendarList extends Component {
       activePage * itemsCountPerPage
     );
 
-    console.log(this.props.history);
-
     return (
       <div>
         {this.props.isListViewOn
@@ -119,17 +118,27 @@ class DemoCalendarList extends Component {
               />
             </div>
           : <div>
-              <BigCalendar
-                //{...this.props}
-                events={filteredCalenderEvents}
-                onSelectEvent={event =>
-                  this.handleEvent(
-                    event.title,
-                    event,
-                    self,
-                    this.props.history
-                  )}
-              />
+              <CSSTransitionGroup
+                component="div"
+                transitionName="row"
+                transitionAppear={true}
+                transitionAppearTimeout={250}
+                transitionLeaveTimeout={250}
+                transitionEnterTimeout={250}
+                className="event-row clearfix"
+              >
+                <BigCalendar
+                  //{...this.props}
+                  events={filteredCalenderEvents}
+                  onSelectEvent={event =>
+                    this.handleEvent(
+                      event.title,
+                      event,
+                      self,
+                      this.props.history
+                    )}
+                />
+              </CSSTransitionGroup>
             </div>}
       </div>
     );
