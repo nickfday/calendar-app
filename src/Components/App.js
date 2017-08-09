@@ -4,7 +4,8 @@ import Layout from "./Layout";
 import "./app.css";
 import Footer from "./Footer";
 import Calendar from "./Calendar/Calendar";
-import CalendarSingle from "./Calendar/CalendarSingle";
+// import CalendarSingle from "./Calendar/CalendarSingle";
+import DemoCalendarSingle from "./Demo/DemoCalendarSingle";
 
 const NoMatch = ({ location }) =>
   <div className="container content">
@@ -30,7 +31,8 @@ class App extends Component {
             <Route
               exact
               path="/event/:id"
-              component={CalendarSingle}
+              component={DemoCalendarSingle}
+              //component={CalendarSingle}
               name={this.state.name}
             />
             <Route component={NoMatch} />
