@@ -1,3 +1,12 @@
+html,
+#root {
+  background: #fff;
+}
+
+// colors
+$color-dark-blue: #d0e6fe;
+$color-grey: #292b36;
+
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
@@ -71,4 +80,9 @@ nav input {
 
 .rbc-calendar {
   min-height: 393px;
+}
+
+.panel-info > .panel-heading {
+  background-color: $color-dark-blue;
+  color: $color-grey;
 }
