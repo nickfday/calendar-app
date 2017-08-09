@@ -38,7 +38,7 @@ export const DemoCalendarRow = props => {
         </div>
       </div>
 
-      <div className="event-info col-xs-7">
+      <div className="event-info col-xs-10">
         <h3>
           <Link
             to={{
