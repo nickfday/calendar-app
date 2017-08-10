@@ -231,13 +231,12 @@ class Calendar extends Component {
             <div className="row margin-bottom-20">
               <div className="col-sm-9">
                 <p>
-                  Browse the events calendar to find out about big council-run
-                  events. We also list a wide variety of groups, meet-ups,
-                  classes and workshops run by and on behalf of the Westminster
-                  community.
+                  {/* Make Editable via Drupal */}
+                  Browse the events calendar to find out about upcoming events
+                  in Westminster.
                 </p>
               </div>
-              <div className="col-sm-3 text-right">
+              <div className="col-sm-3 btn-switch">
                 <button
                   className="btn btn-primary"
                   onClick={this.handleCalendarViewSwitch}

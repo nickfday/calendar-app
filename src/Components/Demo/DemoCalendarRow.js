@@ -53,9 +53,9 @@ export const DemoCalendarRow = props => {
             {props.event.title}
           </Link>
         </h3>
-        <div>
+        <p>
           {props.event.body}
-        </div>
+        </p>
         <BSModal
           buttonLabel={props.event.location}
           map={

@@ -28,11 +28,13 @@ class BSModal extends Component {
     return (
       <div>
         <div className="cursor-pointer" onClick={this.open}>
-          <span
-            className="glyphicon glyphicon-map-marker"
-            aria-hidden="true"
-          />{" "}
-          <span className="wcc-link">{this.props.buttonLabel}</span>
+          <p>
+            <span
+              className="glyphicon glyphicon-map-marker"
+              aria-hidden="true"
+            />{" "}
+            <span className="wcc-link">{this.props.buttonLabel}</span>
+          </p>
         </div>
 
         <Modal show={this.state.showModal} onHide={this.close}>
