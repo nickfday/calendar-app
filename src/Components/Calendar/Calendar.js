@@ -278,6 +278,7 @@ class Calendar extends Component {
                   eventState={this.state}
                   activePage={this.state.activePage}
                   handlePage={this.handlePageChange}
+                  handleReset={this.handleReset}
                   handleVisibleEventsChange={this.handleVisibleEventsChange}
                   visibleEvents={this.state.visibleEvents}
                   isListViewOn={this.state.isListViewOn}
