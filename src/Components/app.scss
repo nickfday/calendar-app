@@ -1,11 +1,20 @@
 html,
 #root {
-  background: #fff;
+  background: #f3f4ff;
+  //background: #fff;
 }
 
 .wcc-link {
   color: #0b2165;
   text-decoration: underline;
+}
+
+.wcc-breadcrumb {
+  a {
+    color: #292b36;
+    font-size: 13px;
+    text-decoration: none;
+  }
 }
 
 // colors
@@ -49,6 +58,7 @@ $color-grey: #292b36;
 
 .content {
   margin-top: 60px;
+  min-height: 800px;
 }
 
 .exercise-list img {
