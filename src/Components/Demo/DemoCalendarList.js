@@ -98,6 +98,19 @@ class DemoCalendarList extends Component {
 
     let filteredEventsCount = filteredEvents.length;
 
+    // No results
+    if (filteredEventsCount == 0) {
+      return (
+        <p>
+          No results - please adjust or&nbsp;
+          <a href="" onClick={self.props.handleReset}>
+            reset
+          </a>{" "}
+          filters.
+        </p>
+      );
+    }
+
     filteredEvents = filteredEvents.slice(
       activePage * itemsCountPerPage - itemsCountPerPage,
       activePage * itemsCountPerPage
