@@ -21,7 +21,7 @@ export const DemoCalendarRow = props => {
       transitionEnterTimeout={500}
       className="event-row clearfix"
     >
-      <div className="col-xs-2">
+      <div className="col-xs-3 col-md-2">
         <div className="date-info">
           <div className="custom-dayOfWeek">
             {moment(props.startDate).format("ddd")}
@@ -38,7 +38,7 @@ export const DemoCalendarRow = props => {
         </div>
       </div>
 
-      <div className="event-info col-xs-10">
+      <div className="event-info col-xs-9 col-md-10">
         <h3>
           <Link
             to={{
