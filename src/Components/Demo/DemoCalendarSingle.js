@@ -6,6 +6,7 @@ import CSSTransitionGroup from "react-addons-css-transition-group";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { splitMap } from "../Misc/Helper";
+var Loader = require("react-loader");
 
 const DisplaySingleEvent = props => {
   const item = props.event;
@@ -13,53 +14,67 @@ const DisplaySingleEvent = props => {
   const endDate = props.endDate;
 
   return (
-    <CSSTransitionGroup
-      component="div"
-      transitionName="row"
-      transitionAppear={true}
-      transitionAppearTimeout={500}
-      transitionLeaveTimeout={500}
-      transitionEnterTimeout={500}
-      className="event-row clearfix"
-    >
-      <div className="col-xs-2">
-        <div className="date-info">
-          <div className="custom-dayOfWeek">
-            {moment(startDate).format("ddd")}
-          </div>
-          <div className="custom-day">
-            {moment(startDate).format("D")}
-          </div>
-          <div className="custom-month">
-            {moment(startDate).format("MMM")}
-          </div>
-          <div className="custom-year">
-            {moment(startDate).format("YYYY")}
-          </div>
-        </div>
+    <div className="content exercise-list container">
+      <div className="sp-breadcrumbs wcc-breadcrumb">
+        <a href="http://finley-day.com">Home</a>
+        &nbsp;>&nbsp;
+        <Link to="/">Events</Link>
       </div>
 
-      <div className="event-info col-xs-10">
-        <h3>
+      <div className="sp-head row">
+        <Link to="/" className="go-up icon-arrow-left" />
+        <h1>
           {props.event.title}
-        </h3>
-        <div>
-          {item.body}
-        </div>
-        <BSModal
-          buttonLabel={item.location}
-          map={
-            "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
-            item.location
-          }
-        />
-        {splitMap(item.event_type, ", ", "event-item")}
-        <br />
-        <div className="clearfix" />
-        {splitMap(item.audience, ", ", "audience-item")}
+        </h1>
       </div>
-      <Link to="/">Back to All Events</Link>
-    </CSSTransitionGroup>
+
+      <div className="inner-content">
+        <CSSTransitionGroup
+          component="div"
+          transitionName="row"
+          transitionAppear={true}
+          transitionAppearTimeout={500}
+          transitionLeaveTimeout={500}
+          transitionEnterTimeout={500}
+          className="event-row clearfix"
+        >
+          <div className="col-xs-2">
+            <div className="date-info">
+              <div className="custom-dayOfWeek">
+                {moment(startDate).format("ddd")}
+              </div>
+              <div className="custom-day">
+                {moment(startDate).format("D")}
+              </div>
+              <div className="custom-month">
+                {moment(startDate).format("MMM")}
+              </div>
+              <div className="custom-year">
+                {moment(startDate).format("YYYY")}
+              </div>
+            </div>
+          </div>
+
+          <div className="event-info col-xs-10">
+            <h3>
+              {props.event.title}
+            </h3>
+            <p dangerouslySetInnerHTML={{ __html: props.event.body }} />
+            <BSModal
+              buttonLabel={item.location}
+              map={
+                "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+                item.location
+              }
+            />
+            {splitMap(item.event_type, ", ", "event-item")}
+            <br />
+            <div className="clearfix" />
+            {splitMap(item.audience, ", ", "audience-item")}
+          </div>
+        </CSSTransitionGroup>
+      </div>
+    </div>
   );
 };
 
