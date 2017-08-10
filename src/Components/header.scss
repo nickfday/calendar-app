@@ -1,33 +1,48 @@
 /*@import url("https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc/css/main-sm.css");
 @import url("https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc/css/content-sm.css");*/
 body {
-  background: #F3F4FF;
+  background: #f3f4ff;
 }
 
-body, input, textarea {
+body,
+input,
+textarea {
   font-family: "Open Sans", sans-serif;
 }
 
 .top-bar {
-	height: 50px;
-	//margin: 0 -40px;
+  height: 50px;
+  //margin: 0 -40px;
   //padding: 0 40px;
-    background: #0d0e16;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-    background: -moz-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(15%, #0d0e16), color-stop(50%, #0b2265), color-stop(85%, #0d0e16));
-    background: -webkit-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-    background: -o-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-    background: -ms-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-    background: linear-gradient(to right, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+  background: #0d0e16;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(15%, #0d0e16),
+    color-stop(50%, #0b2265),
+    color-stop(85%, #0d0e16)
+  );
+  background: -webkit-linear-gradient(
+    left,
+    #0d0e16 15%,
+    #0b2265 50%,
+    #0d0e16 85%
+  );
+  background: -o-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+  background: -ms-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+  background: linear-gradient(to right, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
 }
 
 .hide-md-up {
-	display: none;
+  display: none;
 }
 
 .sp-head {
-	background: #ffdc53;
+  margin: 0 -10px;
+  background: #ffdc53;
   padding-left: 100px;
   position: relative;
   z-index: 1000;
@@ -37,24 +52,24 @@ body, input, textarea {
 }
 
 .sp-head h1 {
-    font-size: 24px;
-    padding: 28px 0;
-    margin-top: 0;
-    margin-bottom: 0;
+  font-size: 24px;
+  padding: 28px 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .sp-head .go-up {
-    background: #fecb00;
-    font-size: 35.2px;
-    width: 80px;
-    line-height: 84px;
-    border-right: 0;
-    position: absolute;
-    color: #fff;
-    left: 0;
-    top: 0;
-    height: 100%;
-    text-align: center;
+  background: #fecb00;
+  font-size: 35.2px;
+  width: 80px;
+  line-height: 84px;
+  border-right: 0;
+  position: absolute;
+  color: #fff;
+  left: 0;
+  top: 0;
+  height: 100%;
+  text-align: center;
 }
 
 .content {
@@ -74,4 +89,3 @@ body, input, textarea {
   color: #292b36;
   display: block;
 }
-

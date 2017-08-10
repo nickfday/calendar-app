@@ -7,8 +7,6 @@
   }
 }
 
-
-
 /*
 * List Results Page
 */
@@ -37,9 +35,9 @@
   border: 1px solid #c0cbc4;
   text-align: center;
   padding-bottom: 8px;
-  width: 88px;
+  width: 100%;
   max-width: 88px;
-  min-width: 88px;
+  // min-width: 88px;
   margin-bottom: 12px;
   .custom-dayOfWeek {
     color: #666666;
@@ -77,66 +75,68 @@
     color: #666666;
   }
 }
-  .event-item,.audience-item {
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    background-color: #066e6b;
-    border-radius: 4px;
-    color: white;
-    float: left;
-    font-size: 0.85714em;
-    font-size: 12px;
-    letter-spacing: 0.07em;
-    line-height: 1.33333;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    padding: 4px 8px;
-    position: relative;
+.event-item,
+.audience-item {
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background-color: #066e6b;
+  border-radius: 4px;
+  color: white;
+  float: left;
+  font-size: 0.85714em;
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  line-height: 1.33333;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 4px 8px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  a {
     text-decoration: none;
-    text-transform: uppercase;
-    a {
-      text-decoration: none;
-      color: white;
-    }
+    color: white;
   }
-  .audience-item {
-    background-color: #aa3f2a;
-  }
+}
+.audience-item {
+  background-color: #aa3f2a;
+}
 
-  .sp-content .views-widget-filter-field_event_type_tid, .sp-content .views-widget-filter-field_event_audience_tid {
-    border: 1px solid #b9bcce;
-    background: #fff;
-    font-size: 15px;
-    color: #292b36;
-    margin: .5em 1em 0 0;
-    -webkit-transition: .2s;
-    -moz-transition: .2s;
-    -ms-transition: .2s;
-    -o-transition: .2s;
-    transition: .2s;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    margin-top: 10px;
-    position: relative;
-    height: 40px;
-    line-height: 40px;
+.sp-content .views-widget-filter-field_event_type_tid,
+.sp-content .views-widget-filter-field_event_audience_tid {
+  border: 1px solid #b9bcce;
+  background: #fff;
+  font-size: 15px;
+  color: #292b36;
+  margin: .5em 1em 0 0;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  margin-top: 10px;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+
+  a {
+    text-decoration: none;
     padding-left: 10px;
-
-    a {
-      text-decoration: none;
-      padding-left: 10px;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      height: 100%;
-    }
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100%;
   }
+}
 
 .sp-content ul > li:before {
-  display:none;
+  display: none;
 }
 
 .sp-content ul.bef-tree-child {
@@ -159,7 +159,8 @@
 .react-datepicker__month {
   margin: 0.4em 1em;
 }
-.react-datepicker__day-name, .react-datepicker__day {
+.react-datepicker__day-name,
+.react-datepicker__day {
   width: 1.9em;
   line-height: 1.9em;
   margin: 0.166em;
@@ -181,10 +182,6 @@
   right: 1em;
 }
 
-
-
-
-
 .react-datepicker__input-container {
   width: 100%;
 }
@@ -199,4 +196,3 @@
     background-color: #999;
   }
 }
-
