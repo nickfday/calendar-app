@@ -53,9 +53,7 @@ export const DemoCalendarRow = props => {
             {props.event.title}
           </Link>
         </h3>
-        <p>
-          {props.event.body}
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: props.event.body }} />
         <BSModal
           buttonLabel={props.event.location}
           map={
