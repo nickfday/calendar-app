@@ -108,14 +108,15 @@ class DemoCalendarList extends Component {
         {this.props.isListViewOn
           ? <div>
               {filteredEvents}
-
-              <Pagination
-                activePage={this.state.activePage}
-                itemsCountPerPage={5}
-                totalItemsCount={filteredEventsCount}
-                pageRangeDisplayed={5}
-                onChange={this.handlePageChange.bind(this)}
-              />
+              <div className="text-center">
+                <Pagination
+                  activePage={this.state.activePage}
+                  itemsCountPerPage={5}
+                  totalItemsCount={filteredEventsCount}
+                  pageRangeDisplayed={5}
+                  onChange={this.handlePageChange.bind(this)}
+                />
+              </div>
             </div>
           : <div>
               <CSSTransitionGroup
@@ -137,6 +138,7 @@ class DemoCalendarList extends Component {
                       self,
                       this.props.history
                     )}
+                  views={["month", "week", "day"]}
                 />
               </CSSTransitionGroup>
             </div>}
