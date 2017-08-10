@@ -227,69 +227,72 @@ class Calendar extends Component {
             <h1>Events</h1>
           </div>
 
-          <div className="row margin-bottom-20">
-            <div className="col-sm-9">
-              <p>
-                Browse the events calendar to find out about big council-run
-                events. We also list a wide variety of groups, meet-ups, classes
-                and workshops run by and on behalf of the Westminster community.
-              </p>
-            </div>
-            <div className="col-sm-3 text-right">
-              <button
-                className="btn btn-primary"
-                onClick={this.handleCalendarViewSwitch}
-              >
-                {this.state.isListViewOn
-                  ? "Switch to Calendar View"
-                  : "Switch to List View"}
-              </button>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-sm-3">
-              <Filter
-                calenderState={this.state}
-                titleText={this.state.titleText}
-                addressText={this.state.addressText}
-                onTitleTextInput={this.handleTitleTextInput}
-                onAddressTextInput={this.handleAddressTextInput}
-                onEventTypeInput={this.handleEventTypeInput}
-                onAudienceInput={this.handleAudienceInput}
-                eventTypes={this.state.eventTypes}
-                audienceTypes={this.state.audience}
-                handleSelectedEventTypes={this.handleSelectedEventTypes}
-                selectedEventTypes={this.state.selectedEventTypes}
-                handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
-                selectedAudienceTypes={this.state.selectedAudienceTypes}
-                handleReset={this.handleReset}
-                startDate={this.state.startDate}
-                endDate={this.state.endDate}
-                handleStartDate={this.handleStartDate}
-                handleEndDate={this.handleEndDate}
-              />
+          <div className="inner-content">
+            <div className="row margin-bottom-20">
+              <div className="col-sm-9">
+                <p>
+                  Browse the events calendar to find out about big council-run
+                  events. We also list a wide variety of groups, meet-ups,
+                  classes and workshops run by and on behalf of the Westminster
+                  community.
+                </p>
+              </div>
+              <div className="col-sm-3 text-right">
+                <button
+                  className="btn btn-primary"
+                  onClick={this.handleCalendarViewSwitch}
+                >
+                  {this.state.isListViewOn
+                    ? "Switch to Calendar View"
+                    : "Switch to List View"}
+                </button>
+              </div>
             </div>
 
-            <div className="col-sm-9">
-              <DemoCalendarList
-                events={this.state.events}
-                eventState={this.state}
-                activePage={this.state.activePage}
-                handlePage={this.handlePageChange}
-                handleVisibleEventsChange={this.handleVisibleEventsChange}
-                visibleEvents={this.state.visibleEvents}
-                isListViewOn={this.state.isListViewOn}
-                history={this.props.history}
-                location={this.props.location}
-              />
-              {/*<CalendarList
+            <div className="row">
+              <div className="col-sm-3">
+                <Filter
+                  calenderState={this.state}
+                  titleText={this.state.titleText}
+                  addressText={this.state.addressText}
+                  onTitleTextInput={this.handleTitleTextInput}
+                  onAddressTextInput={this.handleAddressTextInput}
+                  onEventTypeInput={this.handleEventTypeInput}
+                  onAudienceInput={this.handleAudienceInput}
+                  eventTypes={this.state.eventTypes}
+                  audienceTypes={this.state.audience}
+                  handleSelectedEventTypes={this.handleSelectedEventTypes}
+                  selectedEventTypes={this.state.selectedEventTypes}
+                  handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
+                  selectedAudienceTypes={this.state.selectedAudienceTypes}
+                  handleReset={this.handleReset}
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  handleStartDate={this.handleStartDate}
+                  handleEndDate={this.handleEndDate}
+                />
+              </div>
+
+              <div className="col-sm-9">
+                <DemoCalendarList
+                  events={this.state.events}
+                  eventState={this.state}
+                  activePage={this.state.activePage}
+                  handlePage={this.handlePageChange}
+                  handleVisibleEventsChange={this.handleVisibleEventsChange}
+                  visibleEvents={this.state.visibleEvents}
+                  isListViewOn={this.state.isListViewOn}
+                  history={this.props.history}
+                  location={this.props.location}
+                />
+                {/*<CalendarList
                 events={this.state}
                 handleReset={this.handleReset}
                 history={this.props.history}
                 location={this.props.location}
                 props={this.props}
               />*/}
+              </div>
             </div>
           </div>
         </Loader>
