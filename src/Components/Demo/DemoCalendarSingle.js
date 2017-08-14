@@ -59,7 +59,7 @@ const DisplaySingleEvent = props => {
             <h3>
               {props.event.title}
             </h3>
-            <p dangerouslySetInnerHTML={{ __html: props.event.body }} />
+            {/* Location */}
             <BSModal
               buttonLabel={item.location}
               map={
@@ -67,10 +67,28 @@ const DisplaySingleEvent = props => {
                 item.location
               }
             />
+            <div className="clearfix" />
+            {/* Price */}
+            {item.price &&
+              <div>
+                <h4>Price</h4>
+                <p dangerouslySetInnerHTML={{ __html: item.price }} />
+              </div>}
+            {/* How to Book */}
+            {item.how_to_book &&
+              <div>
+                <h4>How to book</h4>
+                <p dangerouslySetInnerHTML={{ __html: item.how_to_book }} />
+              </div>}
+            <hr />
+            <p dangerouslySetInnerHTML={{ __html: props.event.body }} />
             {splitMap(item.event_type, ", ", "event-item")}
             <br />
             <div className="clearfix" />
             {splitMap(item.audience, ", ", "audience-item")}
+            <div className="clearfix" />
+            <div className="clearfix" />
+            <Link to="/">Back to all events</Link>
           </div>
         </CSSTransitionGroup>
       </div>
