@@ -20,6 +20,7 @@ export function splitMap(string, separator, className) {
 
 export function searchFilter(searchVal, itemVal) {
   if (
+    itemVal &&
     searchVal !== "" &&
     itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
   ) {
