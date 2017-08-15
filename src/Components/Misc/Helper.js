@@ -19,10 +19,13 @@ export function splitMap(string, separator, className) {
 }
 
 export function searchFilter(searchVal, itemVal) {
+  if (itemVal == null && searchVal) {
+    return false;
+  }
   if (
     itemVal &&
-    searchVal !== "" &&
-    itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
+    (searchVal !== "" &&
+      itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1)
   ) {
     return false;
   }
