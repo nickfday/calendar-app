@@ -7,17 +7,6 @@ import BigCalendar from "react-big-calendar";
 import CSSTransitionGroup from "react-addons-css-transition-group";
 
 class DemoCalendarList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activePage: 1
-    };
-  }
-
-  handlePageChange(pageNumber) {
-    this.setState({ activePage: pageNumber });
-  }
-
   handleEvent(title, event, self, history) {
     history.push(`/event/${event.uuid}`);
   }
@@ -45,12 +34,12 @@ class DemoCalendarList extends Component {
     });
 
     // list events
-    let activePage = this.state.activePage;
+    //let activePage = this.state.activePage;
+    console.log("democalendarlist render");
+    let activePage = this.props.activePage;
     let itemsCountPerPage = 5;
 
     function filterEvents(eventState, event, startDate, endDate) {
-      //this.handlePageChange(1);
-
       if (!searchFilter(eventState.titleText, event.title)) return false;
 
       //Search by Address
@@ -123,11 +112,11 @@ class DemoCalendarList extends Component {
               {filteredEvents}
               <div className="text-center">
                 <Pagination
-                  activePage={this.state.activePage}
+                  activePage={this.props.activePage}
                   itemsCountPerPage={5}
                   totalItemsCount={filteredEventsCount}
                   pageRangeDisplayed={5}
-                  onChange={this.handlePageChange.bind(this)}
+                  onChange={this.props.handlePageChange.bind(this)}
                 />
               </div>
             </div>
