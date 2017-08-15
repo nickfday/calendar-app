@@ -25,8 +25,6 @@ class Calendar extends Component {
       visibleEvents: []
     };
 
-    this.handlePageChange = this.handlePageChange.bind(this);
-
     this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
@@ -41,6 +39,8 @@ class Calendar extends Component {
 
     this.handleReset = this.handleReset.bind(this);
     this.handleSort = this.handleSort.bind(this);
+
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   handlePageChange(pageNo) {
@@ -59,24 +59,28 @@ class Calendar extends Component {
     this.setState({
       startDate: startDate
     });
+    this.handlePageChange(1);
   }
 
   handleEndDate(endDate) {
     this.setState({
       endDate: endDate
     });
+    this.handlePageChange(1);
   }
 
   handleTitleTextInput(titleText) {
     this.setState({
       titleText: titleText
     });
+    this.handlePageChange(1);
   }
 
   handleAddressTextInput(addressText) {
     this.setState({
       addressText: addressText
     });
+    this.handlePageChange(1);
   }
 
   handleEventTypeInput(eventType) {
@@ -89,23 +93,19 @@ class Calendar extends Component {
     this.setState({
       selectedEventTypes: selectedEventTypes
     });
+    this.handlePageChange(1);
   }
 
   handleSelectedAudienceTypes(selectedAudienceTypes) {
     this.setState({
       selectedAudienceTypes: selectedAudienceTypes
     });
+    this.handlePageChange(1);
   }
 
   handleAudienceInput(audience) {
     this.setState({
       audience: audience
-    });
-  }
-
-  handleSelectTextInput(primaryMuscle) {
-    this.setState({
-      primaryMuscle: primaryMuscle
     });
   }
 
@@ -242,8 +242,8 @@ class Calendar extends Component {
                   onClick={this.handleCalendarViewSwitch}
                 >
                   {this.state.isListViewOn
-                    ? "Switch to Calendar View"
-                    : "Switch to List View"}
+                    ? "Switch to calendar view"
+                    : "Switch to list view"}
                 </button>
               </div>
             </div>
@@ -269,6 +269,7 @@ class Calendar extends Component {
                   endDate={this.state.endDate}
                   handleStartDate={this.handleStartDate}
                   handleEndDate={this.handleEndDate}
+                  handlePageChange={this.handlePageChange}
                 />
               </div>
 
@@ -277,7 +278,7 @@ class Calendar extends Component {
                   events={this.state.events}
                   eventState={this.state}
                   activePage={this.state.activePage}
-                  handlePage={this.handlePageChange}
+                  handlePageChange={this.handlePageChange}
                   handleReset={this.handleReset}
                   handleVisibleEventsChange={this.handleVisibleEventsChange}
                   visibleEvents={this.state.visibleEvents}
