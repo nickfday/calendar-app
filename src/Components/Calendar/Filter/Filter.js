@@ -10,19 +10,19 @@ class Filter extends Component {
     return (
       <div className="panel panel-info">
         <div className="panel-heading">
-          <h3 className="panel-title">Filter Events</h3>
+          <h3 className="panel-title">Filter events</h3>
         </div>
         <div className="panel-body">
           <form id="exerciseForm" className="calendar-form">
             <TextBox
               filterText={this.props.titleText}
               onFilterTextInput={this.props.onTitleTextInput}
-              placeholder="Search by Name"
+              placeholder="Search by name"
             />
             <TextBox
               filterText={this.props.addressText}
               onFilterTextInput={this.props.onAddressTextInput}
-              placeholder="Search by Address"
+              placeholder="Search by address"
             />
 
             <div className="form-group">
@@ -33,7 +33,7 @@ class Filter extends Component {
                 className="form-control"
                 selected={this.props.startDate}
                 onChange={this.props.handleStartDate}
-                placeholderText="Start Date"
+                placeholderText="Start date"
                 dateFormat="DD/MM/YYYY"
                 isClearable={true}
                 todayButton={"Today"}
@@ -48,7 +48,7 @@ class Filter extends Component {
                 className="form-control"
                 selected={this.props.endDate}
                 onChange={this.props.handleEndDate}
-                placeholderText="End Date"
+                placeholderText="End date"
                 dateFormat="DD/MM/YYYY"
                 isClearable={true}
                 todayButton={"Today"}
@@ -62,7 +62,7 @@ class Filter extends Component {
               data={this.props.eventTypes}
               selectedItems={this.props.calenderState.selectedEventTypes}
               handleSelectedItem={this.props.handleSelectedEventTypes}
-              placeholder="Select Event Type"
+              placeholder="Select event type"
               multiSelect={true}
               className="form-group event-select"
             />
@@ -74,7 +74,7 @@ class Filter extends Component {
               data={this.props.calenderState.audienceTypes}
               selectedItems={this.props.calenderState.selectedAudienceTypes}
               handleSelectedItem={this.props.handleSelectedAudienceTypes}
-              placeholder="Select Audience Type"
+              placeholder="Select audience type"
               className="form-group"
               multiSelect={true}
             />
