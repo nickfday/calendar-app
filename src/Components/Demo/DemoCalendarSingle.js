@@ -60,13 +60,14 @@ const DisplaySingleEvent = props => {
               {props.event.title}
             </h3>
             {/* Location */}
-            <BSModal
-              buttonLabel={item.location}
-              map={
-                "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
-                item.location
-              }
-            />
+            {props.event.location &&
+              <BSModal
+                buttonLabel={item.location}
+                map={
+                  "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+                  item.location
+                }
+              />}
             <div className="clearfix" />
             {/* Price */}
             {item.price &&
