@@ -54,13 +54,14 @@ export const DemoCalendarRow = props => {
           </Link>
         </h3>
         <p dangerouslySetInnerHTML={{ __html: props.event.body }} />
-        <BSModal
-          buttonLabel={props.event.location}
-          map={
-            "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
-            props.event.location
-          }
-        />
+        {props.event.location &&
+          <BSModal
+            buttonLabel={props.event.location}
+            map={
+              "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+              props.event.location
+            }
+          />}
         {splitMap(props.event.event_type, ", ", "event-item")}
         <br />
         <div className="clearfix" />
