@@ -79,7 +79,12 @@ class Filter extends Component {
               multiSelect={true}
             />
 
-            <button onClick={this.props.handleReset}>Reset</button>
+            <button
+              onClick={this.props.handleReset}
+              className="btn btn-primary btn-wcc"
+            >
+              Reset
+            </button>
           </form>
         </div>
       </div>
