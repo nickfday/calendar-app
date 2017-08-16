@@ -70,17 +70,19 @@ const DisplaySingleEvent = props => {
               />}
             <div className="clearfix" />
             {/* Price */}
+            <h4>Price</h4>
             {item.price &&
               <div>
-                <h4>Price</h4>
                 <p dangerouslySetInnerHTML={{ __html: item.price }} />
               </div>}
+            {!item.price && <p>Free</p>}
             {/* How to Book */}
+            <h4>How to book</h4>
             {item.how_to_book &&
               <div>
-                <h4>How to book</h4>
                 <p dangerouslySetInnerHTML={{ __html: item.how_to_book }} />
               </div>}
+            {!item.how_to_book && <p>No booking needed</p>}
             <hr />
             <p dangerouslySetInnerHTML={{ __html: props.event.body }} />
             {splitMap(item.event_type, ", ", "event-item")}
