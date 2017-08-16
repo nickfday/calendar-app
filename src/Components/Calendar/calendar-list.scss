@@ -2,8 +2,14 @@
   border-bottom: 1px solid #c0cbc4;
   padding-bottom: 20px;
   padding-top: 20px;
+  &:first-child {
+    padding-top: 0;
+  }
   &:last-child {
     border-bottom: 0;
+  }
+  h3 {
+    margin-bottom: 13px;
   }
 }
 
