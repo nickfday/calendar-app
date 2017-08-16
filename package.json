@@ -20,6 +20,7 @@
     "react-paginate": "^4.4.3",
     "react-router-dom": "^4.1.1",
     "react-scripts-sass": "^0.8.7",
+    "react-scroll": "^1.5.4",
     "react-scrollable-anchor": "^0.4.2",
     "react-scrollspy": "^3.0.2",
     "react-select": "^1.0.0-rc.4",
@@ -44,5 +45,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "plugins": ["react"]
+  "plugins": [
+    "react"
+  ]
 }
