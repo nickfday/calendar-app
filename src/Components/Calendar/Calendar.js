@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Filter from "./Filter/Filter";
 import axios from "axios";
+import Scroll from "react-scroll";
 import { Link } from "react-router-dom";
 import CalendarList from "./CalendarList";
 import DemoCalendarList from "../Demo/DemoCalendarList";
@@ -47,6 +48,8 @@ class Calendar extends Component {
     this.setState({
       activePage: pageNo
     });
+    //window.scrollTo(0, 0);
+    Scroll.animateScroll.scrollToTop(10);
   }
 
   handleCalendarViewSwitch() {
@@ -228,17 +231,16 @@ class Calendar extends Component {
           </div>
 
           <div className="inner-content">
-            <div className="row margin-bottom-20">
+            <div className="row margin-bottom-20 flex-end">
               <div className="col-sm-9">
-                <p>
+                <p className="margin-botton-0">
                   {/* Make Editable via Drupal */}
-                  Browse the events calendar to find out about upcoming events
-                  in Westminster.
+                  Find out about upcoming events in Westminster.
                 </p>
               </div>
               <div className="col-sm-3 btn-switch">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-wcc"
                   onClick={this.handleCalendarViewSwitch}
                 >
                   {this.state.isListViewOn
