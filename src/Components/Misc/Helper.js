@@ -6,7 +6,7 @@ export function splitMap(string, separator, className) {
       //warning  'list' is already defined  no-redeclare
       return (
         <div className={className} key={key}>
-          {i}
+          {i.charAt(0).toUpperCase() + i.slice(1).toLowerCase()}
         </div>
       );
     });
