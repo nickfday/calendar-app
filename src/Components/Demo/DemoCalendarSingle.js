@@ -18,14 +18,12 @@ const DisplaySingleEvent = props => {
       <div className="sp-breadcrumbs wcc-breadcrumb">
         <a href="http://finley-day.com">Home</a>
         &nbsp;>&nbsp;
-        <Link to="/">Events</Link>
+        <Link to="/">All events</Link>
       </div>
 
       <div className="sp-head row">
         <Link to="/" className="go-up icon-arrow-left" />
-        <h1>
-          {props.event.title}
-        </h1>
+        <h1>Events</h1>
       </div>
 
       <div className="inner-content">
@@ -38,6 +36,48 @@ const DisplaySingleEvent = props => {
           transitionEnterTimeout={500}
           className="event-row clearfix"
         >
+          <div className="event-info col-xs-10">
+            <h2>{props.event.title}</h2>
+            {/* Location */}
+            {props.event.location &&
+              <BSModal
+                buttonLabel={item.location}
+                map={
+                  "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+                  item.location
+                }
+              />}
+            <div className="clearfix" />
+            {moment(startDate).format("h:mma")} to{" "}
+            {moment(endDate).format("h:mma")}
+            {/* How to Book */}
+            <h3>How to book</h3>
+            {item.how_to_book &&
+              <div>
+                <p dangerouslySetInnerHTML={{ __html: item.how_to_book }} />
+              </div>}
+            {!item.how_to_book && <p>No booking needed</p>}
+            {/* Price */}
+            <h3>Price</h3>
+            {item.price &&
+              <div>
+                <p dangerouslySetInnerHTML={{ __html: item.price }} />
+              </div>}
+            {!item.price && <p>Free</p>}
+            {item.body &&
+              <div>
+                <h3>Description</h3>
+                <p dangerouslySetInnerHTML={{ __html: item.body }} />
+              </div>}
+            {splitMap(item.event_type, ", ", "event-item")}
+            <br />
+            <div className="clearfix" />
+            {splitMap(item.audience, ", ", "audience-item")}
+            <div className="clearfix" />
+            <div className="clearfix" />
+            <Link to="/">Back to all events</Link>
+          </div>
+
           <div className="col-xs-2">
             <div className="date-info">
               <div className="custom-dayOfWeek">
@@ -53,45 +93,6 @@ const DisplaySingleEvent = props => {
                 {moment(startDate).format("YYYY")}
               </div>
             </div>
-          </div>
-
-          <div className="event-info col-xs-10">
-            <h3>
-              {props.event.title}
-            </h3>
-            {/* Location */}
-            {props.event.location &&
-              <BSModal
-                buttonLabel={item.location}
-                map={
-                  "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
-                  item.location
-                }
-              />}
-            <div className="clearfix" />
-            {/* Price */}
-            <h4>Price</h4>
-            {item.price &&
-              <div>
-                <p dangerouslySetInnerHTML={{ __html: item.price }} />
-              </div>}
-            {!item.price && <p>Free</p>}
-            {/* How to Book */}
-            <h4>How to book</h4>
-            {item.how_to_book &&
-              <div>
-                <p dangerouslySetInnerHTML={{ __html: item.how_to_book }} />
-              </div>}
-            {!item.how_to_book && <p>No booking needed</p>}
-            <hr />
-            <p dangerouslySetInnerHTML={{ __html: props.event.body }} />
-            {splitMap(item.event_type, ", ", "event-item")}
-            <br />
-            <div className="clearfix" />
-            {splitMap(item.audience, ", ", "audience-item")}
-            <div className="clearfix" />
-            <div className="clearfix" />
-            <Link to="/">Back to all events</Link>
           </div>
         </CSSTransitionGroup>
       </div>
