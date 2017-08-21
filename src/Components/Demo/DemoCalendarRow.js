@@ -62,10 +62,6 @@ export const DemoCalendarRow = props => {
               props.event.location
             }
           />}
-        {splitMap(props.event.event_type, ", ", "event-item")}
-        <br />
-        <div className="clearfix" />
-        {splitMap(props.event.audience, ", ", "audience-item")}
       </div>
     </CSSTransitionGroup>
   );
