@@ -37,7 +37,9 @@ const DisplaySingleEvent = props => {
           className="event-row clearfix"
         >
           <div className="event-info col-xs-10">
-            <h2>{props.event.title}</h2>
+            <h2>
+              {props.event.title}
+            </h2>
             {/* Location */}
             {props.event.location &&
               <BSModal
@@ -48,8 +50,11 @@ const DisplaySingleEvent = props => {
                 }
               />}
             <div className="clearfix" />
-            {moment(startDate).format("h:mma")} to{" "}
-            {moment(endDate).format("h:mma")}
+            <p>
+              {moment(startDate).format("h:mma")} to{" "}
+              {moment(endDate).format("h:mma")}
+            </p>
+            <div className="clearfix" />
             {/* How to Book */}
             <h3>How to book</h3>
             {item.how_to_book &&
@@ -75,7 +80,9 @@ const DisplaySingleEvent = props => {
             {splitMap(item.audience, ", ", "audience-item")}
             <div className="clearfix" />
             <div className="clearfix" />
-            <Link to="/">Back to all events</Link>
+            <div className="margin-top-10">
+              <Link to="/">Back to all events</Link>
+            </div>
           </div>
 
           <div className="col-xs-2">
