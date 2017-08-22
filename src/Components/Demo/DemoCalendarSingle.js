@@ -10,8 +10,9 @@ var Loader = require("react-loader");
 
 const DisplaySingleEvent = props => {
   const item = props.event;
-  const startDate = props.startDate;
+  //const startDate = props.startDate;
   const endDate = props.endDate;
+  const startDate = window.location.search.slice(6);
 
   return (
     <div className="content exercise-list container">
@@ -20,12 +21,10 @@ const DisplaySingleEvent = props => {
         &nbsp;>&nbsp;
         <Link to="/">All events</Link>
       </div>
-
       <div className="sp-head row">
         <Link to="/" className="go-up icon-arrow-left" />
         <h1>Events</h1>
       </div>
-
       <div className="inner-content">
         <CSSTransitionGroup
           component="div"
@@ -119,6 +118,8 @@ class DemoCalendarSingle extends Component {
   }
 
   componentDidMount() {
+    console.log("test");
+    console.log(this);
     if (!this.props.location.state) {
       console.log("Fetch...");
       let pathUUID = this.props.location.pathname;
@@ -135,19 +136,6 @@ class DemoCalendarSingle extends Component {
     }
   }
 
-  // setItemValue(data, stateObject) {
-  //   console.log("set item value");
-  //   console.log(data);
-  //   // this.setState((prevState, props) => ({
-  //   //   events: data
-  //   // }));
-  //   this.setState({
-  //     stateObject: data
-  //   });
-
-  //   console.log(this.state);
-  // }
-
   fetchSingleEvent(UUID) {
     //alert(UUID);
     console.log(UUID);
@@ -161,22 +149,13 @@ class DemoCalendarSingle extends Component {
         this.setState({
           fetchEvents: response.data
         });
-        // self.setState((prevState, props) => ({
-        //   fetchEvents: response.data
-        // }));
-
-        // self.setState((prevState, props) => ({
-        //   events: response.data,
-        //   loaded: true
-        // }));
-        //self.setItemValue(response.data, "fetchEvents");
       })
       .catch(function(error) {
         console.log(error);
-      })
-      .then(function(response) {
-        self.handleEventDate(self);
       });
+    // .then(function(response) {
+    //   self.handleEventDate(self);
+    // });
   }
 
   handleEventDate(self) {
@@ -203,11 +182,12 @@ class DemoCalendarSingle extends Component {
 
   render() {
     if (this.state.events !== null) {
+      console.log("Display Linked Event...");
       return (
         <DisplaySingleEvent
           event={this.state.events.events}
-          startDate={this.state.events.startDate}
-          endDate={this.state.events.endDate}
+          //startDate={this.state.events.startDate}
+          //endDate={this.state.events.endDate}
         />
       );
     } else if (this.state.fetchEvents !== null) {
@@ -215,8 +195,8 @@ class DemoCalendarSingle extends Component {
       return (
         <DisplaySingleEvent
           event={this.state.fetchEvents[0]}
-          startDate={this.state.fetchEvents[0].sortedDates[0][0]}
-          endDate={this.state.fetchEvents[0].sortedDates[0][1]}
+          //startDate={this.state.fetchEvents[0].sortedDates[0][0]}
+          //endDate={this.state.fetchEvents[0].sortedDates[0][1]}
         />
       );
     } else {
