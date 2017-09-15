@@ -125,6 +125,7 @@ class DemoCalendarSingle extends Component {
       let pathUUID = this.props.location.pathname;
       if (pathUUID.indexOf("/event/" !== -1)) {
         var UUID = pathUUID.slice(7);
+        console.log(UUID);
         this.fetchSingleEvent(UUID);
       }
     } else {
@@ -142,7 +143,7 @@ class DemoCalendarSingle extends Component {
     const self = this;
     axios
       .get(
-        "http://finley-day.com/api/calendar/views/calendar_json.json?uuid=" +
+        "http://finley-day.com/api/calendar/views/calendar_json.json?alias=events/" +
           UUID
       )
       .then(response => {
