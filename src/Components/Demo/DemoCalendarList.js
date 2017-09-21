@@ -8,7 +8,11 @@ import CSSTransitionGroup from "react-addons-css-transition-group";
 
 class DemoCalendarList extends Component {
   handleEvent(title, event, self, history) {
-    history.push(`/event/${event.uuid}`);
+    history.push(
+      `${event.path.replace(/\s+/g, "-").toLowerCase()}?date=${moment(
+        this.props.startDate
+      ).format("YYYY-MM-DD")}`
+    );
   }
 
   render() {
@@ -72,6 +76,7 @@ class DemoCalendarList extends Component {
         title: event.title,
         uuid: event.uuid,
         event: event,
+        path: event.path,
         //allDay: true,
         start: new Date(startDate),
         end: new Date(endDate)
@@ -107,43 +112,45 @@ class DemoCalendarList extends Component {
 
     return (
       <div>
-        {this.props.isListViewOn
-          ? <div>
-              {filteredEvents}
-              <div className="text-center">
-                <Pagination
-                  activePage={this.props.activePage}
-                  itemsCountPerPage={5}
-                  totalItemsCount={filteredEventsCount}
-                  pageRangeDisplayed={5}
-                  onChange={this.props.handlePageChange.bind(this)}
-                />
-              </div>
+        {this.props.isListViewOn ? (
+          <div>
+            {filteredEvents}
+            <div className="text-center">
+              <Pagination
+                activePage={this.props.activePage}
+                itemsCountPerPage={5}
+                totalItemsCount={filteredEventsCount}
+                pageRangeDisplayed={5}
+                onChange={this.props.handlePageChange.bind(this)}
+              />
             </div>
-          : <div>
-              <CSSTransitionGroup
-                component="div"
-                transitionName="row"
-                transitionAppear={true}
-                transitionAppearTimeout={250}
-                transitionLeaveTimeout={250}
-                transitionEnterTimeout={250}
-                className="event-row clearfix"
-              >
-                <BigCalendar
-                  //{...this.props}
-                  events={filteredCalenderEvents}
-                  onSelectEvent={event =>
-                    this.handleEvent(
-                      event.title,
-                      event,
-                      self,
-                      this.props.history
-                    )}
-                  views={["month", "week", "day"]}
-                />
-              </CSSTransitionGroup>
-            </div>}
+          </div>
+        ) : (
+          <div>
+            <CSSTransitionGroup
+              component="div"
+              transitionName="row"
+              transitionAppear={true}
+              transitionAppearTimeout={250}
+              transitionLeaveTimeout={250}
+              transitionEnterTimeout={250}
+              className="event-row clearfix"
+            >
+              <BigCalendar
+                //{...this.props}
+                events={filteredCalenderEvents}
+                onSelectEvent={event =>
+                  this.handleEvent(
+                    event.title,
+                    event,
+                    self,
+                    this.props.history
+                  )}
+                views={["month", "week", "day"]}
+              />
+            </CSSTransitionGroup>
+          </div>
+        )}
       </div>
     );
   }
