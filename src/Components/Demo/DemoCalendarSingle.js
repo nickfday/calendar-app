@@ -36,18 +36,17 @@ const DisplaySingleEvent = props => {
           className="event-row clearfix"
         >
           <div className="event-info col-xs-10">
-            <h2>
-              {props.event.title}
-            </h2>
+            <h2>{props.event.title}</h2>
             {/* Location */}
-            {props.event.location &&
+            {props.event.location && (
               <BSModal
                 buttonLabel={item.location}
                 map={
                   "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
                   item.location
                 }
-              />}
+              />
+            )}
             <div className="clearfix" />
             <p>
               {moment(startDate).format("h:mma")} to{" "}
@@ -56,23 +55,26 @@ const DisplaySingleEvent = props => {
             <div className="clearfix" />
             {/* How to Book */}
             <h3>How to book</h3>
-            {item.how_to_book &&
+            {item.how_to_book && (
               <div>
                 <p dangerouslySetInnerHTML={{ __html: item.how_to_book }} />
-              </div>}
+              </div>
+            )}
             {!item.how_to_book && <p>No booking needed</p>}
             {/* Price */}
             <h3>Price</h3>
-            {item.price &&
+            {item.price && (
               <div>
                 <p dangerouslySetInnerHTML={{ __html: item.price }} />
-              </div>}
+              </div>
+            )}
             {!item.price && <p>Free</p>}
-            {item.body &&
+            {item.body && (
               <div>
                 <h3>Description</h3>
                 <p dangerouslySetInnerHTML={{ __html: item.body }} />
-              </div>}
+              </div>
+            )}
             {splitMap(item.event_type, ", ", "event-item")}
             <br />
             <div className="clearfix" />
@@ -89,9 +91,7 @@ const DisplaySingleEvent = props => {
               <div className="custom-dayOfWeek">
                 {moment(startDate).format("ddd")}
               </div>
-              <div className="custom-day">
-                {moment(startDate).format("D")}
-              </div>
+              <div className="custom-day">{moment(startDate).format("D")}</div>
               <div className="custom-month">
                 {moment(startDate).format("MMM")}
               </div>
@@ -123,11 +123,11 @@ class DemoCalendarSingle extends Component {
     if (!this.props.location.state) {
       console.log("Fetch...");
       let pathUUID = this.props.location.pathname;
-      if (pathUUID.indexOf("/event/" !== -1)) {
-        var UUID = pathUUID.slice(7);
-        console.log(UUID);
-        this.fetchSingleEvent(UUID);
-      }
+      //if (pathUUID.indexOf("/events/" !== -1)) {
+      var UUID = pathUUID.slice(1);
+      console.log(UUID);
+      this.fetchSingleEvent(UUID);
+      //}
     } else {
       console.log("Props Found");
       this.setState({
@@ -143,7 +143,7 @@ class DemoCalendarSingle extends Component {
     const self = this;
     axios
       .get(
-        "http://finley-day.com/api/calendar/views/calendar_json.json?alias=events/" +
+        "http://finley-day.com/api/calendar/views/calendar_json.json?alias=" +
           UUID
       )
       .then(response => {
