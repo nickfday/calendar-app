@@ -42,7 +42,7 @@ export const DemoCalendarRow = props => {
         <h3>
           <Link
             to={{
-              pathname: `/event/${props.event.title
+              pathname: `${props.event.path
                 .replace(/\s+/g, "-")
                 .toLowerCase()}?date=${moment(props.startDate).format(
                 "YYYY-MM-DD"
@@ -58,14 +58,15 @@ export const DemoCalendarRow = props => {
           </Link>
         </h3>
         <p dangerouslySetInnerHTML={{ __html: props.event.summary }} />
-        {props.event.location &&
+        {props.event.location && (
           <BSModal
             buttonLabel={props.event.location}
             map={
               "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
               props.event.location
             }
-          />}
+          />
+        )}
       </div>
     </CSSTransitionGroup>
   );
