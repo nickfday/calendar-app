@@ -7,12 +7,13 @@ import Calendar from "./Calendar/Calendar";
 // import CalendarSingle from "./Calendar/CalendarSingle";
 import DemoCalendarSingle from "./Demo/DemoCalendarSingle";
 
-const NoMatch = ({ location }) =>
+const NoMatch = ({ location }) => (
   <div className="container content">
     <h3>
       404- No match for <code>{location.pathname}</code>
     </h3>
-  </div>;
+  </div>
+);
 
 class App extends Component {
   render() {
@@ -24,7 +25,7 @@ class App extends Component {
             <Route exact path="/" component={Calendar} />
             <Route
               exact
-              path="/event/:id"
+              path="/events/:id"
               component={DemoCalendarSingle}
               //component={CalendarSingle}
             />
