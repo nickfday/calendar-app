@@ -1,210 +1,194 @@
 import React, { Component } from "react";
-import CalendarRow from "./CalendarRow";
+import { searchFilter, filterMultiSelect } from "../Misc/Helper";
+import { CalendarRow } from "./CalendarRow";
 import moment from "moment";
+import Pagination from "react-js-pagination";
 import BigCalendar from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import CSSTransitionGroup from "react-addons-css-transition-group";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
-class CalendarList extends Component {
+class DemoCalendarList extends Component {
+  componentDidMount() {
+    this.addDateFormat();
+  }
+
   addDateFormat() {
     this.props.events.events.map(function(e) {
       if (e.sortedDates) {
-        e.start = new Date(e.sortedDates[0][0].slice(0, 10).split("-").join());
-        e.end = new Date(e.sortedDates[0][1].slice(0, 10).split("-").join());
+        e.start = new Date(
+          e.sortedDates[0][0]
+            .slice(0, 10)
+            .split("-")
+            .join()
+        );
+        e.end = new Date(
+          e.sortedDates[0][1]
+            .slice(0, 10)
+            .split("-")
+            .join()
+        );
       } else {
-        e.start = new Date(e.date.slice(0, 10).split("-").join());
-        e.end = new Date(e.date.slice(0, 10).split("-").join());
+        e.start = new Date(
+          e.date
+            .slice(0, 10)
+            .split("-")
+            .join()
+        );
+        e.end = new Date(
+          e.date
+            .slice(0, 10)
+            .split("-")
+            .join()
+        );
       }
       return null;
     });
   }
 
-  searchFilter(searchVal, itemVal) {
-    if (
-      searchVal !== "" &&
-      itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1
-    ) {
-      return false;
-    }
-    return true;
-  }
-
   handleEvent(title, event, self, history) {
-    history.event = event;
-    history.push(`/event/${event.uuid}`);
-  }
-
-  checkDate(eventItem) {
-    let rowDate = null;
-    //console.log(eventItem.sortedDates);
-    if (eventItem.sortedDates) {
-      rowDate = moment(eventItem.sortedDates[0][0]);
-    } else {
-      rowDate = moment(eventItem.date);
-    }
-    return rowDate;
-  }
-
-  filterMultiSelect(
-    selectVal,
-    itemVal,
-    eventItem,
-    uniqueArray,
-    matchedTag,
-    match
-  ) {
-    matchedTag = [];
-    var uniqueMatched = [];
-    match = true;
-    // loop sorted selected audience
-    Object.keys(selectVal).sort().map(selectedTag => {
-      if (itemVal != null) {
-        //loop all sorted tags
-        itemVal.split(", ").sort().map(tag => {
-          //if selected audience value == tag push onto matched event
-          if (selectVal[selectedTag].value === tag) {
-            matchedTag.push(itemVal);
-            return false;
-          } else {
-            return false;
-          }
-        });
-        return false;
-      }
-      return false;
-    });
-    //Show eventItems
-    if (matchedTag.length === selectVal.length) {
-      uniqueMatched.push(eventItem);
-    }
-
-    if (uniqueMatched.length === 0) {
-      match = false;
-    }
-    return match;
-  }
-
-  noResults(eventItems, self, noResultsText) {
-    if (eventItems.length === 0) {
-      eventItems.push(
-        <div className="eventItem" key={"no results"}>
-          <div className="col-sm-12">
-            <p>
-              {noResultsText}{" "}
-              <a href="" onClick={self.props.handleReset}>
-                Reset
-              </a>
-            </p>
-          </div>
-        </div>
-      );
-    }
-  }
-
-  renderItem(self, eventItems, eventItem, eventCalendarArray) {
-    self.props.events.visibleEvents.concat(eventItem);
-    //console.log(eventItem);
-    // eventItem.sortedDates.map(function(i) {
-    //   console.log("hi");
-    // });
-
-    eventItems.push(<CalendarRow events={eventItem} key={eventItem.uuid} />);
-    eventCalendarArray.push(eventItem);
-  }
-
-  componentDidMount() {
-    this.addDateFormat();
-  }
-
-  componentDidUpdate() {
-    this.addDateFormat();
+    history.push(
+      `${event.path.replace(/\s+/g, "-").toLowerCase()}?date=${moment(
+        this.props.startDate
+      ).format("YYYY-MM-DD")}`
+    );
   }
 
   render() {
-    const eventArray = this.props.events;
-    let eventItems = [];
-    const noResultsText = "No results - please adjust filters";
-    const self = this;
-    let uniqueAudienceMatched = [];
-    let matchedTag = [];
-    let eventCalendarArray = [];
+    var self = this;
+    let dateArray = [];
+    let updatedevents = self.props.events.slice();
 
-    // Begin Loop of Events <-------------------------------------------
+    // Format Dates
+    updatedevents.map(i => {
+      i.formattedDate = [];
+      i.start = new Date("2017-08-08 11:00:00");
+      i.end = new Date("2017-09-08 11:00:00");
+      i.date_repeat.split(", ").map(y => {
+        i.formattedDate.push(y.split(" to "));
+      });
+    });
 
-    eventArray.events.forEach((eventItem, index) => {
-      let audienceMatch = true;
-      let eventMatch = true;
+    // newArray based on start date
+    updatedevents.map(i => {
+      i.formattedDate.map(z => {
+        dateArray.push([z, i]);
+      });
+    });
 
-      //Date Filter condition
-      let selectedStartDate = moment(eventArray.startDate);
-      let selectedEndDate = moment(eventArray.endDate);
+    // list events
+    //let activePage = this.state.activePage;
+    console.log("democalendarlist render");
+    let activePage = this.props.activePage;
+    let itemsCountPerPage = 5;
 
-      //let rowDate = moment(eventItem.date);
-      let rowDate = this.checkDate(eventItem);
-
-      //Search by Name
-      if (!this.searchFilter(eventArray.titleText, eventItem.title)) {
-        return;
-      }
+    function filterEvents(eventState, event, startDate, endDate) {
+      if (!searchFilter(eventState.titleText, event.title)) return false;
 
       //Search by Address
-      if (!this.searchFilter(eventArray.addressText, eventItem.location)) {
-        return;
-      }
+      if (!searchFilter(eventState.addressText, event.location)) return false;
 
-      // Filter Dates
-      if (selectedStartDate > rowDate || selectedEndDate < rowDate) {
-        return;
-      }
+      //Event filter
+      if (!filterMultiSelect(eventState.selectedEventTypes, event.event_type))
+        return false;
 
-      //Select Event Type
-      eventMatch = this.filterMultiSelect(
-        self.props.events.selectedEventTypes,
-        eventItem.event_type,
-        eventItem,
-        this.eventMatch,
-        matchedTag
+      //Audience Filter
+      if (!filterMultiSelect(eventState.selectedAudienceTypes, event.audience))
+        return false;
+
+      //Date Filter
+      if (
+        moment(eventState.startDate) > moment(startDate) ||
+        moment(eventState.endDate) < moment(endDate)
+      )
+        return false;
+
+      filteredEvents.push(
+        <CalendarRow event={event} startDate={startDate} endDate={endDate} />
       );
 
-      //Select Audience Type
-      audienceMatch = this.filterMultiSelect(
-        self.props.events.selectedAudienceTypes,
-        eventItem.audience,
-        eventItem,
-        uniqueAudienceMatched,
-        this.audienceMatch,
-        matchedTag
-      );
+      filteredCalenderEvents.push({
+        title: event.title,
+        uuid: event.uuid,
+        event: event,
+        path: event.path,
+        //allDay: true,
+        start: new Date(startDate),
+        end: new Date(endDate)
+      });
+    }
 
-      // Compare Audience + Event
-      if (audienceMatch && eventMatch) {
-        this.renderItem(self, eventItems, eventItem, eventCalendarArray);
-      } else {
-        return;
-      }
+    let filteredEvents = [];
+    let filteredCalenderEvents = [];
+
+    let listEvents = dateArray.sort().map(i => {
+      filterEvents(this.props.eventState, i[1], i[0][0], i[0][1]);
     });
-    // End Loop of Events  ------------------------------------------->
 
-    this.noResults(eventItems, this, noResultsText);
+    let filteredEventsCount = filteredEvents.length;
 
-    //if list view toggle show eventItems else render calendar component
+    // No results
+    if (filteredEventsCount == 0) {
+      return (
+        <p>
+          No results - please adjust or&nbsp;
+          <a href="" onClick={self.props.handleReset}>
+            reset
+          </a>{" "}
+          filters.
+        </p>
+      );
+    }
+
+    filteredEvents = filteredEvents.slice(
+      activePage * itemsCountPerPage - itemsCountPerPage,
+      activePage * itemsCountPerPage
+    );
+
     return (
-      <div className="">
-        {this.props.events.isListViewOn
-          ? <div>
-              {eventItems}
+      <div>
+        {this.props.isListViewOn ? (
+          <div>
+            {filteredEvents}
+            <div className="text-center">
+              <Pagination
+                activePage={this.props.activePage}
+                itemsCountPerPage={5}
+                totalItemsCount={filteredEventsCount}
+                pageRangeDisplayed={5}
+                onChange={this.props.handlePageChange.bind(this)}
+              />
             </div>
-          : <BigCalendar
-              {...this.props}
-              //events={events}
-              events={eventCalendarArray}
-              onSelectEvent={event =>
-                this.handleEvent(event.title, event, self, self.props.history)}
-            />}
+          </div>
+        ) : (
+          <div>
+            <CSSTransitionGroup
+              component="div"
+              transitionName="row"
+              transitionAppear={true}
+              transitionAppearTimeout={250}
+              transitionLeaveTimeout={250}
+              transitionEnterTimeout={250}
+              className="event-row clearfix"
+            >
+              <BigCalendar
+                //{...this.props}
+                events={filteredCalenderEvents}
+                onSelectEvent={event =>
+                  this.handleEvent(
+                    event.title,
+                    event,
+                    self,
+                    this.props.history
+                  )}
+                views={["month", "week", "day"]}
+              />
+            </CSSTransitionGroup>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default CalendarList;
+export default DemoCalendarList;

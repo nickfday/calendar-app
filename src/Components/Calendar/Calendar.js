@@ -3,8 +3,8 @@ import Filter from "./Filter/Filter";
 import axios from "axios";
 import Scroll from "react-scroll";
 import { Link } from "react-router-dom";
+//import CalendarList from "./CalendarList";
 import CalendarList from "./CalendarList";
-import DemoCalendarList from "../Demo/DemoCalendarList";
 var Loader = require("react-loader");
 
 class Calendar extends Component {
@@ -276,7 +276,7 @@ class Calendar extends Component {
               </div>
 
               <div className="col-sm-9">
-                <DemoCalendarList
+                <CalendarList
                   events={this.state.events}
                   eventState={this.state}
                   activePage={this.state.activePage}

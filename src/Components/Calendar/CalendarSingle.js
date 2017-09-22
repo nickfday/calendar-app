@@ -1,167 +1,199 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./calendar-list.css";
-import { splitMap } from "../Misc/Helper";
-import moment from "moment";
+import axios from "axios";
+import "./style/DemoCalendarRow.css";
 import BSModal from "../Misc/BSModal";
 import CSSTransitionGroup from "react-addons-css-transition-group";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import { splitMap } from "../Misc/Helper";
+import { DatePanel } from "../Misc/DatePanel";
 
-class CalendarSingle extends Component {
-  componentWillMount() {
-    let pathUUID = this.props.location.pathname;
-    if (pathUUID.indexOf("/event/" !== -1)) {
-      var UUID = pathUUID.slice(7);
+var Loader = require("react-loader");
+
+const DisplaySingleEvent = props => {
+  const item = props.event;
+  //const startDate = props.startDate;
+  const endDate = props.endDate;
+  const startDate = window.location.search.slice(6);
+
+  return (
+    <div className="content exercise-list container">
+      <div className="sp-breadcrumbs wcc-breadcrumb">
+        <a href="http://finley-day.com">Home</a>
+        &nbsp;>&nbsp;
+        <Link to="/">All events</Link>
+      </div>
+      <div className="sp-head row">
+        <Link to="/" className="go-up icon-arrow-left" />
+        <h1>Events</h1>
+      </div>
+      <div className="inner-content">
+        <CSSTransitionGroup
+          component="div"
+          transitionName="row"
+          transitionAppear={true}
+          transitionAppearTimeout={500}
+          transitionLeaveTimeout={500}
+          transitionEnterTimeout={500}
+          className="event-row clearfix"
+        >
+          <div className="event-info col-xs-10">
+            <h2>{props.event.title}</h2>
+            {/* Location */}
+            {props.event.location && (
+              <BSModal
+                buttonLabel={item.location}
+                map={
+                  "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+                  item.location
+                }
+              />
+            )}
+            <div className="clearfix" />
+            <p>
+              {moment(startDate).format("h:mma")} to{" "}
+              {moment(endDate).format("h:mma")}
+            </p>
+            <div className="clearfix" />
+            {/* How to Book */}
+            <h3>How to book</h3>
+            {item.how_to_book && (
+              <div>
+                <p dangerouslySetInnerHTML={{ __html: item.how_to_book }} />
+              </div>
+            )}
+            {!item.how_to_book && <p>No booking needed</p>}
+            {/* Price */}
+            <h3>Price</h3>
+            {item.price && (
+              <div>
+                <p dangerouslySetInnerHTML={{ __html: item.price }} />
+              </div>
+            )}
+            {!item.price && <p>Free</p>}
+            {item.body && (
+              <div>
+                <h3>Description</h3>
+                <p dangerouslySetInnerHTML={{ __html: item.body }} />
+              </div>
+            )}
+            {splitMap(item.event_type, ", ", "event-item")}
+            <br />
+            <div className="clearfix" />
+            {splitMap(item.audience, ", ", "audience-item")}
+            <div className="clearfix" />
+            <div className="clearfix" />
+            <div className="margin-top-10">
+              <Link to="/">Back to all events</Link>
+            </div>
+          </div>
+
+          <div className="col-xs-2">
+            <DatePanel date={props.startDate} />
+          </div>
+        </CSSTransitionGroup>
+      </div>
+    </div>
+  );
+};
+
+class DemoCalendarSingle extends Component {
+  constructor() {
+    super();
+    this.state = {
+      events: null,
+      fetchEvents: null,
+      startDate: null,
+      endDate: null
+    };
+  }
+
+  componentDidMount() {
+    console.log("test");
+    console.log(this);
+    if (!this.props.location.state) {
+      console.log("Fetch...");
+      let pathUUID = this.props.location.pathname;
+      //if (pathUUID.indexOf("/events/" !== -1)) {
+      var UUID = pathUUID.slice(1);
+      console.log(UUID);
       this.fetchSingleEvent(UUID);
+      //}
+    } else {
+      console.log("Props Found");
+      this.setState({
+        events: this.props.location.state
+      });
+      //this.setItemValue(this.props.location.state, "events");
     }
   }
 
   fetchSingleEvent(UUID) {
     //alert(UUID);
+    console.log(UUID);
     const self = this;
     axios
       .get(
-        "http://finley-day.com/api/calendar/views/calendar_json.json?uuid=" +
+        "http://finley-day.com/api/calendar/views/calendar_json.json?alias=" +
           UUID
       )
-      //http://alphawcc.dev/api/calendar/views/calendar_json.json?parameters[uuid]=97014f68-b7d3-4d9f-89c4-869e58d9c8ac
-      .then(function(response) {
-        self.setState({
-          events: response.data,
-          loaded: true
+      .then(response => {
+        this.setState({
+          fetchEvents: response.data
         });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
+    // .then(function(response) {
+    //   self.handleEventDate(self);
+    // });
   }
 
-  // Render endTime only if differs to startTime
-  // renderTime() {
-  //   let startTime = moment(eventItem.date).format('h:ma');
-  //   let endTime = moment(eventItem.end_date).format('h:ma');
-  //     if (startTime === endTime) {
-  //       return(
-  //         <span>{startTime}</span>
-  //       );
-  //     }
-  //       else {
-  //         return(
-  //         <span>{startTime} to {endTime}</span>
-  //       );
-  //     }
-  //   }
+  handleEventDate(self) {
+    //const self = this;
+    var updatedevents = self.state.fetchEvents.slice();
+    updatedevents.map(function(i) {
+      if (i.date_repeat) {
+        i.splitDates = [];
+        i.sortedDates = [];
+        i.splitDates.push(i.date_repeat.split(", "));
+        i.splitDates[0].map(function(y) {
+          i.sortedDates.push(y.split(" to "));
+          return null;
+        });
+        return null;
+      }
+      return null;
+    });
+
+    self.setState(() => ({
+      fetchEvents: updatedevents
+    }));
+  }
 
   render() {
-    var eventItem;
-
-    try {
-      if (typeof this.state.events !== "undefined") {
-        eventItem = this.state.events[0];
-      }
-    } catch (e) {
-      return <div />;
+    if (this.state.events !== null) {
+      console.log("Display Linked Event...");
+      return (
+        <DisplaySingleEvent
+          event={this.state.events.events}
+          //startDate={this.state.events.startDate}
+          //endDate={this.state.events.endDate}
+        />
+      );
+    } else if (this.state.fetchEvents !== null) {
+      console.log("Display Fetched...");
+      return (
+        <DisplaySingleEvent
+          event={this.state.fetchEvents[0]}
+          //startDate={this.state.fetchEvents[0].sortedDates[0][0]}
+          //endDate={this.state.fetchEvents[0].sortedDates[0][1]}
+        />
+      );
+    } else {
+      return <div>Loading...</div>;
     }
-
-    try {
-      if (typeof this.props.location.state.events !== "undefined") {
-        eventItem = this.props.location.state.events;
-      }
-    } catch (e) {}
-
-    try {
-      if (typeof this.props.history.event !== "undefined") {
-        eventItem = this.props.history.event;
-      }
-    } catch (e) {}
-
-    return (
-      <CSSTransitionGroup
-        component="div"
-        transitionName="row"
-        transitionAppear={true}
-        transitionAppearTimeout={500}
-        transitionLeaveTimeout={500}
-        transitionEnterTimeout={500}
-        className="content exercise-list container"
-      >
-        {/*<div className="content exercise-list container"> */}
-        <div className="sp-breadcrumbs" />
-        <div className="sp-head row">
-          <Link to="/" className="go-up icon-arrow-left" />
-          <h1>
-            {eventItem.title}
-          </h1>
-        </div>
-        <div className="event-row clearfix">
-          <div className="col-xs-2">
-            <div className="date-info pull-left">
-              <div className="custom-dayOfWeek">
-                {moment(eventItem.date).format("ddd")}
-              </div>
-              <div className="custom-day">
-                {moment(eventItem.date).format("D")}
-              </div>
-              <div className="custom-month">
-                {moment(eventItem.date).format("MMM")}
-              </div>
-              <div className="custom-year">
-                {moment(eventItem.date).format("YYYY")}
-              </div>
-            </div>
-          </div>
-
-          <div className="event-info col-xs-7">
-            <div>
-              {/*{ this.renderTime() } */}
-              <br />
-              <BSModal
-                buttonLabel={eventItem.location}
-                map={
-                  "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
-                  eventItem.location
-                }
-              />
-
-              <section>
-                <h4>Price</h4>
-                {eventItem.price}
-              </section>
-
-              <section>
-                <h4>How to Book</h4>
-                {eventItem.how_to_book}
-              </section>
-
-              <hr />
-
-              <section>
-                {eventItem.body}
-              </section>
-            </div>
-            <div />
-            <br />
-            {splitMap(eventItem.event_type, ", ", "event-item")}
-            <br />
-            <div className="clearfix" />
-
-            {splitMap(eventItem.audience, ", ", "audience-item")}
-
-            <div className="clearfix" />
-            <div className="clearfix" />
-
-            <Link to="/">Back to All Events</Link>
-          </div>
-
-          <div className="col-xs-3">
-            <div>
-              <img
-                src={eventItem.featured_image}
-                alt={eventItem.featured_image_alt_text}
-              />
-            </div>
-          </div>
-        </div>
-      </CSSTransitionGroup>
-    );
   }
 }
-
-export default CalendarSingle;
+export default DemoCalendarSingle;
