@@ -196,4 +196,4 @@ class DemoCalendarSingle extends Component {
     }
   }
 }
-export default DemoCalendarSingle;
+export default CalendarSingle;

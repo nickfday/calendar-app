@@ -8,7 +8,7 @@ import CSSTransitionGroup from "react-addons-css-transition-group";
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
-class DemoCalendarList extends Component {
+class CalendarList extends Component {
   componentDidMount() {
     this.addDateFormat();
   }
@@ -104,7 +104,12 @@ class DemoCalendarList extends Component {
         return false;
 
       filteredEvents.push(
-        <CalendarRow event={event} startDate={startDate} endDate={endDate} />
+        <CalendarRow
+          event={event}
+          startDate={startDate}
+          endDate={endDate}
+          key={event.uuid + event.date}
+        />
       );
 
       filteredCalenderEvents.push({
@@ -191,4 +196,4 @@ class DemoCalendarList extends Component {
   }
 }
 
-export default DemoCalendarList;
+export default CalendarList;
