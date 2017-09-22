@@ -5,6 +5,7 @@ import CSSTransitionGroup from "react-addons-css-transition-group";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { splitMap } from "../Misc/Helper";
+import { DatePanel } from "../Misc/DatePanel";
 
 // export const DemoCalendarSingle = props => {
 //   return <div>Single</div>;
@@ -22,22 +23,8 @@ export const DemoCalendarRow = props => {
       className="event-row clearfix"
     >
       <div className="col-xs-3 col-md-2">
-        <div className="date-info">
-          <div className="custom-dayOfWeek">
-            {moment(props.startDate).format("ddd")}
-          </div>
-          <div className="custom-day">
-            {moment(props.startDate).format("D")}
-          </div>
-          <div className="custom-month">
-            {moment(props.startDate).format("MMM")}
-          </div>
-          <div className="custom-year">
-            {moment(props.startDate).format("YYYY")}
-          </div>
-        </div>
+        <DatePanel date={props.startDate} />
       </div>
-
       <div className="event-info col-xs-9 col-md-10">
         <h3>
           <Link

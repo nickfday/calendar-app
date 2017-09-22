@@ -6,6 +6,8 @@ import CSSTransitionGroup from "react-addons-css-transition-group";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import { splitMap } from "../Misc/Helper";
+import { DatePanel } from "../Misc/DatePanel";
+
 var Loader = require("react-loader");
 
 const DisplaySingleEvent = props => {
@@ -87,18 +89,7 @@ const DisplaySingleEvent = props => {
           </div>
 
           <div className="col-xs-2">
-            <div className="date-info">
-              <div className="custom-dayOfWeek">
-                {moment(startDate).format("ddd")}
-              </div>
-              <div className="custom-day">{moment(startDate).format("D")}</div>
-              <div className="custom-month">
-                {moment(startDate).format("MMM")}
-              </div>
-              <div className="custom-year">
-                {moment(startDate).format("YYYY")}
-              </div>
-            </div>
+            <DatePanel date={props.startDate} />
           </div>
         </CSSTransitionGroup>
       </div>
