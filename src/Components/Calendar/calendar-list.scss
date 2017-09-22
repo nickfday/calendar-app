@@ -40,17 +40,15 @@
 
 .date-info {
   float: right;
-  background-color: #f3eade;
-  border: 1px solid #c0cbc4;
+  border: 1px solid #6b6b6c;
   text-align: center;
-  padding-bottom: 8px;
+  //padding-bottom: 8px;
   width: 100%;
   max-width: 88px;
   // min-width: 88px;
   margin-bottom: 12px;
   .custom-dayOfWeek {
-    color: #666666;
-    background-color: #f3eade;
+    background-color: #d6e4fd;
     letter-spacing: 0.025em;
     text-transform: uppercase;
     font-size: 18px;
@@ -58,30 +56,19 @@
     line-height: 1.33333;
   }
   .custom-day {
-    color: #aa3f2a;
-    margin-bottom: 8px;
+    //margin-bottom: 8px;
     font-size: 36px;
     font-size: 2.57143em;
     line-height: 1.16667em;
   }
   .custom-month {
-    color: #f3eade;
-    background-color: #aa3f2a;
     font-family: "RalewayMedium", Arial, Helvetica, sans-serif;
     padding: 4px 0;
     font-size: 18px;
     font-size: 1.28571em;
     line-height: 1.33333;
-    text-transform: uppercase;
     display: block;
-    margin-bottom: 4px;
-  }
-  .custom-year {
-    font-size: 1.28571em;
-    line-height: 1.33333;
-    display: block;
-    font-family: "RalewayMedium", Arial, Helvetica, sans-serif;
-    color: #666666;
+    //margin-bottom: 4px;
   }
 }
 .event-item,
@@ -90,9 +77,9 @@
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   -webkit-border-radius: 4px;
-  background-color: #066e6b;
+  background-color: #d6e4fd;
   border-radius: 4px;
-  color: white;
+  border: 1px solid #626261;
   float: left;
   font-size: 0.85714em;
   font-size: 12px;
@@ -110,7 +97,8 @@
   }
 }
 .audience-item {
-  background-color: #aa3f2a;
+  color: white;
+  background-color: #8aa8e5;
 }
 
 .sp-content .views-widget-filter-field_event_type_tid,
@@ -119,12 +107,12 @@
   background: #fff;
   font-size: 15px;
   color: #292b36;
-  margin: .5em 1em 0 0;
-  -webkit-transition: .2s;
-  -moz-transition: .2s;
-  -ms-transition: .2s;
-  -o-transition: .2s;
-  transition: .2s;
+  margin: 0.5em 1em 0 0;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
