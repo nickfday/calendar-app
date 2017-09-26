@@ -6,7 +6,7 @@ $color-white: #ffffff;
 /* --- start icon fonts */
 
 @font-face {
-  font-family: 'wcc';
+  font-family: "wcc";
   src: url("../assets/fonts/wcc/wcc.eot");
   src: url("../assets/fonts/wcc/wcc.eot?#iefix") format("embedded-opentype"),
     url("../assets/fonts/wcc/wcc.ttf") format("truetype"),
@@ -17,7 +17,7 @@ $color-white: #ffffff;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
-    font-family: 'wcc';
+    font-family: "wcc";
     src: url("../assets/fonts/wcc/wcc.svg#wcc") format("svg");
     font-weight: normal;
     font-style: normal;
@@ -37,9 +37,10 @@ $color-white: #ffffff;
   left: -10px;
 }
 
-.icon-logo:before {
+.icon-logo:before,
+.icon-brand-logo:before {
   content: "\e62a";
-  font-family: 'wcc';
+  font-family: "wcc";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -121,7 +122,7 @@ h3 {
 .row-appear.row-appear-active,
 .row-enter.row-enter-active {
   opacity: 1;
-  transition: opacity .5s ease-in;
+  transition: opacity 0.5s ease-in;
   .sk-spinner {
     display: block;
   }

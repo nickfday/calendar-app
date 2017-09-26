@@ -1,0 +1,21 @@
+.search-box {
+  input {
+    background: #f8f8f8;
+    height: 30px;
+    font-size: 16px;
+    padding: 0 6.4px;
+    min-width: 240px;
+    margin-right: 10px;
+  }
+  a.btn {
+    border: none;
+    border-radius: 0;
+    width: 35.008px;
+    height: 30px;
+    background: rgba(121, 176, 237, 0.8);
+  }
+  span.search {
+    color: white;
+    transform: rotate(80deg);
+  }
+}
