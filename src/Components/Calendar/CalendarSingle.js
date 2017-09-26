@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./style/DemoCalendarRow.css";
+//import "./style/DemoCalendarRow.css";
 import BSModal from "../Misc/BSModal";
 import CSSTransitionGroup from "react-addons-css-transition-group";
 import { Link } from "react-router-dom";
@@ -196,4 +196,4 @@ class DemoCalendarSingle extends Component {
     }
   }
 }
-export default CalendarSingle;
+export default DisplaySingleEvent;
