@@ -11,10 +11,12 @@ import { DatePanel } from "../Misc/DatePanel";
 var Loader = require("react-loader");
 
 const DisplaySingleEvent = props => {
+  console.log(props);
   const item = props.event;
   //const startDate = props.startDate;
   const endDate = props.endDate;
   const startDate = window.location.search.slice(6);
+  console.log(startDate);
 
   return (
     <div className="content exercise-list container">
@@ -89,7 +91,7 @@ const DisplaySingleEvent = props => {
           </div>
 
           <div className="col-xs-2">
-            <DatePanel date={props.startDate} />
+            <DatePanel date={startDate} />
           </div>
         </CSSTransitionGroup>
       </div>
@@ -97,7 +99,7 @@ const DisplaySingleEvent = props => {
   );
 };
 
-class DemoCalendarSingle extends Component {
+class CalendarSingle extends Component {
   constructor() {
     super();
     this.state = {
@@ -196,4 +198,4 @@ class DemoCalendarSingle extends Component {
     }
   }
 }
-export default DisplaySingleEvent;
+export default CalendarSingle;
