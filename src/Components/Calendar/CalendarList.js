@@ -67,6 +67,7 @@ class CalendarList extends Component {
       i.date_repeat.split(", ").map(y => {
         i.formattedDate.push(y.split(" to "));
       });
+      return;
     });
 
     // newArray based on start date

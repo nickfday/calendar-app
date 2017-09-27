@@ -1,12 +1,13 @@
 import React from "react";
-import { Grid, Nav, NavItem } from "react-bootstrap";
 import "./app.css";
 import "./footer.css";
 
 function Footer(/*props*/) {
   return (
     <footer>
-      <div className="pre-cont">pre-cont - add google translate</div>
+      <div className="pre-cont">
+        <div className="container">add google translate</div>
+      </div>
       <div className="main">
         <div className="container">
           <h2>Explore Westminster</h2>
