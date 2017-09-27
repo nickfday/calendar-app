@@ -225,14 +225,16 @@ class Calendar extends Component {
       <div className="content exercise-list container">
         <div className="sp-breadcrumbs" />
         <Loader type="ball-pulse" loaded={this.state.loaded}>
-          <div className="sp-head row">
+          {/*<div className="sp-head row">
             <Link to="/" className="go-up icon-arrow-left" />
             <h1>Events</h1>
-          </div>
+          </div>*/}
 
           <div className="inner-content">
             <div className="row margin-bottom-20 flex-end">
               <div className="col-sm-9">
+                <h1>Events</h1>
+
                 <p className="margin-botton-0">
                   {/* Make Editable via Drupal */}
                   Find out about upcoming events in Westminster.

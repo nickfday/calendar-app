@@ -25,10 +25,10 @@ const DisplaySingleEvent = props => {
         &nbsp;>&nbsp;
         <Link to="/">All events</Link>
       </div>
-      <div className="sp-head row">
+      {/*<div className="sp-head row">
         <Link to="/" className="go-up icon-arrow-left" />
         <h1>Events</h1>
-      </div>
+      </div>*/}
       <div className="inner-content">
         <CSSTransitionGroup
           component="div"
