@@ -222,7 +222,7 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className="content exercise-list container">
+      <div className="content calendar-wrapper container">
         <div className="sp-breadcrumbs" />
         <Loader type="ball-pulse" loaded={this.state.loaded}>
           {/*<div className="sp-head row">
@@ -231,11 +231,10 @@ class Calendar extends Component {
           </div>*/}
 
           <div className="inner-content">
-            <div className="row margin-bottom-20 flex-end">
+            <div className="row margin-bottom-20">
               <div className="col-sm-9">
                 <h1>Events</h1>
-
-                <p className="margin-botton-0">
+                <p className="">
                   {/* Make Editable via Drupal */}
                   Find out about upcoming events in Westminster.
                 </p>

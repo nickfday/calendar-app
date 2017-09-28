@@ -26,6 +26,8 @@ $color-white: #ffffff;
 
 .top-bar .logo-wrap {
   left: -10px;
+  float: left;
+  margin-bottom: 20px;
 }
 
 .top-bar .logo {
@@ -59,6 +61,10 @@ html,
 
 body {
   font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  margin-top: 40px;
 }
 
 h2 {
@@ -96,10 +102,6 @@ h3 {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-}
-
-.margin-botton-0 {
-  margin-bottom: 0;
 }
 
 .margin-top-10 {
@@ -146,11 +148,6 @@ h3 {
   min-height: 800px;
 }
 
-.exercise-list img {
-  //height: 100px;
-  width: 100%;
-}
-
 .sticky {
   position: fixed;
 }
@@ -159,11 +156,6 @@ a.active {
   color: #fff !important;
   cursor: default;
   text-decoration: underline;
-}
-
-.exercise-detail ol {
-  margin-left: 0;
-  padding-left: 16px;
 }
 
 nav form {
@@ -187,12 +179,23 @@ nav input {
   color: $color-grey;
 }
 
+.col-sm-right {
+  clear: both;
+}
+
 @media screen and (min-width: 768px) {
+  h1 {
+    margin-top: 0;
+  }
   .inner-content {
     padding-left: 70px;
     padding-right: 70px;
   }
   .btn-switch {
     text-align: right;
+  }
+  .col-sm-right {
+    clear: none;
+    float: right;
   }
 }

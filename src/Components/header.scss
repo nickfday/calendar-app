@@ -76,16 +76,17 @@ textarea {
   background: #fff;
 }
 
-.content.exercise-list.container {
-  // padding-left: 80px;
-  // padding-right: 80px;
-  margin-top: 0;
-}
-
 .sp-breadcrumbs {
   //margin: 0 -80px;
   padding: 12px 10px;
   font-size: 13px;
   color: #292b36;
   display: block;
+}
+
+.content.calendar-wrapper {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 768px) {
 }

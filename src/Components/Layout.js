@@ -16,9 +16,11 @@ class Layout extends Component {
               <a href="/" title="Home" className="logo icon-logo">
                 &nbsp;
               </a>
-              <SearchBar />
-              <div className="switch icon-arrow-down hide-md-up" />
             </div>
+            <div className="col-sm-right">
+              <SearchBar />
+            </div>
+            <div className="switch icon-arrow-down hide-md-up" />
           </div>
         </div>
       </div>

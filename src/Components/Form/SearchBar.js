@@ -4,7 +4,6 @@ import "./style/SearchBar.css";
 //import "./westminster-main-sm.css";
 
 const SearchBarStyle = {
-  float: "right",
   marginTop: "12px"
 };
 
