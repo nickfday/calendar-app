@@ -11,39 +11,46 @@ function Footer(/*props*/) {
       <div className="main">
         <div className="container">
           <h2>Explore Westminster</h2>
-
           <ul>
             <div className="col-sm-3 col-xs-6">
-              <li>
-                <a href="">Contact us</a>
-              </li>
-              <li>
-                <a href="">Council Tax</a>
-              </li>
+              <ul>
+                <li>
+                  <a href="">Contact us</a>
+                </li>
+                <li>
+                  <a href="">Council Tax</a>
+                </li>
+              </ul>
             </div>
             <div className="col-sm-3 col-xs-6">
-              <li>
-                <a href="">Licensing</a>
-              </li>
-              <li>
-                <a href="">Planning</a>
-              </li>
+              <ul>
+                <li>
+                  <a href="">Licensing</a>
+                </li>
+                <li>
+                  <a href="">Planning</a>
+                </li>
+              </ul>
             </div>
             <div className="col-sm-3 col-xs-6">
-              <li>
-                <a href="">Births, deasths and marriages</a>
-              </li>
-              <li>
-                <a href="">Libraries</a>
-              </li>
+              <ul>
+                <li>
+                  <a href="">Births, deasths and marriages</a>
+                </li>
+                <li>
+                  <a href="">Libraries</a>
+                </li>
+              </ul>
             </div>
             <div className="col-sm-3 col-xs-6">
-              <li>
-                <a href="">Parking</a>
-              </li>
-              <li>
-                <a href="">Recycling, rubbish and waste</a>
-              </li>
+              <ul>
+                <li>
+                  <a href="">Parking</a>
+                </li>
+                <li>
+                  <a href="">Recycling, rubbish and waste</a>
+                </li>
+              </ul>
             </div>
           </ul>
         </div>
