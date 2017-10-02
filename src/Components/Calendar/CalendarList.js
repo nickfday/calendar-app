@@ -66,15 +66,18 @@ class CalendarList extends Component {
       i.end = new Date("2017-09-08 11:00:00");
       i.date_repeat.split(", ").map(y => {
         i.formattedDate.push(y.split(" to "));
+        return true;
       });
-      return;
+      return true;
     });
 
     // newArray based on start date
     updatedevents.map(i => {
       i.formattedDate.map(z => {
         dateArray.push([z, i]);
+        return true;
       });
+      return true;
     });
 
     // list events
@@ -127,14 +130,15 @@ class CalendarList extends Component {
     let filteredEvents = [];
     let filteredCalenderEvents = [];
 
-    let listEvents = dateArray.sort().map(i => {
+    dateArray.sort().map(i => {
       filterEvents(this.props.eventState, i[1], i[0][0], i[0][1]);
+      return true;
     });
 
     let filteredEventsCount = filteredEvents.length;
 
     // No results
-    if (filteredEventsCount == 0) {
+    if (filteredEventsCount === 0) {
       return (
         <p>
           No results - please adjust or&nbsp;

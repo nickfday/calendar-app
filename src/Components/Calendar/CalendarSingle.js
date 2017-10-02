@@ -8,8 +8,6 @@ import moment from "moment";
 import { splitMap } from "../Misc/Helper";
 import { DatePanel } from "../Misc/DatePanel";
 
-var Loader = require("react-loader");
-
 const DisplaySingleEvent = props => {
   console.log(props);
   const item = props.event;
@@ -133,7 +131,6 @@ class CalendarSingle extends Component {
   fetchSingleEvent(UUID) {
     //alert(UUID);
     console.log(UUID);
-    const self = this;
     axios
       .get(
         "http://finley-day.com/api/calendar/views/calendar_json.json?alias=" +

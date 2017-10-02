@@ -5,7 +5,6 @@ import BSModal from "../Misc/BSModal";
 import CSSTransitionGroup from "react-addons-css-transition-group";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { splitMap } from "../Misc/Helper";
 import { DatePanel } from "../Misc/DatePanel";
 
 // export const DemoCalendarSingle = props => {

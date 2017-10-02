@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Filter from "./Filter/Filter";
 import axios from "axios";
 import Scroll from "react-scroll";
-import { Link } from "react-router-dom";
-//import CalendarList from "./CalendarList";
 import CalendarList from "./CalendarList";
 var Loader = require("react-loader");
 
