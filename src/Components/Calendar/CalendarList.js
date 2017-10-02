@@ -112,7 +112,7 @@ class CalendarList extends Component {
           event={event}
           startDate={startDate}
           endDate={endDate}
-          key={event.uuid + event.date}
+          //key={event.uuid + event.date}
         />
       );
 
