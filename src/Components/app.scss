@@ -174,22 +174,43 @@ nav input {
   min-height: 393px;
 }
 
-.panel-info > .panel-heading {
-  background-color: $color-dark-blue;
-  color: $color-grey;
-}
-
 .col-sm-right {
   clear: both;
 }
 
+.btn-switch {
+  position: absolute;
+  right: 0;
+  margin-top: 20px;
+}
+
 //Bootstrap
+
+.mobile .panel {
+  border: none;
+}
+
+.mobile .panel .panel-collapse.collapse.in,
+.mobile .panel .panel-collapse.collapsing {
+  //border: 1px;
+  border: 1px solid #bce8f1;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
 
 .panel .panel-heading a {
   display: block;
   cursor: pointer;
   width: 100%;
 }
+
+.btn-info,
+.panel-info > .panel-heading {
+  background-color: $color-dark-blue;
+  color: $color-grey;
+}
+
+//Media Queries
 
 @media screen and (min-width: 768px) {
   h1 {
@@ -201,6 +222,7 @@ nav input {
   }
   .btn-switch {
     text-align: right;
+    position: static;
   }
   .col-sm-right {
     clear: none;

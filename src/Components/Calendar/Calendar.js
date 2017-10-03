@@ -3,6 +3,10 @@ import Filter from "./Filter/Filter";
 import axios from "axios";
 import Scroll from "react-scroll";
 import CalendarList from "./CalendarList";
+import { Accordion, Button, Glyphicon, Panel } from "react-bootstrap";
+
+import MediaQuery from "react-responsive";
+
 var Loader = require("react-loader");
 
 class Calendar extends Component {
@@ -249,29 +253,74 @@ class Calendar extends Component {
               </div>
             </div>
 
+            <MediaQuery maxWidth={767}>
+              <div className="mobile">
+                <Button
+                  bsStyle="info"
+                  onClick={() => this.setState({ open: !this.state.open })}
+                >
+                  Filters&nbsp;
+                  {!this.state.open && <Glyphicon glyph="plus" />}
+                  {this.state.open && <Glyphicon glyph="minus" />}
+                </Button>
+                <Panel collapsible expanded={this.state.open}>
+                  <div>You are sized like a tablet or mobile phone though</div>
+                  <Filter
+                    calenderState={this.state}
+                    titleText={this.state.titleText}
+                    addressText={this.state.addressText}
+                    onTitleTextInput={this.handleTitleTextInput}
+                    onAddressTextInput={this.handleAddressTextInput}
+                    onEventTypeInput={this.handleEventTypeInput}
+                    onAudienceInput={this.handleAudienceInput}
+                    eventTypes={this.state.eventTypes}
+                    audienceTypes={this.state.audience}
+                    handleSelectedEventTypes={this.handleSelectedEventTypes}
+                    selectedEventTypes={this.state.selectedEventTypes}
+                    handleSelectedAudienceTypes={
+                      this.handleSelectedAudienceTypes
+                    }
+                    selectedAudienceTypes={this.state.selectedAudienceTypes}
+                    handleReset={this.handleReset}
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    handleStartDate={this.handleStartDate}
+                    handleEndDate={this.handleEndDate}
+                    handlePageChange={this.handlePageChange}
+                  />
+                </Panel>
+              </div>
+            </MediaQuery>
+
             <div className="row">
               <div className="col-sm-3">
-                <Filter
-                  calenderState={this.state}
-                  titleText={this.state.titleText}
-                  addressText={this.state.addressText}
-                  onTitleTextInput={this.handleTitleTextInput}
-                  onAddressTextInput={this.handleAddressTextInput}
-                  onEventTypeInput={this.handleEventTypeInput}
-                  onAudienceInput={this.handleAudienceInput}
-                  eventTypes={this.state.eventTypes}
-                  audienceTypes={this.state.audience}
-                  handleSelectedEventTypes={this.handleSelectedEventTypes}
-                  selectedEventTypes={this.state.selectedEventTypes}
-                  handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
-                  selectedAudienceTypes={this.state.selectedAudienceTypes}
-                  handleReset={this.handleReset}
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  handleStartDate={this.handleStartDate}
-                  handleEndDate={this.handleEndDate}
-                  handlePageChange={this.handlePageChange}
-                />
+                <MediaQuery minWidth={768}>
+                  <Panel header="Filters" bsStyle="info">
+                    <Filter
+                      calenderState={this.state}
+                      titleText={this.state.titleText}
+                      addressText={this.state.addressText}
+                      onTitleTextInput={this.handleTitleTextInput}
+                      onAddressTextInput={this.handleAddressTextInput}
+                      onEventTypeInput={this.handleEventTypeInput}
+                      onAudienceInput={this.handleAudienceInput}
+                      eventTypes={this.state.eventTypes}
+                      audienceTypes={this.state.audience}
+                      handleSelectedEventTypes={this.handleSelectedEventTypes}
+                      selectedEventTypes={this.state.selectedEventTypes}
+                      handleSelectedAudienceTypes={
+                        this.handleSelectedAudienceTypes
+                      }
+                      selectedAudienceTypes={this.state.selectedAudienceTypes}
+                      handleReset={this.handleReset}
+                      startDate={this.state.startDate}
+                      endDate={this.state.endDate}
+                      handleStartDate={this.handleStartDate}
+                      handleEndDate={this.handleEndDate}
+                      handlePageChange={this.handlePageChange}
+                    />
+                  </Panel>
+                </MediaQuery>
               </div>
 
               <div className="col-sm-9">

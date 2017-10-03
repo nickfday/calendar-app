@@ -72,9 +72,9 @@ class CalendarList extends Component {
     });
 
     // newArray based on start date
-    updatedevents.map(i => {
+    updatedevents.map(function(i, index) {
       i.formattedDate.map(z => {
-        dateArray.push([z, i]);
+        dateArray.push([z, i, index]);
         return true;
       });
       return true;
@@ -86,7 +86,7 @@ class CalendarList extends Component {
     let activePage = this.props.activePage;
     let itemsCountPerPage = 5;
 
-    function filterEvents(eventState, event, startDate, endDate) {
+    function filterEvents(eventState, event, startDate, endDate, index) {
       if (!searchFilter(eventState.titleText, event.title)) return false;
 
       //Search by Address
@@ -112,6 +112,7 @@ class CalendarList extends Component {
           event={event}
           startDate={startDate}
           endDate={endDate}
+          key={index}
           //key={event.uuid + event.date}
         />
       );
