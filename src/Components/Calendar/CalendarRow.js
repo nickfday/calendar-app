@@ -20,7 +20,7 @@ export const CalendarRow = props => {
       transitionAppearTimeout={500}
       transitionLeaveTimeout={500}
       transitionEnterTimeout={500}
-      className="event-row clearfix"
+      className="row event-row clearfix"
     >
       <div className="col-xs-3 col-md-2">
         <DatePanel date={props.startDate} />
