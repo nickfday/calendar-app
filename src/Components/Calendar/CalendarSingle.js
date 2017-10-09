@@ -18,10 +18,10 @@ const DisplaySingleEvent = props => {
 
   return (
     <div className="content exercise-list container">
-      <div className="sp-breadcrumbs wcc-breadcrumb">
-        <a href="http://finley-day.com">Home</a>
+      <div className="sp-breadcrumbs">
+        {/*<a href="http://finley-day.com">Home</a>
         &nbsp;>&nbsp;
-        <Link to="/">All events</Link>
+        <Link to="/">All events</Link>*/}
       </div>
       {/*<div className="sp-head row">
         <Link to="/" className="go-up icon-arrow-left" />
@@ -37,8 +37,15 @@ const DisplaySingleEvent = props => {
           transitionEnterTimeout={500}
           className="event-row clearfix"
         >
-          <div className="event-info col-xs-10">
-            <h2>{props.event.title}</h2>
+          <div className="event-info">
+            <div className="row">
+              <div className="col-xs-9">
+                <h1>{props.event.title}</h1>
+              </div>
+              <div className="col-xs-3">
+                <DatePanel date={startDate} />
+              </div>
+            </div>
             {/* Location */}
             {props.event.location && (
               <BSModal
@@ -86,10 +93,6 @@ const DisplaySingleEvent = props => {
             <div className="margin-top-10">
               <Link to="/">Back to all events</Link>
             </div>
-          </div>
-
-          <div className="col-xs-2">
-            <DatePanel date={startDate} />
           </div>
         </CSSTransitionGroup>
       </div>
