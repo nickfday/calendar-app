@@ -112,11 +112,9 @@ class CalendarSingle extends Component {
 
   componentDidMount() {
     if (!this.props.location.state) {
-      console.log("Fetch...");
       let pathUUID = this.props.location.pathname;
       //if (pathUUID.indexOf("/events/" !== -1)) {
       var UUID = pathUUID.slice(1);
-      console.log(UUID);
       this.fetchSingleEvent(UUID);
       //}
     } else {
@@ -129,7 +127,6 @@ class CalendarSingle extends Component {
 
   fetchSingleEvent(UUID) {
     //alert(UUID);
-    console.log(UUID);
     axios
       .get(env.API.domain + env.API.endPoint + "?alias=" + UUID)
       .then(response => {
@@ -177,7 +174,6 @@ class CalendarSingle extends Component {
         />
       );
     } else if (this.state.fetchEvents !== null) {
-      console.log("Display Fetched...");
       return (
         <DisplaySingleEvent
           event={this.state.fetchEvents[0]}
