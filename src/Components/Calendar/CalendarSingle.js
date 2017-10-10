@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { splitMap } from "../Misc/Helper";
 import { DatePanel } from "../Misc/DatePanel";
+import * as env from "../../env";
 
 const DisplaySingleEvent = props => {
   const item = props.event;
@@ -130,10 +131,7 @@ class CalendarSingle extends Component {
     //alert(UUID);
     console.log(UUID);
     axios
-      .get(
-        "http://finley-day.com/api/calendar/views/calendar_json.json?alias=" +
-          UUID
-      )
+      .get(env.API.domain + env.API.endPoint + "?alias=" + UUID)
       .then(response => {
         this.setState({
           fetchEvents: response.data

@@ -4,6 +4,7 @@ import axios from "axios";
 import Scroll from "react-scroll";
 import CalendarList from "./CalendarList";
 import { Button, Glyphicon, Panel } from "react-bootstrap";
+import * as env from "../../env";
 
 import MediaQuery from "react-responsive";
 
@@ -140,7 +141,7 @@ class Calendar extends Component {
   getEvents() {
     const self = this;
     axios
-      .get("http://finley-day.com/api/calendar/views/calendar_json.json")
+      .get(env.API.domain + env.API.endPoint)
       .then(function(response) {
         self.setState({
           events: response.data,
