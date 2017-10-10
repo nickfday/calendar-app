@@ -14,7 +14,7 @@ class CalendarList extends Component {
   }
 
   addDateFormat() {
-    this.props.events.events.map(function(e) {
+    this.props.events.map(function(e) {
       if (e.sortedDates) {
         e.start = new Date(
           e.sortedDates[0][0]
@@ -112,7 +112,7 @@ class CalendarList extends Component {
           event={event}
           startDate={startDate}
           endDate={endDate}
-          key={index}
+          key={index + startDate}
           //key={event.uuid + event.date}
         />
       );

@@ -13,6 +13,6 @@ export function DatePanel(props) {
     </div>
   );
 }
-DatePanel.propTypes = {
-  date: PropTypes.instanceOf(Date)
-};
+// DatePanel.propTypes = {
+//   date: PropTypes.instanceOf(Date)
+// };
