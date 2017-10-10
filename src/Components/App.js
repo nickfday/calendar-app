@@ -18,7 +18,7 @@ const NoMatch = ({ location }) => (
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename="/events-calendar/">
         <div>
           {<Layout />}
           <Switch>

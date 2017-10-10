@@ -1,4 +1,4 @@
 export const API = {
-  domain: "http://finley-day.com",
+  domain: "http://wcc.dev",
   endPoint: "/api/calendar/views/calendar_json.json"
 };
