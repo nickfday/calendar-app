@@ -3,7 +3,7 @@ import Filter from "./Filter/Filter";
 import axios from "axios";
 import Scroll from "react-scroll";
 import CalendarList from "./CalendarList";
-import { Accordion, Button, Glyphicon, Panel } from "react-bootstrap";
+import { Button, Glyphicon, Panel } from "react-bootstrap";
 
 import MediaQuery from "react-responsive";
 

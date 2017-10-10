@@ -82,7 +82,6 @@ class CalendarList extends Component {
 
     // list events
     //let activePage = this.state.activePage;
-    console.log("democalendarlist render");
     let activePage = this.props.activePage;
     let itemsCountPerPage = 5;
 

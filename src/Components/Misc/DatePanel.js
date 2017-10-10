@@ -1,6 +1,5 @@
 import React from "react";
 import moment from "moment";
-import PropTypes from "prop-types";
 
 export function DatePanel(props) {
   return (
@@ -13,6 +12,3 @@ export function DatePanel(props) {
     </div>
   );
 }
-// DatePanel.propTypes = {
-//   date: PropTypes.instanceOf(Date)
-// };

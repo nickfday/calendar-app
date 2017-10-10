@@ -9,12 +9,10 @@ import { splitMap } from "../Misc/Helper";
 import { DatePanel } from "../Misc/DatePanel";
 
 const DisplaySingleEvent = props => {
-  console.log(props);
   const item = props.event;
   //const startDate = props.startDate;
   const endDate = props.endDate;
   const startDate = window.location.search.slice(6);
-  console.log(startDate);
 
   return (
     <div className="content exercise-list container">
@@ -112,8 +110,6 @@ class CalendarSingle extends Component {
   }
 
   componentDidMount() {
-    console.log("test");
-    console.log(this);
     if (!this.props.location.state) {
       console.log("Fetch...");
       let pathUUID = this.props.location.pathname;
@@ -123,7 +119,6 @@ class CalendarSingle extends Component {
       this.fetchSingleEvent(UUID);
       //}
     } else {
-      console.log("Props Found");
       this.setState({
         events: this.props.location.state
       });
@@ -176,7 +171,6 @@ class CalendarSingle extends Component {
 
   render() {
     if (this.state.events !== null) {
-      console.log("Display Linked Event...");
       return (
         <DisplaySingleEvent
           event={this.state.events.events}
