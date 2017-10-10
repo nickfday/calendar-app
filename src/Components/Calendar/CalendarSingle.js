@@ -17,16 +17,16 @@ const DisplaySingleEvent = props => {
 
   return (
     <div className="content exercise-list container">
-      <div className="sp-breadcrumbs">
-        {/*<a href="http://finley-day.com">Home</a>
-        &nbsp;>&nbsp;
-        <Link to="/">All events</Link>*/}
-      </div>
       {/*<div className="sp-head row">
         <Link to="/" className="go-up icon-arrow-left" />
         <h1>Events</h1>
       </div>*/}
       <div className="inner-content">
+        <div className="wcc-breadcrumb">
+          <a href={env.API.domain}>Home</a>
+          &nbsp;>&nbsp;
+          <Link to="/">All events</Link>
+        </div>
         <CSSTransitionGroup
           component="div"
           transitionName="row"
