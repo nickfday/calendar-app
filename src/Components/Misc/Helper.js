@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export function splitMap(string, separator, className) {
   if (string) {
@@ -10,11 +10,7 @@ export function splitMap(string, separator, className) {
         </div>
       );
     });
-    return (
-      <div>
-        {list}
-      </div>
-    );
+    return <div>{list}</div>;
   }
 }
 
@@ -24,7 +20,7 @@ export function searchFilter(searchVal, itemVal) {
   }
   if (
     itemVal &&
-    (searchVal !== "" &&
+    (searchVal !== '' &&
       itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1)
   ) {
     return false;
@@ -38,15 +34,18 @@ export function filterMultiSelect(selectedTag, itemTag) {
   Object.keys(selectedTag).map(selectedTagI => {
     //loop all sorted tags
     if (itemTag) {
-      itemTag.split(", ").sort().map(itemTagI => {
-        //if selected audience value == tag push onto matched event
-        if (selectedTag[selectedTagI].value === itemTagI) {
-          matchedTag.push(itemTag);
-          return false;
-        } else {
-          return false;
-        }
-      });
+      itemTag
+        .split(', ')
+        .sort()
+        .map(itemTagI => {
+          //if selected audience value == tag push onto matched event
+          if (selectedTag[selectedTagI].value === itemTagI) {
+            matchedTag.push(itemTag);
+            return false;
+          } else {
+            return false;
+          }
+        });
     }
     return false;
   });

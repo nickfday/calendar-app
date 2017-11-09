@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import Filter from "./Filter/Filter";
-import axios from "axios";
-import Scroll from "react-scroll";
-import CalendarList from "./CalendarList";
-import { Button, Glyphicon, Panel } from "react-bootstrap";
-import * as env from "../../env";
+import React, { Component } from 'react';
+import Filter from './Filter/Filter';
+import axios from 'axios';
+import Scroll from 'react-scroll';
+import CalendarList from './CalendarList';
+import { Button, Glyphicon, Panel } from 'react-bootstrap';
+import * as env from '../../env';
 
-import MediaQuery from "react-responsive";
+import MediaQuery from 'react-responsive';
 
-var Loader = require("react-loader");
+var Loader = require('react-loader');
 
 class Calendar extends Component {
   constructor(props) {
@@ -17,12 +17,12 @@ class Calendar extends Component {
       activePage: 1,
       events: [],
       loaded: false,
-      titleText: "",
-      addressText: "",
+      titleText: '',
+      addressText: '',
       eventTypes: [],
       audienceTypes: [],
-      selectedAudienceTypes: "",
-      selectedEventTypes: "",
+      selectedAudienceTypes: '',
+      selectedEventTypes: '',
       startDate: null,
       endDate: null,
       isListViewOn: true,
@@ -118,10 +118,10 @@ class Calendar extends Component {
   handleReset(event) {
     event.preventDefault();
     this.setState({
-      titleText: "",
-      addressText: "",
-      selectedEventTypes: "",
-      selectedAudienceTypes: "",
+      titleText: '',
+      addressText: '',
+      selectedEventTypes: '',
+      selectedAudienceTypes: '',
       startDate: null,
       endDate: null
     });
@@ -168,9 +168,9 @@ class Calendar extends Component {
       if (i.date_repeat) {
         i.splitDates = [];
         i.sortedDates = [];
-        i.splitDates.push(i.date_repeat.split(", "));
+        i.splitDates.push(i.date_repeat.split(', '));
         i.splitDates[0].map(function(y) {
-          i.sortedDates.push(y.split(" to "));
+          i.sortedDates.push(y.split(' to '));
           return null;
         });
         return null;
@@ -187,7 +187,7 @@ class Calendar extends Component {
     let eventTypes = [];
     this.state.events.map(eventItem => {
       if (eventItem.event_type) {
-        eventItem.event_type.split(", ").map(eventType => {
+        eventItem.event_type.split(', ').map(eventType => {
           if (eventTypes.indexOf(eventType) === -1) eventTypes.push(eventType);
           return false;
         });
@@ -205,7 +205,7 @@ class Calendar extends Component {
     let audienceTypes = [];
     this.state.events.map(eventItem => {
       if (eventItem.audience) {
-        eventItem.audience.split(", ").map(audienceType => {
+        eventItem.audience.split(', ').map(audienceType => {
           if (audienceTypes.indexOf(audienceType) === -1)
             audienceTypes.push(audienceType);
           return false;
@@ -242,7 +242,10 @@ class Calendar extends Component {
                   Find out about upcoming events in Westminster.
                 </p>
               </div>
-              <div className="col-sm-3 btn-switch">
+
+              {/* Switch button */}
+
+              {/* <div className="col-sm-3 btn-switch">
                 <button
                   className="btn btn-primary btn-wcc"
                   onClick={this.handleCalendarViewSwitch}
@@ -251,7 +254,7 @@ class Calendar extends Component {
                     ? "Switch to calendar view"
                     : "Switch to list view"}
                 </button>
-              </div>
+              </div> */}
             </div>
 
             <MediaQuery maxWidth={767}>

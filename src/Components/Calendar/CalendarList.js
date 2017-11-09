@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { searchFilter, filterMultiSelect } from "../Misc/Helper";
-import { CalendarRow } from "./CalendarRow";
-import moment from "moment";
-import Pagination from "react-js-pagination";
-import BigCalendar from "react-big-calendar";
-import CSSTransitionGroup from "react-addons-css-transition-group";
+import React, { Component } from 'react';
+import { searchFilter, filterMultiSelect } from '../Misc/Helper';
+import { CalendarRow } from './CalendarRow';
+import moment from 'moment';
+import Pagination from 'react-js-pagination';
+import BigCalendar from 'react-big-calendar';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
@@ -19,26 +19,26 @@ class CalendarList extends Component {
         e.start = new Date(
           e.sortedDates[0][0]
             .slice(0, 10)
-            .split("-")
+            .split('-')
             .join()
         );
         e.end = new Date(
           e.sortedDates[0][1]
             .slice(0, 10)
-            .split("-")
+            .split('-')
             .join()
         );
       } else {
         e.start = new Date(
           e.date
             .slice(0, 10)
-            .split("-")
+            .split('-')
             .join()
         );
         e.end = new Date(
           e.date
             .slice(0, 10)
-            .split("-")
+            .split('-')
             .join()
         );
       }
@@ -48,9 +48,9 @@ class CalendarList extends Component {
 
   handleEvent(title, event, self, history) {
     history.push(
-      `${event.path.replace(/\s+/g, "-").toLowerCase()}?date=${moment(
+      `${event.path.replace(/\s+/g, '-').toLowerCase()}?date=${moment(
         this.props.startDate
-      ).format("YYYY-MM-DD")}`
+      ).format('YYYY-MM-DD')}`
     );
   }
 
@@ -62,10 +62,10 @@ class CalendarList extends Component {
     // Format Dates
     updatedevents.map(i => {
       i.formattedDate = [];
-      i.start = new Date("2017-08-08 11:00:00");
-      i.end = new Date("2017-09-08 11:00:00");
-      i.date_repeat.split(", ").map(y => {
-        i.formattedDate.push(y.split(" to "));
+      //i.start = new Date("2017-08-08 11:00:00");
+      //i.end = new Date("2017-09-08 11:00:00");
+      i.date_repeat.split(', ').map(y => {
+        i.formattedDate.push(y.split(' to '));
         return true;
       });
       return true;
@@ -144,7 +144,7 @@ class CalendarList extends Component {
           No results - please adjust or&nbsp;
           <a href="" onClick={self.props.handleReset}>
             reset
-          </a>{" "}
+          </a>{' '}
           filters.
         </p>
       );
@@ -191,7 +191,7 @@ class CalendarList extends Component {
                     self,
                     this.props.history
                   )}
-                views={["month", "week", "day"]}
+                views={['month', 'week', 'day']}
               />
             </CSSTransitionGroup>
           </div>
