@@ -5,6 +5,7 @@ import Scroll from 'react-scroll';
 import CalendarList from './CalendarList';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
 import * as env from '../../env';
+import { APIFetch } from './CalendarHelper';
 
 import MediaQuery from 'react-responsive';
 
@@ -140,19 +141,22 @@ class Calendar extends Component {
 
   getEvents() {
     const self = this;
-    axios
-      .get(env.API.domain + env.API.endPoint)
+    APIFetch(env.API.domain + env.API.endPoint, 'list')
+      // axios
+      //   .get(env.API.domain + env.API.endPoint)
       .then(function(response) {
+        console.log(response);
         self.setState({
-          events: response.data,
-          loaded: true
+          events: response.response.data,
+          loaded: true,
+          eventTypes: response.eventTypes
         });
       })
       .catch(function(error) {
         console.log(error);
       })
       .then(function(response) {
-        self.getEventTypes(self);
+        // self.getEventTypes(self);
         self.getAudienceTypes(self);
         self.handleEventDate(self); //removed date repeat field
       })
