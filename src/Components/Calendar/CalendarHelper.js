@@ -13,16 +13,12 @@ export function APIFetch(path, type) {
       };
     } else if (type == 'single') {
     }
-    // return {
-    //   response: response,
-    //   eventTypes:
-    // }
   });
 }
 
 function getListData(object, key) {
   console.log('get list data');
-  return getEventTypes(object, key);
+  return getTypes(object, key);
 }
 
 function getSingleData(object) {
@@ -31,26 +27,62 @@ function getSingleData(object) {
 
 function manipulateData(object) {
   console.log('manipulate data');
+  object.map(function(item) {
+    let eventTypes = [];
+    item.event_type.split(', ').map(function(j) {
+      eventTypes.push(j);
+    });
+    item.event_type = eventTypes;
+    console.log(eventTypes);
+  });
+
+  // ToDo - Make into one function
+
+  console.log('MAPPING');
+  object.map(function(item) {
+    console.log(item);
+    let audienceTypes = [];
+    if (item.audience) {
+      item.audience.split(', ').map(function(j) {
+        audienceTypes.push(j);
+      });
+    }
+    item.audience = audienceTypes;
+  });
+
+  // object.map(function(item) {
+  //   console.log('map audience');
+  //   let eventTypes = [];
+  //   item.audience.split(', ').map(function(j) {
+  //     eventTypes.push(j);
+  //   });
+  //   item.audience = eventTypes;
+  //   console.log(eventTypes);
+  // });
 }
 
-function getEventTypes(event, key) {
+function stringToArray() {}
+
+// Generates a list of event/audience types so events can be filtered
+
+function getTypes(event, key) {
+  console.log('event is  ' + event);
   console.log('key is ' + key);
-  let eventTypes = [];
-  event.map(eventItem => {
+
+  let keyTypes = [];
+  event.map(item => {
     console.log('key is ' + key);
-    if (eventItem[key]) {
-      eventItem[key].split(', ').map(eventType => {
+    console.log(item);
+
+    if (item[key]) {
+      item[key].map(type => {
         console.log('key is ' + key);
-        if (eventTypes.indexOf(eventType) === -1) eventTypes.push(eventType);
+        if (keyTypes.indexOf(type) === -1) keyTypes.push(type);
         return false;
       });
       return false;
     }
   });
-  return eventTypes;
-  console.log(eventTypes);
-
-  // this.setState({
-  //   eventTypes
-  // });
+  console.log(keyTypes);
+  return keyTypes;
 }
