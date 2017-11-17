@@ -7,12 +7,75 @@ import moment from 'moment';
 import { splitMap } from '../Misc/Helper';
 import { DatePanel } from '../Misc/DatePanel';
 import * as env from '../../env';
+import { APIFetch } from './CalendarHelper';
+
+//import { getEvents } from '../Misc/Helper';
 
 class CalendarSingle extends Component {
+  constructor() {
+    super();
+    this.state = {
+      events: null
+    };
+    this.getEvents = this.getEvents.bind(this);
+  }
+
+  getEvents() {
+    this.setState({
+      events: 'nick'
+    });
+  }
+
+  fetchArticles() {
+    const self = this;
+    console.log('fetching');
+    //const self = this;
+    APIFetch(env.API.domain + env.API.endPoint, 'single')
+      .then(function(i) {
+        console.log(i);
+        let item = i.data.find(
+          x =>
+            x.path.replace(/\s+/g, '-').toLowerCase() ===
+            self.props.location.pathname
+              .slice(6)
+              .replace(/\s+/g, '-')
+              .toLowerCase()
+        );
+
+        self.setState({
+          articles: item,
+          loaded: true
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
+  checkAvailableProps() {
+    const self = this;
+    if (this.props.location.state) {
+      self.setState({
+        events: this.props.location.state.events,
+        loaded: true
+      });
+    } else {
+      this.fetchArticles();
+    }
+  }
+
+  componentDidMount() {
+    this.checkAvailableProps();
+  }
+
+  componentWillMount() {
+    //this.getEvents();
+    //getEvents();
+  }
+
   render() {
-    console.log(this);
     console.log(this.props);
-    const item = this.props.location.state.events;
+    const item = this.state.events;
     if (item) {
       let startDate = this.props.location.state.startDate;
       let endDate = this.props.location.state.endDate;
@@ -81,10 +144,10 @@ class CalendarSingle extends Component {
                     <p dangerouslySetInnerHTML={{ __html: item.body }} />
                   </div>
                 )}
-                {splitMap(item.event_type, ', ', 'event-item')}
+                {/* {splitMap(item.event_type, ', ', 'event-item')} */}
                 <br />
                 <div className="clearfix" />
-                {splitMap(item.audience, ', ', 'audience-item')}
+                {/* {splitMap(item.audience, ', ', 'audience-item')} */}
                 <div className="clearfix" />
                 <div className="clearfix" />
                 <div className="margin-top-10">
