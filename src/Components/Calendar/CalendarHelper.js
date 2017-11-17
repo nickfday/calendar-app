@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import * as env from '../../env';
 
 export function APIFetch(path, type) {
@@ -12,6 +13,9 @@ export function APIFetch(path, type) {
         audienceTypes: getListData(response.data, 'audience')
       };
     } else if (type == 'single') {
+      return {
+        response: response
+      };
     }
   });
 }
@@ -26,6 +30,8 @@ function getSingleData(object) {
 }
 
 function manipulateData(object) {
+  // ToDo - Make into one function
+  // Create types/audience in state
   console.log('manipulate data');
   object.map(function(item) {
     let eventTypes = [];
@@ -33,14 +39,7 @@ function manipulateData(object) {
       eventTypes.push(j);
     });
     item.event_type = eventTypes;
-    console.log(eventTypes);
-  });
 
-  // ToDo - Make into one function
-
-  console.log('MAPPING');
-  object.map(function(item) {
-    console.log(item);
     let audienceTypes = [];
     if (item.audience) {
       item.audience.split(', ').map(function(j) {
@@ -48,7 +47,41 @@ function manipulateData(object) {
       });
     }
     item.audience = audienceTypes;
+
+    // Create a pathname
+    item.path = 'events/' + item.title.replace(/\s+/g, '-').toLowerCase();
+  }); // end map
+
+  // Create new items based on date
+
+  // search date_repeat field
+  //split at comma
+  //for each comma create new event
+  // add new evnent to event array
+
+  //get end date
+
+  let formattedArray = [];
+
+  object.map(function(item) {
+    item.date_repeat.split(', ').map(function(date) {
+      let splitDates = [];
+      date.split(' to ').map(function(splitDate) {
+        splitDates.push(splitDate);
+        console.log(splitDate);
+      });
+      console.log(splitDates[0]);
+      console.log(splitDates[1]);
+      console.log(date);
+      formattedArray.push({
+        event: item,
+        startDate: moment(splitDates[0]),
+        endDate: moment(splitDates[1])
+      });
+    });
   });
+
+  console.log(formattedArray);
 
   // object.map(function(item) {
   //   console.log('map audience');
