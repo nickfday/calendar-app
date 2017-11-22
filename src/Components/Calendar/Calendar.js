@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import Filter from './Filter/Filter';
 import axios from 'axios';
 import Scroll from 'react-scroll';
+import { CalendarRow } from './CalendarRow';
+import moment from 'moment';
 import CalendarList from './CalendarList';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
 import * as env from '../../env';
-import { APIFetch } from './CalendarHelper';
-
+import { APIFetch, getVisibleEvents } from './CalendarHelper';
 import MediaQuery from 'react-responsive';
+import { searchFilter, filterMultiSelect } from '../Misc/Helper';
+import Pagination from 'react-js-pagination';
+import BigCalendar from 'react-big-calendar';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 var Loader = require('react-loader');
 
@@ -142,14 +147,13 @@ class Calendar extends Component {
   getEvents() {
     const self = this;
     APIFetch(env.API.domain + env.API.endPoint, 'list')
-      // axios
-      //   .get(env.API.domain + env.API.endPoint)
       .then(function(response) {
         console.log(response);
         self.setState({
-          events: response.response.data,
+          events: response.response,
           loaded: true,
-          eventTypes: response.eventTypes
+          eventTypes: response.eventTypes,
+          audienceTypes: response.audienceTypes
         });
       })
       .catch(function(error) {
@@ -157,77 +161,95 @@ class Calendar extends Component {
       })
       .then(function(response) {
         // self.getEventTypes(self);
-        self.getAudienceTypes(self);
-        self.handleEventDate(self); //removed date repeat field
+        //self.getAudienceTypes(self);
+        //self.handleEventDate(self); //removed date repeat field
       })
       .catch(function(error) {
         console.log(error);
       });
   }
 
-  handleEventDate(self) {
-    //const self = this;
-    var updatedevents = self.state.events.slice();
-    updatedevents.map(function(i) {
-      if (i.date_repeat) {
-        i.splitDates = [];
-        i.sortedDates = [];
-        i.splitDates.push(i.date_repeat.split(', '));
-        i.splitDates[0].map(function(y) {
-          i.sortedDates.push(y.split(' to '));
-          return null;
-        });
-        return null;
-      }
-      return null;
-    });
-
-    self.setState(() => ({
-      events: updatedevents
-    }));
-  }
-
-  getEventTypes() {
-    let eventTypes = [];
-    this.state.events.map(eventItem => {
-      if (eventItem.event_type) {
-        eventItem.event_type.split(', ').map(eventType => {
-          if (eventTypes.indexOf(eventType) === -1) eventTypes.push(eventType);
-          return false;
-        });
-        return false;
-      }
-      return false;
-    });
-
-    this.setState({
-      eventTypes
-    });
-  }
-
-  getAudienceTypes() {
-    let audienceTypes = [];
-    this.state.events.map(eventItem => {
-      if (eventItem.audience) {
-        eventItem.audience.split(', ').map(audienceType => {
-          if (audienceTypes.indexOf(audienceType) === -1)
-            audienceTypes.push(audienceType);
-          return false;
-        });
-        return false;
-      }
-      return false;
-    });
-    this.setState({
-      audienceTypes
-    });
-  }
+  // componentWillUpdate() {
+  //   console.log('will update!!!');
+  //   console.log(this);
+  //   this.setState({
+  //     visibleEvents: getVisibleEvents(
+  //       this.state.events,
+  //       this.state.titleText,
+  //       this.state.addressText,
+  //       this.state.eventTypes
+  //     )
+  //   });
+  // }
 
   componentWillMount() {
     this.getEvents();
   }
 
+  // componentDidUpdate(previousProps, previousState) {
+  //   const self = this;
+  //   let visibleEvents = getVisibleEvents(this);
+
+  //   console.log(getVisibleEvents(this));
+
+  //   console.log(previousProps);
+  //   console.log(previousState);
+  //   console.log(self.state.visibleEvents);
+
+  //   if (self.state.visibleEvents != visibleEvents) {
+  //     console.log('not equal anymore');
+  //     // self.setState({
+  //     //   visibleEvents: visibleEvents
+  //     // });
+  //   }
+  // }
+
   render() {
+    let visibleEvents = [];
+    let filteredCalenderEvents = [];
+    const self = this;
+    const eventsPerPage = 2;
+
+    this.state.events.map(function(event) {
+      if (!searchFilter(self.state.titleText, event.title)) return false;
+      if (!searchFilter(self.state.addressText, event.location)) return false;
+      if (
+        moment(self.state.startDate) > moment(event.startDate) ||
+        moment(self.state.endDate) < moment(event.endDate)
+      )
+        return false;
+      if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type))
+        return false;
+      if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience))
+        return false;
+
+      visibleEvents.push(
+        <div>
+          <CalendarRow
+            event={event}
+            // startDate={event.startDate}
+            // endDate={event.endDate}
+            key={event.uuid + event.startDate}
+          />
+        </div>
+      );
+
+      filteredCalenderEvents.push({
+        title: event.title,
+        uuid: event.uuid,
+        event: event,
+        path: event.path,
+        //allDay: true,
+        start: event.startDate,
+        end: event.endDate
+      });
+    });
+
+    let paginatedEvents = visibleEvents.slice(
+      this.state.activePage * eventsPerPage - eventsPerPage,
+      this.state.activePage * eventsPerPage
+    );
+
     return (
       <div className="content calendar-wrapper container">
         <div className="sp-breadcrumbs" />
@@ -249,16 +271,16 @@ class Calendar extends Component {
 
               {/* Switch button */}
 
-              {/* <div className="col-sm-3 btn-switch">
+              <div className="col-sm-3 btn-switch">
                 <button
                   className="btn btn-primary btn-wcc"
                   onClick={this.handleCalendarViewSwitch}
                 >
                   {this.state.isListViewOn
-                    ? "Switch to calendar view"
-                    : "Switch to list view"}
+                    ? 'Switch to calendar view'
+                    : 'Switch to list view'}
                 </button>
-              </div> */}
+              </div>
             </div>
 
             <MediaQuery maxWidth={767}>
@@ -332,25 +354,48 @@ class Calendar extends Component {
               </div>
 
               <div className="col-sm-9">
-                <CalendarList
-                  events={this.state.events}
-                  eventState={this.state}
-                  activePage={this.state.activePage}
-                  handlePageChange={this.handlePageChange}
-                  handleReset={this.handleReset}
-                  handleVisibleEventsChange={this.handleVisibleEventsChange}
-                  visibleEvents={this.state.visibleEvents}
-                  isListViewOn={this.state.isListViewOn}
-                  history={this.props.history}
-                  location={this.props.location}
-                />
-                {/*<CalendarList
-                events={this.state}
-                handleReset={this.handleReset}
-                history={this.props.history}
-                location={this.props.location}
-                props={this.props}
-              />*/}
+                {this.state.isListViewOn ? (
+                  <div>
+                    {paginatedEvents},
+                    {visibleEvents.length === 0 && (
+                      <p>
+                        No results - please adjust or&nbsp;
+                        <a href="" onClick={this.handleReset}>
+                          reset
+                        </a>{' '}
+                        filters.
+                      </p>
+                    )}
+                    <div className="text-center">
+                      <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={eventsPerPage}
+                        totalItemsCount={visibleEvents.length}
+                        pageRangeDisplayed={eventsPerPage}
+                        onChange={this.handlePageChange.bind(this)}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <CSSTransitionGroup
+                      component="div"
+                      transitionName="row"
+                      transitionAppear={true}
+                      transitionAppearTimeout={250}
+                      transitionLeaveTimeout={250}
+                      transitionEnterTimeout={250}
+                      className="event-row clearfix"
+                    >
+                      <BigCalendar
+                        {...filteredCalenderEvents}
+                        events={filteredCalenderEvents}
+                        onSelectEvent={event => this.history.push(event.path)}
+                        views={['month', 'week', 'day']}
+                      />
+                    </CSSTransitionGroup>
+                  </div>
+                )}
               </div>
             </div>
           </div>
