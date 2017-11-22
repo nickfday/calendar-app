@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { searchFilter, filterMultiSelect } from '../Misc/Helper';
 import * as env from '../../env';
 
 export function APIFetch(path, type) {
   return axios.get(path).then(function(response) {
-    manipulateData(response.data);
+    //manipulateData(response.data);
     if (type == 'list') {
       return {
-        response: response,
+        response: manipulateData(response.data),
         eventTypes: getListData(response.data, 'event_type'),
         audienceTypes: getListData(response.data, 'audience')
       };
@@ -52,46 +53,24 @@ function manipulateData(object) {
     item.path = 'events/' + item.title.replace(/\s+/g, '-').toLowerCase();
   }); // end map
 
-  // Create new items based on date
-
-  // search date_repeat field
-  //split at comma
-  //for each comma create new event
-  // add new evnent to event array
-
-  //get end date
-
   let formattedArray = [];
 
-  object.map(function(item) {
-    item.date_repeat.split(', ').map(function(date) {
+  object.forEach(function(item) {
+    item.date_repeat.split(', ').forEach(function(date, index) {
       let splitDates = [];
-      date.split(' to ').map(function(splitDate) {
+      date.split(' to ').forEach(function(splitDate, index) {
         splitDates.push(splitDate);
-        console.log(splitDate);
+        item.startDate = moment(splitDates[0]);
+        item.endDate = moment(splitDates[1]);
       });
-      console.log(splitDates[0]);
-      console.log(splitDates[1]);
-      console.log(date);
-      formattedArray.push({
-        event: item,
-        startDate: moment(splitDates[0]),
-        endDate: moment(splitDates[1])
-      });
+
+      delete item.date_repeat;
+      formattedArray.push(Object.assign({}, item));
     });
   });
-
   console.log(formattedArray);
 
-  // object.map(function(item) {
-  //   console.log('map audience');
-  //   let eventTypes = [];
-  //   item.audience.split(', ').map(function(j) {
-  //     eventTypes.push(j);
-  //   });
-  //   item.audience = eventTypes;
-  //   console.log(eventTypes);
-  // });
+  return formattedArray;
 }
 
 function stringToArray() {}
