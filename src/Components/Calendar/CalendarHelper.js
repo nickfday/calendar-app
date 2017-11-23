@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import moment from 'moment';
 import { searchFilter, filterMultiSelect } from '../Misc/Helper';
 import * as env from '../../env';
+import moment from 'moment';
 
 export function APIFetch(path, type) {
   return axios.get(path).then(function(response) {
@@ -15,10 +15,15 @@ export function APIFetch(path, type) {
       };
     } else if (type == 'single') {
       return {
-        response: response
+        response: manipulateData(response.data)
+        //singleEvent: fetchSingleEvent(manipulateData(response.data))
       };
     }
   });
+}
+
+function fetchSingleEvent(data) {
+  console.log(data);
 }
 
 function getListData(object, key) {
@@ -34,6 +39,7 @@ function manipulateData(object) {
   // ToDo - Make into one function
   // Create types/audience in state
   console.log('manipulate data');
+  console.log(object);
   object.map(function(item) {
     let eventTypes = [];
     item.event_type.split(', ').map(function(j) {
@@ -48,9 +54,6 @@ function manipulateData(object) {
       });
     }
     item.audience = audienceTypes;
-
-    // Create a pathname
-    item.path = 'events/' + item.title.replace(/\s+/g, '-').toLowerCase();
   }); // end map
 
   let formattedArray = [];
@@ -60,8 +63,15 @@ function manipulateData(object) {
       let splitDates = [];
       date.split(' to ').forEach(function(splitDate, index) {
         splitDates.push(splitDate);
-        item.startDate = moment(splitDates[0]);
-        item.endDate = moment(splitDates[1]);
+        item.startDate = splitDates[0];
+        item.endDate = splitDates[1];
+        item.path =
+          'events/' +
+          item.title.replace(/\s+/g, '-').toLowerCase() +
+          '-' +
+          moment(item.startDate)
+            .format('D M YY')
+            .replace(/\s+/g, '-');
       });
 
       delete item.date_repeat;
