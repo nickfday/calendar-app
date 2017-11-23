@@ -1,15 +1,9 @@
 import React from 'react';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-
 import BSModal from '../Misc/BSModal';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import { DatePanel } from '../Misc/DatePanel';
-
-// export const DemoCalendarSingle = props => {
-//   return <div>Single</div>;
-// };
 
 export const CalendarRow = props => {
   return (
