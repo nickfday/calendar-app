@@ -53,19 +53,21 @@ class CalendarSingle extends Component {
     } else {
       return (
         <div>
-          <CSSTransitionGroup
-            component="div"
-            transitionName="row"
-            transitionAppear={true}
-            transitionAppearTimeout={500}
-            transitionLeaveTimeout={500}
-            transitionEnterTimeout={500}
-            className="event-row clearfix"
-          >
-            <h3>
-              404 - No match for <code>{this.props.location.pathname}</code>
-            </h3>
-          </CSSTransitionGroup>
+          <Loader type="ball-pulse" loaded={this.state.loaded}>
+            <CSSTransitionGroup
+              component="div"
+              transitionName="row"
+              transitionAppear={true}
+              transitionAppearTimeout={500}
+              transitionLeaveTimeout={500}
+              transitionEnterTimeout={500}
+              className="event-row clearfix"
+            >
+              <h3>
+                404 - No match for <code>{this.props.location.pathname}</code>
+              </h3>
+            </CSSTransitionGroup>
+          </Loader>
         </div>
       );
     }
