@@ -4,7 +4,6 @@ import axios from 'axios';
 import Scroll from 'react-scroll';
 import { CalendarRow } from './CalendarRow';
 import moment from 'moment';
-import CalendarList from './CalendarList';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
 import * as env from '../../env';
 import { APIFetch, getVisibleEvents } from './CalendarHelper';
@@ -169,40 +168,9 @@ class Calendar extends Component {
       });
   }
 
-  // componentWillUpdate() {
-  //   console.log('will update!!!');
-  //   console.log(this);
-  //   this.setState({
-  //     visibleEvents: getVisibleEvents(
-  //       this.state.events,
-  //       this.state.titleText,
-  //       this.state.addressText,
-  //       this.state.eventTypes
-  //     )
-  //   });
-  // }
-
   componentWillMount() {
     this.getEvents();
   }
-
-  // componentDidUpdate(previousProps, previousState) {
-  //   const self = this;
-  //   let visibleEvents = getVisibleEvents(this);
-
-  //   console.log(getVisibleEvents(this));
-
-  //   console.log(previousProps);
-  //   console.log(previousState);
-  //   console.log(self.state.visibleEvents);
-
-  //   if (self.state.visibleEvents != visibleEvents) {
-  //     console.log('not equal anymore');
-  //     // self.setState({
-  //     //   visibleEvents: visibleEvents
-  //     // });
-  //   }
-  // }
 
   render() {
     let visibleEvents = [];
