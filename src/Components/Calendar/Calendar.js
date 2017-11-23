@@ -12,8 +12,9 @@ import { searchFilter, filterMultiSelect } from '../Misc/Helper';
 import Pagination from 'react-js-pagination';
 import BigCalendar from 'react-big-calendar';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
+import Loader from 'react-loader';
 
-var Loader = require('react-loader');
+BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class Calendar extends Component {
   constructor(props) {
@@ -193,10 +194,7 @@ class Calendar extends Component {
 
       visibleEvents.push(
         <div>
-          <CalendarRow
-            event={event}
-            key={event.uuid + event.startDate}
-          />
+          <CalendarRow event={event} key={event.uuid + event.startDate} />
         </div>
       );
 
@@ -219,7 +217,6 @@ class Calendar extends Component {
       <div className="content calendar-wrapper container">
         <div className="sp-breadcrumbs" />
         <Loader type="ball-pulse" loaded={this.state.loaded}>
-
           <div className="inner-content">
             <div className="row margin-bottom-20">
               <div className="col-sm-9">
