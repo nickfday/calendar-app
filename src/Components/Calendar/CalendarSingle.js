@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import BSModal from '../Misc/BSModal';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { splitMap } from '../Misc/Helper';
 import { DatePanel } from '../Misc/DatePanel';
 import * as env from '../../env';
 import { APIFetch } from './CalendarHelper';
@@ -38,10 +36,7 @@ class CalendarSingle extends Component {
     }
   }
   render() {
-    console.log(this.props);
     if (this.props.location.state) {
-      // const item = this.props.location.state.events;
-      // console.log(item);
       return (
         <DisplayCalendarSingle
           event={this.props.location.state.events}
@@ -79,7 +74,6 @@ class CalendarSingle extends Component {
 
 function DisplayCalendarSingle(props) {
   const item = props.event;
-  console.log(item);
   return (
     <Loader type="ball-pulse" loaded={props.loaded}>
       <div className="content exercise-list container">
@@ -148,8 +142,6 @@ function DisplayCalendarSingle(props) {
 
               {displayTags(item.event_type, 'event-item')}
               {displayTags(item.audience, 'audience-item')}
-              {/* {splitMap(item.event_type, ', ', 'event-item')} */}
-              <br />
               <div className="clearfix" />
               {/* {splitMap(item.audience, ', ', 'audience-item')} */}
               <div className="clearfix" />
@@ -166,13 +158,15 @@ function DisplayCalendarSingle(props) {
 }
 
 function displayTags(tags, className) {
-  let tagArray = [];
-  console.log('hi');
-  tags.map(function(tag) {
-    console.log(tag);
-    tagArray.push(<div className={className}>{tag}</div>);
+  let tagList = [];
+  tags.forEach(function(tag) {
+    tagList.push(
+      <div key={tag} className={className}>
+        {tag}
+      </div>
+    );
   });
-  return tagArray;
+  return tagList;
 }
 
 export default CalendarSingle;
