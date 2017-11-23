@@ -30,12 +30,11 @@ export function searchFilter(searchVal, itemVal) {
 
 export function filterMultiSelect(selectedTag, itemTag) {
   let matchedTag = [];
-
   Object.keys(selectedTag).map(selectedTagI => {
     //loop all sorted tags
     if (itemTag) {
       itemTag
-        .split(', ')
+        //.split(', ')
         .sort()
         .map(itemTagI => {
           //if selected audience value == tag push onto matched event
@@ -56,27 +55,3 @@ export function filterMultiSelect(selectedTag, itemTag) {
     return true;
   }
 }
-
-//Duplicate handleEvent Date - make into helper function with props
-
-// export function handleEventDate(self) {
-//     //const self = this;
-//     var updatedevents = self.state.fetchEvents.slice();
-//     updatedevents.map(function(i) {
-//       if (i.date_repeat) {
-//         i.splitDates = [];
-//         i.sortedDates = [];
-//         i.splitDates.push(i.date_repeat.split(", "));
-//         i.splitDates[0].map(function(y) {
-//           i.sortedDates.push(y.split(" to "));
-//           return null;
-//         });
-//         return null;
-//       }
-//       return null;
-//     });
-
-//     self.setState(() => ({
-//       fetchEvents: updatedevents
-//     }));
-//   }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class TextBox extends Component {
   handleFilterTextInputChange(e) {
@@ -8,7 +8,7 @@ class TextBox extends Component {
   render() {
     //Prevent Enter from submitting
     function handleKeyPress(e) {
-      if (e.key === "Enter") {
+      if (e.key === 'Enter') {
         e.preventDefault();
       }
     }
