@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Filter from './Filter/Filter';
-import axios from 'axios';
 import Scroll from 'react-scroll';
 import { CalendarRow } from './CalendarRow';
 import moment from 'moment';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
 import * as env from '../../env';
-import { APIFetch, getVisibleEvents } from './CalendarHelper';
+import { APIFetch } from './CalendarHelper';
 import MediaQuery from 'react-responsive';
 import { searchFilter, filterMultiSelect } from '../Misc/Helper';
 import Pagination from 'react-js-pagination';
@@ -148,7 +147,6 @@ class Calendar extends Component {
     const self = this;
     APIFetch(env.API.domain + env.API.endPoint, 'list')
       .then(function(response) {
-        console.log(response);
         self.setState({
           events: response.response,
           loaded: true,
@@ -179,7 +177,7 @@ class Calendar extends Component {
     const self = this;
     const eventsPerPage = 2;
 
-    this.state.events.map(function(event) {
+    this.state.events.forEach(function(event) {
       if (!searchFilter(self.state.titleText, event.title)) return false;
       if (!searchFilter(self.state.addressText, event.location)) return false;
       if (
@@ -193,9 +191,7 @@ class Calendar extends Component {
         return false;
 
       visibleEvents.push(
-        <div>
-          <CalendarRow event={event} key={event.uuid + event.startDate} />
-        </div>
+        <CalendarRow event={event} key={event.uuid + event.startDate} />
       );
 
       filteredCalenderEvents.push({
