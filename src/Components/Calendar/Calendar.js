@@ -175,6 +175,7 @@ class Calendar extends Component {
     let visibleEvents = [];
     let filteredCalenderEvents = [];
     const self = this;
+    console.log(self);
     const eventsPerPage = 2;
 
     this.state.events.forEach(function(event) {
@@ -344,7 +345,8 @@ class Calendar extends Component {
                       <BigCalendar
                         {...filteredCalenderEvents}
                         events={filteredCalenderEvents}
-                        onSelectEvent={event => this.history.push(event.path)}
+                        onSelectEvent={event =>
+                          self.props.history.push(event.path)}
                         views={['month', 'week', 'day']}
                       />
                     </CSSTransitionGroup>
