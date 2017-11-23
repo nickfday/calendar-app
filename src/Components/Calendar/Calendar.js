@@ -195,8 +195,6 @@ class Calendar extends Component {
         <div>
           <CalendarRow
             event={event}
-            // startDate={event.startDate}
-            // endDate={event.endDate}
             key={event.uuid + event.startDate}
           />
         </div>
@@ -207,7 +205,6 @@ class Calendar extends Component {
         uuid: event.uuid,
         event: event,
         path: event.path,
-        //allDay: true,
         start: event.startDate,
         end: event.endDate
       });
@@ -222,10 +219,6 @@ class Calendar extends Component {
       <div className="content calendar-wrapper container">
         <div className="sp-breadcrumbs" />
         <Loader type="ball-pulse" loaded={this.state.loaded}>
-          {/*<div className="sp-head row">
-            <Link to="/" className="go-up icon-arrow-left" />
-            <h1>Events</h1>
-          </div>*/}
 
           <div className="inner-content">
             <div className="row margin-bottom-20">

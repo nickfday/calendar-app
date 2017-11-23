@@ -1,11 +1,11 @@
-import React from "react";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import React from 'react';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import BSModal from "../Misc/BSModal";
-import CSSTransitionGroup from "react-addons-css-transition-group";
-import { Link } from "react-router-dom";
-import moment from "moment";
-import { DatePanel } from "../Misc/DatePanel";
+import BSModal from '../Misc/BSModal';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import { DatePanel } from '../Misc/DatePanel';
 
 // export const DemoCalendarSingle = props => {
 //   return <div>Single</div>;
@@ -23,21 +23,15 @@ export const CalendarRow = props => {
       className="row event-row clearfix"
     >
       <div className="col-xs-3 col-md-2">
-        <DatePanel date={props.startDate} />
+        <DatePanel date={props.event.startDate} />
       </div>
       <div className="event-info col-xs-9 col-md-10">
         <h3>
           <Link
             to={{
-              pathname: `${props.event.path
-                .replace(/\s+/g, "-")
-                .toLowerCase()}?date=${moment(props.startDate).format(
-                "YYYY-MM-DD"
-              )}`,
+              pathname: props.event.path,
               state: {
-                events: props.event,
-                startDate: props.startDate,
-                endDate: props.endDate
+                events: props.event
               }
             }}
           >
@@ -49,7 +43,7 @@ export const CalendarRow = props => {
           <BSModal
             buttonLabel={props.event.location}
             map={
-              "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+              'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' +
               props.event.location
             }
           />
