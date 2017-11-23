@@ -93,10 +93,17 @@
     text-decoration: none;
     color: white;
   }
+  &:last-of-type {
+    clear: both;
+  }
 }
 .audience-item {
   color: white;
   background-color: #8aa8e5;
+}
+
+.event-item + .audience-item {
+  clear: both;
 }
 
 .sp-content .views-widget-filter-field_event_type_tid,
