@@ -2,13 +2,14 @@
   "name": "wcc-calendar-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://calendar.finley-day.com",
+  "homepage": "https://wcc-ce-master.codeenigma.net/events-calendar",
   "dependencies": {
     "axios": "^0.16.1",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
     "node-sass-chokidar": "0.0.3",
     "prop-types": "^15.5.8",
+    "query-string": "^5.0.1",
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-transition-group": "^15.4.2",
@@ -40,12 +41,13 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "npm run watch-css | react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "plugins": ["react"]
+  "plugins": [
+    "react"
+  ]
 }

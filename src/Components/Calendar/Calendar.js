@@ -12,6 +12,7 @@ import Pagination from 'react-js-pagination';
 import BigCalendar from 'react-big-calendar';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import Loader from 'react-loader';
+import queryString from 'query-string';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
@@ -169,14 +170,42 @@ class Calendar extends Component {
 
   componentWillMount() {
     this.getEvents();
+    this.getQueryStrings();
+  }
+
+  getQueryStrings() {
+    let search = queryString.parse(this.props.location.search);
+    console.log(search);
+
+    for (let key in search) {
+      if (key === 'event_type') {
+        this.setState({
+          selectedEventTypes: [
+            {
+              label: search[key].toString(),
+              value: search[key].toString()
+            }
+          ]
+        });
+      }
+      if (key === 'audience') {
+        this.setState({
+          selectedAudienceTypes: [
+            {
+              label: search[key].toString(),
+              value: search[key].toString()
+            }
+          ]
+        });
+      }
+    }
   }
 
   render() {
     let visibleEvents = [];
     let filteredCalenderEvents = [];
     const self = this;
-    console.log(self);
-    const eventsPerPage = 2;
+    const eventsPerPage = 10;
 
     this.state.events.forEach(function(event) {
       if (!searchFilter(self.state.titleText, event.title)) return false;
