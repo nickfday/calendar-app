@@ -52,7 +52,7 @@ function manipulateData(object) {
         item.startDate = splitDates[0];
         item.endDate = splitDates[1];
         item.path =
-          'events/' +
+          '/events/' +
           item.title.replace(/\s+/g, '-').toLowerCase() +
           '-' +
           moment(item.startDate)
