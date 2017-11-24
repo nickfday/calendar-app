@@ -28,7 +28,7 @@ class CalendarSingle extends Component {
         console.log(self.props.location.pathname);
         self.setState({
           events: response.response.find(
-            event => event.path === self.props.location.pathname.slice(1)
+            event => event.path === self.props.location.pathname
           ),
           loaded: true
         });
