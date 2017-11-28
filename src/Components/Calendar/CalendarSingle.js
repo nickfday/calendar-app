@@ -142,8 +142,8 @@ function DisplayCalendarSingle(props) {
                 </div>
               )}
 
-              {displayTags(item.event_type, 'event-item')}
-              {displayTags(item.audience, 'audience-item')}
+              {displayTags(item.event_type, 'event-item', 'event_type')}
+              {displayTags(item.audience, 'audience-item', 'audience')}
               <div className="clearfix" />
               {/* {splitMap(item.audience, ', ', 'audience-item')} */}
               <div className="clearfix" />
@@ -159,12 +159,14 @@ function DisplayCalendarSingle(props) {
   );
 }
 
-function displayTags(tags, className) {
+function displayTags(tags, className, type) {
   let tagList = [];
+  console.log(type);
   tags.forEach(function(tag) {
     tagList.push(
       <div key={tag} className={className}>
-        {tag}
+        <Link to={`../?${type}=${tag}`}>{tag}</Link>
+        {/* <Link to={`../?${type}=${tag.replace(/\s+/g, '-').toLowerCase()}`}> */}
       </div>
     );
   });
