@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import TextBox from "./TextBox";
-import MySelect from "./MySelect";
-import DatePicker from "react-datepicker";
+import React, { Component } from 'react';
+import TextBox from './TextBox';
+import MySelect from './MySelect';
+import DatePicker from 'react-datepicker';
 
 //import moment from 'moment';
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
 class Filter extends Component {
   render() {
@@ -13,12 +13,12 @@ class Filter extends Component {
         <TextBox
           filterText={this.props.titleText}
           onFilterTextInput={this.props.onTitleTextInput}
-          placeholder="Search by name"
+          placeholder="Filter by name"
         />
         <TextBox
           filterText={this.props.addressText}
           onFilterTextInput={this.props.onAddressTextInput}
-          placeholder="Search by address"
+          placeholder="Filter by address"
         />
 
         <div className="form-group">
@@ -32,7 +32,7 @@ class Filter extends Component {
             placeholderText="Start date"
             dateFormat="DD/MM/YYYY"
             isClearable={true}
-            todayButton={"Today"}
+            todayButton={'Today'}
           />
         </div>
 
@@ -47,7 +47,7 @@ class Filter extends Component {
             placeholderText="End date"
             dateFormat="DD/MM/YYYY"
             isClearable={true}
-            todayButton={"Today"}
+            todayButton={'Today'}
           />
         </div>
 
