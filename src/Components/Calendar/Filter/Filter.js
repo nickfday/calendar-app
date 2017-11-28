@@ -78,6 +78,14 @@ class Filter extends Component {
         <button
           onClick={this.props.handleReset}
           className="btn btn-primary btn-wcc"
+          disabled={
+            !this.props.titleText &
+            !this.props.addressText &
+            !this.props.startDate &
+            !this.props.endDate &
+            !this.props.selectedEventTypes &
+            !this.props.selectedAudienceTypes
+          }
         >
           Reset
         </button>
