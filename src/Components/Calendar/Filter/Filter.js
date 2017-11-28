@@ -13,12 +13,12 @@ class Filter extends Component {
         <TextBox
           filterText={this.props.titleText}
           onFilterTextInput={this.props.onTitleTextInput}
-          placeholder="Filter by name"
+          placeholder="Filter by event name"
         />
         <TextBox
           filterText={this.props.addressText}
           onFilterTextInput={this.props.onAddressTextInput}
-          placeholder="Filter by address"
+          placeholder="Filter by location"
         />
 
         <div className="form-group">
