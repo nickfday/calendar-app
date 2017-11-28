@@ -16,6 +16,14 @@ import queryString from 'query-string';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
+// extend BigCalendar to manipulate DOM
+class EventBigCalendar extends BigCalendar {
+  componentDidMount() {
+    const calendarButtons = document.querySelectorAll('.rbc-btn-group button');
+    calendarButtons[1].textContent = 'Previous';
+  }
+}
+
 class Calendar extends Component {
   constructor(props) {
     super(props);
@@ -371,7 +379,7 @@ class Calendar extends Component {
                       transitionEnterTimeout={250}
                       className="event-row clearfix"
                     >
-                      <BigCalendar
+                      <EventBigCalendar
                         {...filteredCalenderEvents}
                         events={filteredCalenderEvents}
                         onSelectEvent={event =>
