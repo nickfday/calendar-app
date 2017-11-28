@@ -13,7 +13,7 @@ class Filter extends Component {
         <TextBox
           filterText={this.props.titleText}
           onFilterTextInput={this.props.onTitleTextInput}
-          placeholder="Filter by event name"
+          placeholder="Filter by name"
         />
         <TextBox
           filterText={this.props.addressText}
@@ -58,7 +58,7 @@ class Filter extends Component {
           data={this.props.eventTypes}
           selectedItems={this.props.calenderState.selectedEventTypes}
           handleSelectedItem={this.props.handleSelectedEventTypes}
-          placeholder="Select event type"
+          placeholder="Event type"
           multiSelect={true}
           className="form-group event-select"
         />
@@ -70,7 +70,7 @@ class Filter extends Component {
           data={this.props.calenderState.audienceTypes}
           selectedItems={this.props.calenderState.selectedAudienceTypes}
           handleSelectedItem={this.props.handleSelectedAudienceTypes}
-          placeholder="Select audience type"
+          placeholder="Audience type"
           className="form-group"
           multiSelect={true}
         />
