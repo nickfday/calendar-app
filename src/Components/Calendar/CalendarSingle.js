@@ -99,7 +99,7 @@ function DisplayCalendarSingle(props) {
                 <div className="col-xs-9">
                   <h1>{item.title}</h1>
                 </div>
-                <div className="col-xs-3">
+                <div className="col-xs-3 no-height">
                   <DatePanel date={item.startDate} />
                 </div>
               </div>
