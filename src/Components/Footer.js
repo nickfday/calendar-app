@@ -1,12 +1,14 @@
-import React from "react";
-import "./app.css";
-import "./footer.css";
+import React from 'react';
+import './app.css';
+import './footer.css';
 
 function Footer(/*props*/) {
   return (
     <footer>
       <div className="pre-cont">
-        <div className="container">add google translate</div>
+        <div className="container text-right">
+          <div id="google_translate_element" />
+        </div>
       </div>
       <div className="main">
         <div className="container">
