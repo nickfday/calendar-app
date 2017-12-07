@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Filter from './Filter/Filter';
-import Scroll from 'react-scroll';
+import {animateScroll} from 'react-scroll';
 import { CalendarRow } from './CalendarRow';
 import moment from 'moment';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
@@ -65,8 +65,7 @@ class Calendar extends Component {
     this.setState({
       activePage: pageNo
     });
-    //window.scrollTo(0, 0);
-    Scroll.animateScroll.scrollToTop(10);
+    animateScroll.scrollToTop(10);
   }
 
   handleCalendarViewSwitch() {
@@ -383,7 +382,8 @@ class Calendar extends Component {
                         {...filteredCalenderEvents}
                         events={filteredCalenderEvents}
                         onSelectEvent={event =>
-                          self.props.history.push(event.path)}
+                          self.props.history.push(event.path)
+                        }
                         views={['month', 'week', 'day']}
                       />
                     </CSSTransitionGroup>
