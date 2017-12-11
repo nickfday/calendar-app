@@ -7,7 +7,7 @@ function Footer(/*props*/) {
     <footer>
       <div className="pre-cont">
         <div className="container text-right">
-          <div id="google_translate_element" />
+          {/* <div id="google_translate_element" /> */}
         </div>
       </div>
       <div className="main">
