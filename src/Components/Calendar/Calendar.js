@@ -182,8 +182,6 @@ class Calendar extends Component {
 
   getQueryStrings() {
     let search = queryString.parse(this.props.location.search);
-    console.log(search);
-
     for (let key in search) {
       if (key === 'event_type') {
         this.setState({
@@ -205,6 +203,11 @@ class Calendar extends Component {
           ]
         });
       }
+      if (key === 'location') {
+        this.setState({
+          addressText: search[key].toString()
+        });
+      }
     }
   }
 
@@ -219,15 +222,13 @@ class Calendar extends Component {
       if (!searchFilter(self.state.addressText, event.location)) return false;
       if (
         moment(self.state.startDate) > moment(event.startDate) ||
-        moment(self.state.endDate) < moment(event.endDate)
+    moment(self.state.endDate) < moment(event.endDate)
       )
         return false;
       if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type))
         return false;
       if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience))
         return false;
-
-      console.log(event);
 
       visibleEvents.push(
         <CalendarRow event={event} key={event.uuid + event.startDate} />
@@ -258,7 +259,7 @@ class Calendar extends Component {
                 <h1>Events</h1>
                 <p className="">
                   {/* Make Editable via Drupal */}
-                  Find out about upcoming events in Westminster.
+									Find out about upcoming events in Westminster.
                 </p>
               </div>
 
@@ -282,7 +283,7 @@ class Calendar extends Component {
                   bsStyle="info"
                   onClick={() => this.setState({ open: !this.state.open })}
                 >
-                  Filters&nbsp;
+									Filters&nbsp;
                   {!this.state.open && <Glyphicon glyph="plus" />}
                   {this.state.open && <Glyphicon glyph="minus" />}
                 </Button>
@@ -352,11 +353,11 @@ class Calendar extends Component {
                     {paginatedEvents},
                     {visibleEvents.length === 0 && (
                       <p>
-                        No results - please adjust or&nbsp;
+												No results - please adjust or&nbsp;
                         <a href="" onClick={this.handleReset}>
-                          reset
+													reset
                         </a>{' '}
-                        filters.
+												filters.
                       </p>
                     )}
                     <div className="text-center">
