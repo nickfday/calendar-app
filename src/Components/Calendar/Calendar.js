@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Filter from './Filter/Filter';
-import {animateScroll} from 'react-scroll';
+import { animateScroll } from 'react-scroll';
 import { CalendarRow } from './CalendarRow';
 import moment from 'moment';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
@@ -226,6 +226,8 @@ class Calendar extends Component {
         return false;
       if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience))
         return false;
+
+      console.log(event);
 
       visibleEvents.push(
         <CalendarRow event={event} key={event.uuid + event.startDate} />
