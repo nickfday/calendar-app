@@ -19,13 +19,9 @@ class CalendarSingle extends Component {
   componentWillMount() {
     const self = this;
     if (typeof this.props.location.state === 'undefined') {
-      console.log('FETCH PLZ');
-
       APIFetch(env.API.domain + env.API.endPoint, 'single').then(function(
         response
       ) {
-        console.log(response);
-        console.log(self.props.location.pathname);
         self.setState({
           events: response.response.find(
             event => event.path === self.props.location.pathname
@@ -64,7 +60,7 @@ class CalendarSingle extends Component {
               className="event-row clearfix"
             >
               <h3>
-                404 - No match for <code>{this.props.location.pathname}</code>
+								404 - No match for <code>{this.props.location.pathname}</code>
               </h3>
             </CSSTransitionGroup>
           </Loader>
@@ -82,7 +78,7 @@ function DisplayCalendarSingle(props) {
         <div className="inner-content">
           <div className="wcc-breadcrumb">
             <a href={env.API.domain}>Home</a>
-            &nbsp;>&nbsp;
+						&nbsp;>&nbsp;
             <Link to="/">All events</Link>
           </div>
           <CSSTransitionGroup
@@ -109,7 +105,7 @@ function DisplayCalendarSingle(props) {
                   buttonLabel={item.location}
                   map={
                     'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' +
-                    item.location
+          item.location
                   }
                 />
               )}
@@ -161,7 +157,6 @@ function DisplayCalendarSingle(props) {
 
 function displayTags(tags, className, type) {
   let tagList = [];
-  console.log(type);
   tags.forEach(function(tag) {
     tagList.push(
       <div key={tag} className={className}>
