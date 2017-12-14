@@ -37,7 +37,7 @@ class Calendar extends Component {
       audienceTypes: [],
       selectedAudienceTypes: '',
       selectedEventTypes: '',
-      startDate: null,
+      startDate: moment(),
       endDate: null,
       isListViewOn: true,
       visibleEvents: []
