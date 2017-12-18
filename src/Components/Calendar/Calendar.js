@@ -350,7 +350,7 @@ class Calendar extends Component {
               <div className="col-sm-9">
                 {this.state.isListViewOn ? (
                   <div>
-                    {paginatedEvents},
+                    {paginatedEvents}
                     {visibleEvents.length === 0 && (
                       <p>
 												No results - please adjust or&nbsp;
