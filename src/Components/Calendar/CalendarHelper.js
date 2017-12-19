@@ -1,9 +1,9 @@
 import axios from 'axios';
 import moment from 'moment';
+import _ from 'lodash';
 
 export function APIFetch(path, type) {
   return axios.get(path).then(function(response) {
-    //manipulateData(response.data);
     if (type === 'list') {
       return {
         response: manipulateData(response.data),
@@ -13,7 +13,6 @@ export function APIFetch(path, type) {
     } else if (type === 'single') {
       return {
         response: manipulateData(response.data)
-        //singleEvent: fetchSingleEvent(manipulateData(response.data))
       };
     }
   });
@@ -52,19 +51,19 @@ function manipulateData(object) {
         item.startDate = splitDates[0];
         item.endDate = splitDates[1];
         item.path =
-          '/events/' +
-          item.title.replace(/\s+/g, '-').toLowerCase() +
-          '-' +
-          moment(item.startDate)
-            .format('D M YY')
-            .replace(/\s+/g, '-');
+					'/events/' +
+					item.title.replace(/\s+/g, '-').toLowerCase() +
+					'-' +
+					moment(item.startDate)
+					  .format('D M YY')
+					  .replace(/\s+/g, '-');
       });
 
       delete item.date_repeat;
       formattedArray.push(Object.assign({}, item));
     });
   });
-  return formattedArray;
+  return _.sortBy(formattedArray, 'startDate');
 }
 
 // Generates a list of event/audience types so events can be filtered
