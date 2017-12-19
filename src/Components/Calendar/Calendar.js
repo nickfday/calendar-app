@@ -222,7 +222,7 @@ class Calendar extends Component {
       if (!searchFilter(self.state.addressText, event.location)) return false;
       if (
         moment(self.state.startDate) > moment(event.startDate) ||
-    moment(self.state.endDate) < moment(event.endDate)
+				moment(self.state.endDate) < moment(event.endDate)
       )
         return false;
       if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type))
@@ -265,7 +265,7 @@ class Calendar extends Component {
 
               {/* Switch button */}
 
-              <div className="col-sm-3 btn-switch">
+              {/* <div className="col-sm-3 btn-switch">
                 <button
                   className="btn btn-primary btn-wcc"
                   onClick={this.handleCalendarViewSwitch}
@@ -274,7 +274,8 @@ class Calendar extends Component {
                     ? 'Switch to calendar view'
                     : 'Switch to list view'}
                 </button>
-              </div>
+              </div> */}
+              {/* End Switch button */}
             </div>
 
             <MediaQuery maxWidth={767}>
