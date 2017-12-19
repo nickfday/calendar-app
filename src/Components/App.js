@@ -6,10 +6,13 @@ import Footer from './Footer';
 import Calendar from './Calendar/Calendar';
 import CalendarSingle from './Calendar/CalendarSingle';
 
+/* polyfills.js */
+import 'core-js/fn/object/keys.js';
+
 const NoMatch = ({ location }) => (
   <div className="container content">
     <h3>
-      404- No match for <code>{location.pathname}</code>
+			404- No match for <code>{location.pathname}</code>
     </h3>
   </div>
 );
@@ -17,7 +20,7 @@ const NoMatch = ({ location }) => (
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename="/events-calendar">
         <div>
           {<Layout />}
           <Switch>
