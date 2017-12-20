@@ -76,11 +76,11 @@ function DisplayCalendarSingle(props) {
     <Loader type="ball-pulse" loaded={props.loaded}>
       <div className="content exercise-list container">
         <div className="inner-content">
-          <div className="wcc-breadcrumb">
+          {/* <div className="wcc-breadcrumb">
             <a href={env.API.domain}>Home</a>
 						&nbsp;>&nbsp;
             <Link to="/">All events</Link>
-          </div>
+          </div> */}
           <CSSTransitionGroup
             component="div"
             transitionName="row"
@@ -105,7 +105,7 @@ function DisplayCalendarSingle(props) {
                   buttonLabel={item.location}
                   map={
                     'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' +
-          item.location
+										item.location
                   }
                 />
               )}
