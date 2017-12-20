@@ -7,6 +7,9 @@ import Calendar from './Calendar/Calendar';
 import CalendarSingle from './Calendar/CalendarSingle';
 
 /* polyfills.js */
+import 'core-js/fn/array/for-each.js';
+import 'core-js/fn/array/find.js';
+import 'core-js/fn/object/assign.js';
 import 'core-js/fn/object/keys.js';
 
 const NoMatch = ({ location }) => (
