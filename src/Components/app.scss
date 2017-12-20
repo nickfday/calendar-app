@@ -6,111 +6,111 @@ $color-white: #ffffff;
 /* --- start icon fonts */
 
 @font-face {
-  font-family: "wcc";
-  src: url("../assets/fonts/wcc/wcc.eot");
-  src: url("../assets/fonts/wcc/wcc.eot?#iefix") format("embedded-opentype"),
-    url("../assets/fonts/wcc/wcc.ttf") format("truetype"),
-    url("../assets/fonts/wcc/wcc.woff") format("woff"),
-    url("../assets/fonts/wcc/wcc.svg#wcc") format("svg");
-  font-weight: normal;
-  font-style: normal;
+	font-family: "wcc";
+	src: url("../assets/fonts/wcc/wcc.eot");
+	src: url("../assets/fonts/wcc/wcc.eot?#iefix") format("embedded-opentype"),
+		url("../assets/fonts/wcc/wcc.ttf") format("truetype"),
+		url("../assets/fonts/wcc/wcc.woff") format("woff"),
+		url("../assets/fonts/wcc/wcc.svg#wcc") format("svg");
+	font-weight: normal;
+	font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  @font-face {
-    font-family: "wcc";
-    src: url("../assets/fonts/wcc/wcc.svg#wcc") format("svg");
-    font-weight: normal;
-    font-style: normal;
-  }
+	@font-face {
+		font-family: "wcc";
+		src: url("../assets/fonts/wcc/wcc.svg#wcc") format("svg");
+		font-weight: normal;
+		font-style: normal;
+	}
 }
 
 .top-bar .logo-wrap {
-  left: -10px;
-  float: left;
-  margin-bottom: 20px;
+	left: -10px;
+	float: left;
+	margin-bottom: 20px;
 }
 
 .top-bar .logo {
-  display: inline-block;
-  font-size: 36px;
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-  left: -10px;
+	display: inline-block;
+	font-size: 36px;
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	left: -10px;
 }
 
 .icon-logo:before,
 .icon-brand-logo:before {
-  content: "\e62a";
-  font-family: "wcc";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	content: "\e62a";
+	font-family: "wcc";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 html,
 #root {
-  background: #f3f4ff;
-  //background: #fff;
+	background: #f3f4ff;
+	//background: #fff;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 
 h1 {
-  margin-top: 40px;
+	margin-top: 40px;
 }
 
 h2 {
-  color: #2457b5;
-  font-size: 24px;
+	color: #2457b5;
+	font-size: 24px;
 }
 
 h3 {
-  color: #2457b5;
-  font-size: 18px;
+	color: #2457b5;
+	font-size: 18px;
 }
 
 .wcc-link {
-  color: #0b2165;
-  text-decoration: underline;
+	color: #0b2165;
+	text-decoration: underline;
 }
 
 .wcc-breadcrumb {
-  clear: both;
-  a {
-    color: #292b36;
-    font-size: 13px;
-    text-decoration: none;
-  }
+	clear: both;
+	a {
+		color: #292b36;
+		font-size: 13px;
+		text-decoration: none;
+	}
 }
 
 .btn-wcc {
-  background: #528dcf !important;
-  background-image: linear-gradient(#7ba3cf, #1d61ad) !important;
-  box-shadow: 1px 1px 3px 0 #1c1c1c;
-  border: 1px solid #1a579b;
-  border-radius: 5px;
+	background: #528dcf !important;
+	background-image: linear-gradient(#7ba3cf, #1d61ad) !important;
+	box-shadow: 1px 1px 3px 0 #1c1c1c;
+	border: 1px solid #1a579b;
+	border-radius: 5px;
 }
 
 .flex-end {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
 }
 
 .margin-top-10 {
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
 .margin-bottom-20 {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 // .sk-spinner {
@@ -119,148 +119,149 @@ h3 {
 
 .row-appear,
 .row-enter {
-  opacity: 0.01;
+	opacity: 0.01;
 }
 
 .row-appear.row-appear-active,
 .row-enter.row-enter-active {
-  opacity: 1;
-  transition: opacity 0.5s ease-in;
-  .sk-spinner {
-    display: block;
-  }
+	opacity: 1;
+	transition: opacity 0.5s ease-in;
+	.sk-spinner {
+		display: block;
+	}
 }
 
 .row-leave {
-  opacity: 1;
+	opacity: 1;
 }
 
 .row-leave.row-leave-active {
-  opacity: 0.01;
-  //transition: opacity 2000ms ease-in;
+	opacity: 0.01;
+	//transition: opacity 2000ms ease-in;
 }
 
 .NavigationItem {
-  color: #fff;
+	color: #fff;
 }
 
 .content {
-  //margin-top: 60px;
-  min-height: 800px;
+	//margin-top: 60px;
+	min-height: 800px;
 }
 
 .sticky {
-  position: fixed;
+	position: fixed;
 }
 
 a.active {
-  color: #fff !important;
-  cursor: default;
-  text-decoration: underline;
+	color: #fff !important;
+	cursor: default;
+	text-decoration: underline;
 }
 
 nav form {
-  padding-top: 8px;
+	padding-top: 8px;
 }
 
 nav input {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 .is-current {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .rbc-calendar {
-  min-height: 393px;
+	//min-height: 405px;
+	height: 405px !important;
 }
 
 .col-sm-right {
-  clear: both;
+	clear: both;
 }
 
 .btn-switch {
-  position: absolute;
-  right: 0;
-  margin-top: 20px;
+	position: absolute;
+	right: 0;
+	margin-top: 20px;
 }
 
 //Bootstrap
 
 .mobile .panel {
-  border: none;
+	border: none;
 }
 
 .mobile .panel .panel-collapse.collapse.in,
 .mobile .panel .panel-collapse.collapsing {
-  //border: 1px;
-  border: 1px solid #bce8f1;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	//border: 1px;
+	border: 1px solid #bce8f1;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .panel .panel-heading a {
-  display: block;
-  cursor: pointer;
-  width: 100%;
+	display: block;
+	cursor: pointer;
+	width: 100%;
 }
 
 .btn-info,
 .panel-info > .panel-heading {
-  background-color: $color-dark-blue;
-  color: $color-grey;
+	background-color: $color-dark-blue;
+	color: $color-grey;
 }
 
 .date-info {
-  margin-top: 40px;
+	margin-top: 40px;
 }
 
 //Media Queries
 
 @media screen and (min-width: 768px) {
-  h1 {
-    margin-top: 0;
-  }
-  .date-info {
-    margin-top: 0;
-  }
-  .inner-content {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-  .btn-switch {
-    text-align: right;
-    position: static;
-  }
-  .col-sm-right {
-    clear: none;
-    float: right;
-  }
+	h1 {
+		margin-top: 0;
+	}
+	.date-info {
+		margin-top: 0;
+	}
+	.inner-content {
+		padding-left: 70px;
+		padding-right: 70px;
+	}
+	.btn-switch {
+		text-align: right;
+		position: static;
+	}
+	.col-sm-right {
+		clear: none;
+		float: right;
+	}
 }
 
 .react-datepicker {
-  font-size: 1.3rem !important;
+	font-size: 1.3rem !important;
 }
 
 .react-datepicker__current-month {
-  font-size: 1.5rem !important;
+	font-size: 1.5rem !important;
 }
 
 .react-datepicker__header {
-  padding-top: 6px !important;
+	padding-top: 6px !important;
 }
 
 .react-datepicker__navigation {
-  top: 13px !important;
+	top: 13px !important;
 }
 
 .react-datepicker__day-name,
 .react-datepicker__day {
-  margin: 0.5rem !important;
+	margin: 0.5rem !important;
 }
 
 // Helper Classes
 
 .no-height {
-  height: 0;
+	height: 0;
 }
