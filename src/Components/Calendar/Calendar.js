@@ -49,9 +49,7 @@ class Calendar extends Component {
     this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
     this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
     this.handleAudienceInput = this.handleAudienceInput.bind(this);
-    this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(
-      this
-    );
+    this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(this);
     this.handleStartDate = this.handleStartDate.bind(this);
     this.handleEndDate = this.handleEndDate.bind(this);
 
@@ -220,34 +218,25 @@ class Calendar extends Component {
     this.state.events.forEach(function(event) {
       if (!searchFilter(self.state.titleText, event.title)) return false;
       if (!searchFilter(self.state.addressText, event.location)) return false;
-      if (
-        moment(self.state.startDate) > moment(event.startDate) ||
-				moment(self.state.endDate) < moment(event.endDate)
-      )
-        return false;
-      if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type))
-        return false;
-      if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience))
-        return false;
+      if (moment(self.state.startDate) > moment(event.startDate) || moment(self.state.endDate) < moment(event.endDate)) return false;
+      if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type)) return false;
+      if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience)) return false;
 
-      visibleEvents.push(
-        <CalendarRow event={event} key={event.uuid + event.startDate} />
-      );
+      visibleEvents.push(<CalendarRow event={event} key={event.uuid + event.startDate} />);
 
       filteredCalenderEvents.push({
         title: event.title,
+        id: event.uuid,
         uuid: event.uuid,
         event: event,
         path: event.path,
-        start: event.startDate,
-        end: event.endDate
+        start: moment(event.startDate),
+        end: moment(event.endDate)
       });
+      console.log(filteredCalenderEvents);
     });
 
-    let paginatedEvents = visibleEvents.slice(
-      this.state.activePage * eventsPerPage - eventsPerPage,
-      this.state.activePage * eventsPerPage
-    );
+    let paginatedEvents = visibleEvents.slice(this.state.activePage * eventsPerPage - eventsPerPage, this.state.activePage * eventsPerPage);
 
     return (
       <div className="content calendar-wrapper container">
@@ -259,32 +248,24 @@ class Calendar extends Component {
                 <h1>Events</h1>
                 <p className="">
                   {/* Make Editable via Drupal */}
-									Find out about upcoming events in Westminster.
+                  Find out about upcoming events in Westminster.
                 </p>
               </div>
 
               {/* Switch button */}
 
-              {/* <div className="col-sm-3 btn-switch">
-                <button
-                  className="btn btn-primary btn-wcc"
-                  onClick={this.handleCalendarViewSwitch}
-                >
-                  {this.state.isListViewOn
-                    ? 'Switch to calendar view'
-                    : 'Switch to list view'}
+              <div className="col-sm-3 btn-switch">
+                <button className="btn btn-primary btn-wcc" onClick={this.handleCalendarViewSwitch}>
+                  {this.state.isListViewOn ? 'Switch to calendar view' : 'Switch to list view'}
                 </button>
-              </div> */}
+              </div>
               {/* End Switch button */}
             </div>
 
             <MediaQuery maxWidth={767}>
               <div className="mobile">
-                <Button
-                  bsStyle="info"
-                  onClick={() => this.setState({ open: !this.state.open })}
-                >
-									Filters&nbsp;
+                <Button bsStyle="info" onClick={() => this.setState({ open: !this.state.open })}>
+                  Filters&nbsp;
                   {!this.state.open && <Glyphicon glyph="plus" />}
                   {this.state.open && <Glyphicon glyph="minus" />}
                 </Button>
@@ -302,9 +283,7 @@ class Calendar extends Component {
                     audienceTypes={this.state.audience}
                     handleSelectedEventTypes={this.handleSelectedEventTypes}
                     selectedEventTypes={this.state.selectedEventTypes}
-                    handleSelectedAudienceTypes={
-                      this.handleSelectedAudienceTypes
-                    }
+                    handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
                     selectedAudienceTypes={this.state.selectedAudienceTypes}
                     handleReset={this.handleReset}
                     startDate={this.state.startDate}
@@ -333,9 +312,7 @@ class Calendar extends Component {
                       audienceTypes={this.state.audience}
                       handleSelectedEventTypes={this.handleSelectedEventTypes}
                       selectedEventTypes={this.state.selectedEventTypes}
-                      handleSelectedAudienceTypes={
-                        this.handleSelectedAudienceTypes
-                      }
+                      handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
                       selectedAudienceTypes={this.state.selectedAudienceTypes}
                       handleReset={this.handleReset}
                       startDate={this.state.startDate}
@@ -354,11 +331,11 @@ class Calendar extends Component {
                     {paginatedEvents}
                     {visibleEvents.length === 0 && (
                       <p>
-												No results - please adjust or&nbsp;
+                        No results - please adjust or&nbsp;
                         <a href="" onClick={this.handleReset}>
-													reset
+                          reset
                         </a>{' '}
-												filters.
+                        filters.
                       </p>
                     )}
                     <div className="text-center">
@@ -385,9 +362,7 @@ class Calendar extends Component {
                       <EventBigCalendar
                         {...filteredCalenderEvents}
                         events={filteredCalenderEvents}
-                        onSelectEvent={event =>
-                          self.props.history.push(event.path)
-                        }
+                        onSelectEvent={event => self.props.history.push(event.path)}
                         views={['month', 'week', 'day']}
                       />
                     </CSSTransitionGroup>
