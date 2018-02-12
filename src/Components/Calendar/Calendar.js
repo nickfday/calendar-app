@@ -233,7 +233,6 @@ class Calendar extends Component {
         start: moment(event.startDate),
         end: moment(event.endDate)
       });
-      console.log(filteredCalenderEvents);
     });
 
     let paginatedEvents = visibleEvents.slice(this.state.activePage * eventsPerPage - eventsPerPage, this.state.activePage * eventsPerPage);
