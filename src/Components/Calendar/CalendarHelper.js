@@ -27,9 +27,11 @@ function manipulateData(object) {
   // Create types/audience in state
   object.forEach(function(item) {
     let eventTypes = [];
-    item.event_type.split(', ').forEach(function(j) {
-      eventTypes.push(j);
-    });
+    if (item.event_types) {
+      item.event_type.split(', ').forEach(function(j) {
+        eventTypes.push(j);
+      });
+    }
     item.event_type = eventTypes;
 
     let audienceTypes = [];
@@ -51,12 +53,12 @@ function manipulateData(object) {
         item.startDate = splitDates[0];
         item.endDate = splitDates[1];
         item.path =
-					'/events/' +
-					item.title.replace(/\s+/g, '-').toLowerCase() +
-					'-' +
-					moment(item.startDate)
-					  .format('D M YY')
-					  .replace(/\s+/g, '-');
+          '/events/' +
+          item.title.replace(/\s+/g, '-').toLowerCase() +
+          '-' +
+          moment(item.startDate)
+            .format('D M YY')
+            .replace(/\s+/g, '-');
       });
 
       delete item.date_repeat;
