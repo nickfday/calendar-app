@@ -19,13 +19,10 @@ class CalendarSingle extends Component {
   componentWillMount() {
     const self = this;
     if (typeof this.props.location.state === 'undefined') {
-      APIFetch(env.API.domain + env.API.endPoint, 'single').then(function(
-        response
-      ) {
+      APIFetch(env.API.domain + env.API.endPoint, 'single').then(function(response) {
+        console.log(response.response);
         self.setState({
-          events: response.response.find(
-            event => event.path === self.props.location.pathname
-          ),
+          events: response.response.find(event => event.path === self.props.location.pathname),
           loaded: true
         });
       });
@@ -33,19 +30,9 @@ class CalendarSingle extends Component {
   }
   render() {
     if (this.props.location.state) {
-      return (
-        <DisplayCalendarSingle
-          event={this.props.location.state.events}
-          loaded={true}
-        />
-      );
+      return <DisplayCalendarSingle event={this.props.location.state.events} loaded={true} />;
     } else if (this.state.events) {
-      return (
-        <DisplayCalendarSingle
-          event={this.state.events}
-          loaded={this.state.loaded}
-        />
-      );
+      return <DisplayCalendarSingle event={this.state.events} loaded={this.state.loaded} />;
     } else {
       return (
         <div>
@@ -60,7 +47,7 @@ class CalendarSingle extends Component {
               className="event-row clearfix"
             >
               <h3>
-								404 - No match for <code>{this.props.location.pathname}</code>
+                404 - No match for <code>{this.props.location.pathname}</code>
               </h3>
             </CSSTransitionGroup>
           </Loader>
@@ -103,16 +90,12 @@ function DisplayCalendarSingle(props) {
               {item.location && (
                 <BSModal
                   buttonLabel={item.location}
-                  map={
-                    'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' +
-										item.location
-                  }
+                  map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' + item.location}
                 />
               )}
               <div className="clearfix" />
               <p>
-                {moment(item.startDate).format('h:mma')} to{' '}
-                {item.endDate && moment(item.endDate).format('h:mma')}
+                {moment(item.startDate).format('h:mma')} to {item.endDate && moment(item.endDate).format('h:mma')}
               </p>
               <div className="clearfix" />
               {/* How to Book */}

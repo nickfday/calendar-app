@@ -26,6 +26,7 @@ function manipulateData(object) {
   // ToDo - Make into one function
   // Create types/audience in state
   object.forEach(function(item) {
+    item.url_alias = item.url_alias.substr(7);
     let eventTypes = [];
     if (item.event_types) {
       item.event_type.split(', ').forEach(function(j) {
@@ -54,7 +55,7 @@ function manipulateData(object) {
         item.endDate = splitDates[1];
         item.path =
           '/events/' +
-          item.title.replace(/\s+/g, '-').toLowerCase() +
+          item.url_alias +
           '-' +
           moment(item.startDate)
             .format('D M YY')
@@ -66,6 +67,11 @@ function manipulateData(object) {
     });
   });
   return _.sortBy(formattedArray, 'startDate');
+
+  // edit title
+  // object.forEach(function(item) {
+  //   console.log(item);
+  // });
 }
 
 // Generates a list of event/audience types so events can be filtered

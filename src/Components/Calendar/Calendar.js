@@ -231,7 +231,8 @@ class Calendar extends Component {
         event: event,
         path: event.path,
         start: moment(event.startDate),
-        end: moment(event.endDate)
+        end: moment(event.endDate),
+        url_alias: event.url_alias
       });
     });
 

@@ -23,6 +23,7 @@ export const CalendarRow = props => {
         <h3>
           <Link
             to={{
+              //pathname: '/events/' + props.event.url_alias,
               pathname: props.event.path,
               state: {
                 events: props.event
@@ -36,10 +37,7 @@ export const CalendarRow = props => {
         {props.event.location && (
           <BSModal
             buttonLabel={props.event.location}
-            map={
-              'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' +
-              props.event.location
-            }
+            map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' + props.event.location}
           />
         )}
       </div>
