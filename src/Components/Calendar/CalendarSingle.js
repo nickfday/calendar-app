@@ -1,28 +1,58 @@
-import React, { Component } from 'react';
-import BSModal from '../Misc/BSModal';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
-import { DatePanel } from '../Misc/DatePanel';
-import * as env from '../../env';
-import { APIFetch } from './CalendarHelper';
-import Loader from 'react-loader';
+import React, { Component } from "react";
+import BSModal from "../Misc/BSModal";
+import CSSTransitionGroup from "react-addons-css-transition-group";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import { DatePanel } from "../Misc/DatePanel";
+import * as env from "../../env";
+import { APIFetch } from "./CalendarHelper";
+import Loader from "react-loader";
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 class CalendarSingle extends Component {
   constructor() {
     super();
     this.state = {
       events: null,
+      isEditor: false,
       loaded: false
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     const self = this;
-    if (typeof this.props.location.state === 'undefined') {
-      APIFetch(env.API.domain + env.API.endPoint, 'single').then(function(response) {
-        console.log(response.response);
+
+    axios
+      .get(env.API.domain + "/admin/config/event-calendar-auth.json", {
+        withCredentials: true
+        // headers: {
+        //   Cookie:
+        //     "SESS0ee4c215b7bed0632498b807c05493f7=D-zcb3baV9_HBEy96EdgAeQY_n_qL73KzxBCvGlg4HM" // default
+        // }
+      })
+      .then(function(response) {
+        console.log(response);
+        // console.log(response.data);
+        // console.log(Object.values(response.data));
+
+        // let found = Object.values(response.data).find(function(role) {
+        //   return role == "authenticated user";
+        // });
+        if (response.data === "success") {
+          self.setState({
+            isEditor: true
+          });
+        }
+      });
+
+    if (typeof this.props.location.state === "undefined") {
+      APIFetch(env.API.domain + env.API.endPoint, "single").then(function(
+        response
+      ) {
         self.setState({
-          events: response.response.find(event => event.path === self.props.location.pathname),
+          events: response.response.find(
+            event => event.path === self.props.location.pathname
+          ),
           loaded: true
         });
       });
@@ -30,9 +60,21 @@ class CalendarSingle extends Component {
   }
   render() {
     if (this.props.location.state) {
-      return <DisplayCalendarSingle event={this.props.location.state.events} loaded={true} />;
+      return (
+        <DisplayCalendarSingle
+          event={this.props.location.state.events}
+          isEditor={this.state.isEditor}
+          loaded={true}
+        />
+      );
     } else if (this.state.events) {
-      return <DisplayCalendarSingle event={this.state.events} loaded={this.state.loaded} />;
+      return (
+        <DisplayCalendarSingle
+          event={this.state.events}
+          isEditor={this.state.isEditor}
+          loaded={this.state.loaded}
+        />
+      );
     } else {
       return (
         <div>
@@ -59,13 +101,15 @@ class CalendarSingle extends Component {
 
 function DisplayCalendarSingle(props) {
   const item = props.event;
+  console.log(props);
+  console.log(props.isEditor);
   return (
     <Loader type="ball-pulse" loaded={props.loaded}>
       <div className="content exercise-list container">
         <div className="inner-content">
           {/* <div className="wcc-breadcrumb">
             <a href={env.API.domain}>Home</a>
-						&nbsp;>&nbsp;
+            &nbsp;>&nbsp;
             <Link to="/">All events</Link>
           </div> */}
           <CSSTransitionGroup
@@ -90,12 +134,16 @@ function DisplayCalendarSingle(props) {
               {item.location && (
                 <BSModal
                   buttonLabel={item.location}
-                  map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' + item.location}
+                  map={
+                    "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+                    item.location
+                  }
                 />
               )}
               <div className="clearfix" />
               <p>
-                {moment(item.startDate).format('h:mma')} to {item.endDate && moment(item.endDate).format('h:mma')}
+                {moment(item.startDate).format("h:mma")} to{" "}
+                {item.endDate && moment(item.endDate).format("h:mma")}
               </p>
               <div className="clearfix" />
               {/* How to Book */}
@@ -121,14 +169,21 @@ function DisplayCalendarSingle(props) {
                 </div>
               )}
 
-              {displayTags(item.event_type, 'event-item', 'event_type')}
-              {displayTags(item.audience, 'audience-item', 'audience')}
+              {displayTags(item.event_type, "event-item", "event_type")}
+              {displayTags(item.audience, "audience-item", "audience")}
               <div className="clearfix" />
               {/* {splitMap(item.audience, ', ', 'audience-item')} */}
               <div className="clearfix" />
               <div className="clearfix" />
               <div className="margin-top-10">
                 <Link to="/">Back to all events</Link>
+                {props.isEditor && (
+                  <div className="pull-right">
+                    <a href={`${env.API.domain}/node/${item.nid}/edit`}>
+                      Edit Event
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </CSSTransitionGroup>
