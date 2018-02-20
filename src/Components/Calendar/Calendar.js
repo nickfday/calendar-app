@@ -223,9 +223,6 @@ class Calendar extends Component {
       if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience)) return false;
 
       visibleEvents.push(<CalendarRow event={event} key={event.uuid + event.startDate} />);
-
-      console.log(moment(event.startDate));
-
       filteredCalenderEvents.push({
         title: event.title,
         id: event.uuid,
@@ -362,7 +359,6 @@ class Calendar extends Component {
                       className="event-row clearfix"
                     >
                       <EventBigCalendar
-                        //{...filteredCalenderEvents}
                         events={filteredCalenderEvents}
                         onSelectEvent={event => self.props.history.push(event.path)}
                         views={['month', 'week', 'day']}
