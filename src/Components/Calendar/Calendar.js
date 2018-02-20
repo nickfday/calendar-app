@@ -224,14 +224,16 @@ class Calendar extends Component {
 
       visibleEvents.push(<CalendarRow event={event} key={event.uuid + event.startDate} />);
 
+      console.log(moment(event.startDate));
+
       filteredCalenderEvents.push({
         title: event.title,
         id: event.uuid,
         uuid: event.uuid,
         event: event,
         path: event.path,
-        start: moment(event.startDate),
-        end: moment(event.endDate),
+        start: moment(event.startDate).toDate(),
+        end: moment(event.endDate).toDate(),
         url_alias: event.url_alias
       });
     });
@@ -360,7 +362,7 @@ class Calendar extends Component {
                       className="event-row clearfix"
                     >
                       <EventBigCalendar
-                        {...filteredCalenderEvents}
+                        //{...filteredCalenderEvents}
                         events={filteredCalenderEvents}
                         onSelectEvent={event => self.props.history.push(event.path)}
                         views={['month', 'week', 'day']}
