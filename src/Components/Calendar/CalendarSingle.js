@@ -27,7 +27,6 @@ class CalendarSingle extends Component {
         withCredentials: true
       })
       .then(function(response) {
-        console.log(response);
         if (response.data === 'success') {
           self.setState({
             isEditor: true
