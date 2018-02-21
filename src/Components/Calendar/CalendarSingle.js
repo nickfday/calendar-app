@@ -8,7 +8,7 @@ import * as env from '../../env';
 import { APIFetch } from './CalendarHelper';
 import Loader from 'react-loader';
 import axios from 'axios';
-axios.defaults.withCredentials = true;
+import PropTypes from 'prop-types';
 
 class CalendarSingle extends Component {
   constructor() {
@@ -170,5 +170,10 @@ function displayTags(tags, className, type) {
   });
   return tagList;
 }
+
+CalendarSingle.PropTypes = {
+  location: PropTypes.string,
+  pathname: PropTypes.string
+};
 
 export default CalendarSingle;
