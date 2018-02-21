@@ -13,6 +13,7 @@ import BigCalendar from 'react-big-calendar';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import Loader from 'react-loader';
 import queryString from 'query-string';
+import axios from 'axios';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
@@ -29,18 +30,19 @@ class Calendar extends Component {
     super(props);
     this.state = {
       activePage: 1,
-      events: [],
-      loaded: false,
-      titleText: '',
       addressText: '',
-      eventTypes: [],
       audienceTypes: [],
+      calendarConfig: '',
+      endDate: null,
+      events: [],
+      eventTypes: [],
+      isListViewOn: true,
+      loaded: false,
       selectedAudienceTypes: '',
       selectedEventTypes: '',
       startDate: moment(),
-      endDate: null,
-      isListViewOn: true,
-      visibleEvents: []
+      visibleEvents: [],
+      titleText: ''
     };
 
     this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
@@ -173,9 +175,19 @@ class Calendar extends Component {
       });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getEvents();
     this.getQueryStrings();
+    this.getCalendarConfig();
+  }
+
+  getCalendarConfig() {
+    const self = this;
+    axios(env.API.domain + '/api/event-calendar-config').then(function(response) {
+      self.setState({
+        calendarConfig: response.data.description
+      });
+    });
   }
 
   getQueryStrings() {
@@ -247,7 +259,7 @@ class Calendar extends Component {
                 <h1>Events</h1>
                 <p className="">
                   {/* Make Editable via Drupal */}
-                  Find out about upcoming events in Westminster.
+                  {this.state.calendarConfig}
                 </p>
               </div>
 
