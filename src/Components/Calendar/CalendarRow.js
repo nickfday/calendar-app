@@ -23,7 +23,6 @@ export const CalendarRow = props => {
         <h3>
           <Link
             to={{
-              //pathname: '/events/' + props.event.url_alias,
               pathname: props.event.path,
               state: {
                 events: props.event
