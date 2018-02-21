@@ -44,36 +44,30 @@ class Calendar extends Component {
       visibleEvents: [],
       titleText: ''
     };
-
-    this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
-    this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
-    this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
-    this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
     this.handleAudienceInput = this.handleAudienceInput.bind(this);
-    this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(this);
-    this.handleStartDate = this.handleStartDate.bind(this);
+    this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
     this.handleEndDate = this.handleEndDate.bind(this);
-
-    this.handleReset = this.handleReset.bind(this);
-    this.handleSort = this.handleSort.bind(this);
-
+    this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+    this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
+    this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(this);
+    this.handleSort = this.handleSort.bind(this);
+    this.handleStartDate = this.handleStartDate.bind(this);
+    this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
   }
-
   handlePageChange(pageNo) {
     this.setState({
       activePage: pageNo
     });
     animateScroll.scrollToTop(10);
   }
-
   handleCalendarViewSwitch() {
     this.setState(prevState => ({
       isListViewOn: !prevState.isListViewOn
     }));
   }
-
   handleStartDate(startDate) {
     this.setState({
       startDate: startDate
@@ -161,14 +155,6 @@ class Calendar extends Component {
           eventTypes: response.eventTypes,
           audienceTypes: response.audienceTypes
         });
-      })
-      .catch(function(error) {
-        console.log(error);
-      })
-      .then(function(response) {
-        // self.getEventTypes(self);
-        //self.getAudienceTypes(self);
-        //self.handleEventDate(self); //removed date repeat field
       })
       .catch(function(error) {
         console.log(error);
