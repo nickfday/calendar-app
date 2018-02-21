@@ -234,6 +234,29 @@ class Calendar extends Component {
     });
 
     let paginatedEvents = visibleEvents.slice(this.state.activePage * eventsPerPage - eventsPerPage, this.state.activePage * eventsPerPage);
+    let displayFilters = (
+      <Filter
+        calenderState={this.state}
+        titleText={this.state.titleText}
+        addressText={this.state.addressText}
+        onTitleTextInput={this.handleTitleTextInput}
+        onAddressTextInput={this.handleAddressTextInput}
+        onEventTypeInput={this.handleEventTypeInput}
+        onAudienceInput={this.handleAudienceInput}
+        eventTypes={this.state.eventTypes}
+        audienceTypes={this.state.audience}
+        handleSelectedEventTypes={this.handleSelectedEventTypes}
+        selectedEventTypes={this.state.selectedEventTypes}
+        handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
+        selectedAudienceTypes={this.state.selectedAudienceTypes}
+        handleReset={this.handleReset}
+        startDate={this.state.startDate}
+        endDate={this.state.endDate}
+        handleStartDate={this.handleStartDate}
+        handleEndDate={this.handleEndDate}
+        handlePageChange={this.handlePageChange}
+      />
+    );
 
     return (
       <div className="content calendar-wrapper container">
@@ -267,28 +290,7 @@ class Calendar extends Component {
                   {this.state.open && <Glyphicon glyph="minus" />}
                 </Button>
                 <Panel collapsible expanded={this.state.open}>
-                  <div>You are sized like a tablet or mobile phone though</div>
-                  <Filter
-                    calenderState={this.state}
-                    titleText={this.state.titleText}
-                    addressText={this.state.addressText}
-                    onTitleTextInput={this.handleTitleTextInput}
-                    onAddressTextInput={this.handleAddressTextInput}
-                    onEventTypeInput={this.handleEventTypeInput}
-                    onAudienceInput={this.handleAudienceInput}
-                    eventTypes={this.state.eventTypes}
-                    audienceTypes={this.state.audience}
-                    handleSelectedEventTypes={this.handleSelectedEventTypes}
-                    selectedEventTypes={this.state.selectedEventTypes}
-                    handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
-                    selectedAudienceTypes={this.state.selectedAudienceTypes}
-                    handleReset={this.handleReset}
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    handleStartDate={this.handleStartDate}
-                    handleEndDate={this.handleEndDate}
-                    handlePageChange={this.handlePageChange}
-                  />
+                  {displayFilters}
                 </Panel>
               </div>
             </MediaQuery>
@@ -297,27 +299,7 @@ class Calendar extends Component {
               <div className="col-sm-3">
                 <MediaQuery minWidth={768}>
                   <Panel header="Filters" bsStyle="info">
-                    <Filter
-                      calenderState={this.state}
-                      titleText={this.state.titleText}
-                      addressText={this.state.addressText}
-                      onTitleTextInput={this.handleTitleTextInput}
-                      onAddressTextInput={this.handleAddressTextInput}
-                      onEventTypeInput={this.handleEventTypeInput}
-                      onAudienceInput={this.handleAudienceInput}
-                      eventTypes={this.state.eventTypes}
-                      audienceTypes={this.state.audience}
-                      handleSelectedEventTypes={this.handleSelectedEventTypes}
-                      selectedEventTypes={this.state.selectedEventTypes}
-                      handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
-                      selectedAudienceTypes={this.state.selectedAudienceTypes}
-                      handleReset={this.handleReset}
-                      startDate={this.state.startDate}
-                      endDate={this.state.endDate}
-                      handleStartDate={this.handleStartDate}
-                      handleEndDate={this.handleEndDate}
-                      handlePageChange={this.handlePageChange}
-                    />
+                    {displayFilters}
                   </Panel>
                 </MediaQuery>
               </div>
