@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TextBox from './TextBox';
 import MySelect from './MySelect';
 import DatePicker from 'react-datepicker';

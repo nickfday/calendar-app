@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Loader from 'react-loader';
 import MediaQuery from 'react-responsive';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
@@ -7,11 +7,7 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import BigCalendar from 'react-big-calendar';
 
 
-export function CalendarDisplay(props) {
-  let visibleEvents = [];
-  let filteredCalenderEvents = [];
-  const self = this;
-  const eventsPerPage = 10;
+function CalendarDisplay(props) {
   return (
     <div className="content calendar-wrapper container">
       <div className="sp-breadcrumbs" />
@@ -76,9 +72,9 @@ export function CalendarDisplay(props) {
                   <div className="text-center">
                     <Pagination
                       activePage={props.activePage}
-                      itemsCountPerPage={eventsPerPage}
-                      totalItemsCount={visibleEvents.length}
-                      pageRangeDisplayed={eventsPerPage}
+                      itemsCountPerPage={props.eventsPerPage}
+                      totalItemsCount={props.visibleEvents.length}
+                      pageRangeDisplayed={props.eventsPerPage}
                       onChange={props.handlePageChange}
                     />
                   </div>
@@ -96,7 +92,7 @@ export function CalendarDisplay(props) {
                   >
 
                     {/* <EventBigCalendar /> */}
-                    <BigCalendar
+                    <EventBigCalendar
                       events={props.filteredCalenderEvents}
                       onSelectEvent={event => window.location.href = event.path}
                       views={['month', 'week', 'day']}
@@ -113,3 +109,11 @@ export function CalendarDisplay(props) {
 }
 
 export default CalendarDisplay;
+
+// extend BigCalendar to manipulate DOM
+class EventBigCalendar extends BigCalendar {
+  componentDidMount() {
+    const calendarButtons = document.querySelectorAll('.rbc-btn-group button');
+    calendarButtons[1].textContent = 'Previous';
+  }
+}

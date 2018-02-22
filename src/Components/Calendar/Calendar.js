@@ -2,29 +2,16 @@ import React, { Component } from 'react';
 import Filter from './Filter/Filter';
 import { animateScroll } from 'react-scroll';
 import { CalendarRow } from './CalendarRow';
-import { CalendarDisplay } from './CalendarDisplay';
+import CalendarDisplay from './CalendarDisplay';
 import moment from 'moment';
-import { Button, Glyphicon, Panel } from 'react-bootstrap';
 import * as env from '../../env';
 import { APIFetch } from './CalendarHelper';
-import MediaQuery from 'react-responsive';
 import { searchFilter, filterMultiSelect } from '../Misc/Helper';
-import Pagination from 'react-js-pagination';
 import BigCalendar from 'react-big-calendar';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-import Loader from 'react-loader';
 import queryString from 'query-string';
 import axios from 'axios';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
-
-// extend BigCalendar to manipulate DOM
-class EventBigCalendar extends BigCalendar {
-  componentDidMount() {
-    const calendarButtons = document.querySelectorAll('.rbc-btn-group button');
-    calendarButtons[1].textContent = 'Previous';
-  }
-}
 
 class Calendar extends Component {
   constructor(props) {
@@ -273,6 +260,7 @@ class Calendar extends Component {
     return (
       <CalendarDisplay
         activePage={this.state.activePage}
+        eventsPerPage={eventsPerPage}
         loaded={this.state.loaded}
         displayFilters={displayFilters}
         paginatedEvents={paginatedEvents}
@@ -286,7 +274,6 @@ class Calendar extends Component {
         visibleEvents={visibleEvents}
         filteredCalenderEvents={filteredCalenderEvents}
         self={this}
-        //calendarButtons={calendarButtons}
       />
     );
   }
