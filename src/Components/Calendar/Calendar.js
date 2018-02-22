@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Filter from './Filter/Filter';
 import { animateScroll } from 'react-scroll';
 import { CalendarRow } from './CalendarRow';
+import { CalendarDisplay } from './CalendarDisplay';
 import moment from 'moment';
 import { Button, Glyphicon, Panel } from 'react-bootstrap';
 import * as env from '../../env';
@@ -36,6 +37,7 @@ class Calendar extends Component {
       endDate: null,
       events: [],
       eventTypes: [],
+      filtersButtonOpen: false,
       isListViewOn: true,
       loaded: false,
       selectedAudienceTypes: '',
@@ -49,6 +51,7 @@ class Calendar extends Component {
     this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
     this.handleEndDate = this.handleEndDate.bind(this);
     this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
+    this.handleFiltersButtonOpen = this.handleFiltersButtonOpen.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
@@ -57,6 +60,13 @@ class Calendar extends Component {
     this.handleStartDate = this.handleStartDate.bind(this);
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
   }
+
+  handleFiltersButtonOpen() {
+    this.setState(prevState => ({
+      filtersButtonOpen: !prevState.filtersButtonOpen
+    }));
+  }
+
   handlePageChange(pageNo) {
     this.setState({
       activePage: pageNo
@@ -212,6 +222,8 @@ class Calendar extends Component {
     let filteredCalenderEvents = [];
     const self = this;
     const eventsPerPage = 10;
+    // const calendarButtons = document.querySelectorAll('.rbc-btn-group button');
+    // calendarButtons[1].textContent = 'Previous';
 
     this.state.events.forEach(function(event) {
       if (!searchFilter(self.state.titleText, event.title)) return false;
@@ -259,98 +271,23 @@ class Calendar extends Component {
     );
 
     return (
-      <div className="content calendar-wrapper container">
-        <div className="sp-breadcrumbs" />
-        <Loader type="ball-pulse" loaded={this.state.loaded}>
-          <div className="inner-content">
-            <div className="row margin-bottom-20">
-              <div className="col-sm-9">
-                <h1>Events</h1>
-                <p className="">
-                  {/* Make Editable via Drupal */}
-                  {this.state.calendarConfig}
-                </p>
-              </div>
-
-              {/* Switch button */}
-
-              <div className="col-sm-3 btn-switch">
-                <button className="btn btn-primary btn-wcc" onClick={this.handleCalendarViewSwitch}>
-                  {this.state.isListViewOn ? 'Switch to calendar view' : 'Switch to list view'}
-                </button>
-              </div>
-              {/* End Switch button */}
-            </div>
-
-            <MediaQuery maxWidth={767}>
-              <div className="mobile">
-                <Button bsStyle="info" onClick={() => this.setState({ open: !this.state.open })}>
-                  Filters&nbsp;
-                  {!this.state.open && <Glyphicon glyph="plus" />}
-                  {this.state.open && <Glyphicon glyph="minus" />}
-                </Button>
-                <Panel collapsible expanded={this.state.open}>
-                  {displayFilters}
-                </Panel>
-              </div>
-            </MediaQuery>
-
-            <div className="row">
-              <div className="col-sm-3">
-                <MediaQuery minWidth={768}>
-                  <Panel header="Filters" bsStyle="info">
-                    {displayFilters}
-                  </Panel>
-                </MediaQuery>
-              </div>
-
-              <div className="col-sm-9">
-                {this.state.isListViewOn ? (
-                  <div>
-                    {paginatedEvents}
-                    {visibleEvents.length === 0 && (
-                      <p>
-                        No results - please adjust or&nbsp;
-                        <a href="" onClick={this.handleReset}>
-                          reset
-                        </a>{' '}
-                        filters.
-                      </p>
-                    )}
-                    <div className="text-center">
-                      <Pagination
-                        activePage={this.state.activePage}
-                        itemsCountPerPage={eventsPerPage}
-                        totalItemsCount={visibleEvents.length}
-                        pageRangeDisplayed={eventsPerPage}
-                        onChange={this.handlePageChange.bind(this)}
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <CSSTransitionGroup
-                      component="div"
-                      transitionName="row"
-                      transitionAppear={true}
-                      transitionAppearTimeout={250}
-                      transitionLeaveTimeout={250}
-                      transitionEnterTimeout={250}
-                      className="event-row clearfix"
-                    >
-                      <EventBigCalendar
-                        events={filteredCalenderEvents}
-                        onSelectEvent={event => self.props.history.push(event.path)}
-                        views={['month', 'week', 'day']}
-                      />
-                    </CSSTransitionGroup>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </Loader>
-      </div>
+      <CalendarDisplay
+        activePage={this.state.activePage}
+        loaded={this.state.loaded}
+        displayFilters={displayFilters}
+        paginatedEvents={paginatedEvents}
+        calendarConfig={this.state.calendarConfig}
+        isListViewOn={this.state.isListViewOn}
+        filtersButtonOpen={this.state.filtersButtonOpen}
+        handleFiltersButtonOpen={this.handleFiltersButtonOpen}
+        handleReset={this.handleReset.bind(this)}
+        handlePageChange={this.handlePageChange.bind(this)}
+        handleCalendarViewSwitch={this.handleCalendarViewSwitch}
+        visibleEvents={visibleEvents}
+        filteredCalenderEvents={filteredCalenderEvents}
+        self={this}
+        //calendarButtons={calendarButtons}
+      />
     );
   }
 }
