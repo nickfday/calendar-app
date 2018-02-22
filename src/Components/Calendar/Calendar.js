@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import Filter from './Filter/Filter';
-import { animateScroll } from 'react-scroll';
-import { CalendarRow } from './CalendarRow';
-import CalendarDisplay from './CalendarDisplay';
-import moment from 'moment';
 import * as env from '../../env';
 import { APIFetch } from './CalendarHelper';
-import { searchFilter, filterMultiSelect } from '../Misc/Helper';
-import BigCalendar from 'react-big-calendar';
-import queryString from 'query-string';
+import { animateScroll } from 'react-scroll';
 import axios from 'axios';
-
+import BigCalendar from 'react-big-calendar';
+import CalendarDisplay from './CalendarDisplay';
+import { CalendarRow } from './CalendarRow';
+import Filter from './Filter/Filter';
+import moment from 'moment';
+import React, { Component } from 'react';
+import { searchFilter, filterMultiSelect } from '../Misc/Helper';
+import queryString from 'query-string';
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class Calendar extends Component {
