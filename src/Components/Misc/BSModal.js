@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Button, Modal } from "react-bootstrap";
-var Loader = require("react-loader");
+import React, { Component } from 'react';
+import { Button, Modal } from 'react-bootstrap';
+import Loader from 'react-loader';
 
 class BSModal extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       showModal: false,
@@ -29,23 +29,18 @@ class BSModal extends Component {
       <div>
         <div className="cursor-pointer" onClick={this.open}>
           <p>
-            <span
-              className="glyphicon glyphicon-map-marker"
-              aria-hidden="true"
-            />{" "}
+            <span className="glyphicon glyphicon-map-marker" aria-hidden="true" />{' '}
             <span className="wcc-link">{this.props.buttonLabel}</span>
           </p>
         </div>
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>
-              {this.props.buttonLabel}
-            </Modal.Title>
+            <Modal.Title>{this.props.buttonLabel}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            {this.props.map &&
+            {this.props.map && (
               <iframe
                 width="100%"
                 height="400"
@@ -56,7 +51,8 @@ class BSModal extends Component {
                 title={this.propsbuttonLabel}
                 src={this.props.map}
                 onLoad={this.handleLoad}
-              />}
+              />
+            )}
             <Loader type="ball-pulse" loaded={this.state.mapLoaded} />
           </Modal.Body>
           <Modal.Footer>

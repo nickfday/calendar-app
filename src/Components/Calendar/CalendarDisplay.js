@@ -7,7 +7,7 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import BigCalendar from 'react-big-calendar';
 
 
-function CalendarDisplay(props) {
+export const CalendarDisplay = props => {
   return (
     <div className="content calendar-wrapper container">
       <div className="sp-breadcrumbs" />
@@ -16,30 +16,22 @@ function CalendarDisplay(props) {
           <div className="row margin-bottom-20">
             <div className="col-sm-9">
               <h1>Events</h1>
-              <p className="">
-                {/* Make Editable via Drupal */}
+              <p>
                 {props.calendarConfig}
               </p>
             </div>
-
-            {/* Switch button */}
-
             <div className="col-sm-3 btn-switch">
               <button className="btn btn-primary btn-wcc" onClick={props.handleCalendarViewSwitch}>
                 {props.isListViewOn ? 'Switch to calendar view' : 'Switch to list view'}
               </button>
             </div>
-            {/* End Switch button */}
           </div>
 
           <MediaQuery maxWidth={767}>
             <div className="mobile">
-              {/* <Button bsStyle="info" onClick={() => this.setState({ open: !this.state.open })}> */}
               <Button bsStyle="info" onClick={props.handleFiltersButtonOpen}>
                 Filters&nbsp;
                 {props.filtersButtonOpen ? <Glyphicon glyph="minus" /> : <Glyphicon glyph="plus" />}
-                {/* {!this.state.open && <Glyphicon glyph="plus" />}
-                {this.state.open && <Glyphicon glyph="minus" />} */}
               </Button>
               <Panel collapsible expanded={props.filtersButtonOpen}>
                 {props.displayFilters}
@@ -90,8 +82,6 @@ function CalendarDisplay(props) {
                     transitionEnterTimeout={250}
                     className="event-row clearfix"
                   >
-
-                    {/* <EventBigCalendar /> */}
                     <EventBigCalendar
                       events={props.filteredCalenderEvents}
                       onSelectEvent={event => window.location.href = event.path}
@@ -106,9 +96,7 @@ function CalendarDisplay(props) {
       </Loader>
     </div>
   );
-}
-
-export default CalendarDisplay;
+};
 
 // extend BigCalendar to manipulate DOM
 class EventBigCalendar extends BigCalendar {

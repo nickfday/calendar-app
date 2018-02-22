@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import Select from "react-select";
-import "react-select/dist/react-select.css";
+import React, { Component } from 'react';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 class MySelect extends Component {
   logChange(val) {
     this.props.handleSelectedItem(val);
     if (val === null || val.length === 0) {
-      this.props.handleSelectedItem("");
+      this.props.handleSelectedItem('');
     }
   }
 

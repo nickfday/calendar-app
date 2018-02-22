@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 //import 'bootstrap/dist/css/bootstrap-theme.css';
-import "./header.css";
-import "./Calendar/calendar-list.css";
-import SearchBar from "./Form/SearchBar";
+import './header.css';
+import './Calendar/calendar-list.css';
+import SearchBar from './Form/SearchBar';
 //import 'https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc/css/main-sm.css?opu6pq';
 
 class Layout extends Component {

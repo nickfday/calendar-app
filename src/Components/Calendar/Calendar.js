@@ -3,7 +3,7 @@ import { APIFetch } from './CalendarHelper';
 import { animateScroll } from 'react-scroll';
 import axios from 'axios';
 import BigCalendar from 'react-big-calendar';
-import CalendarDisplay from './CalendarDisplay';
+import {CalendarDisplay} from './CalendarDisplay';
 import { CalendarRow } from './CalendarRow';
 import Filter from './Filter/Filter';
 import moment from 'moment';
@@ -208,8 +208,6 @@ class Calendar extends Component {
     let filteredCalenderEvents = [];
     const self = this;
     const eventsPerPage = 10;
-    // const calendarButtons = document.querySelectorAll('.rbc-btn-group button');
-    // calendarButtons[1].textContent = 'Previous';
 
     this.state.events.forEach(function(event) {
       if (!searchFilter(self.state.titleText, event.title)) return false;

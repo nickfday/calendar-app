@@ -47,9 +47,9 @@ function manipulateData(object) {
   let formattedArray = [];
 
   object.forEach(function(item) {
-    item.date_repeat.split(', ').forEach(function(date, index) {
+    item.date_repeat.split(', ').forEach(function(date) {
       let splitDates = [];
-      date.split(' to ').forEach(function(splitDate, index) {
+      date.split(' to ').forEach(function(splitDate) {
         splitDates.push(splitDate);
         item.startDate = splitDates[0];
         item.endDate = splitDates[1];
