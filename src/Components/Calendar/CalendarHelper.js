@@ -28,7 +28,7 @@ function manipulateData(object) {
   object.forEach(function(item) {
     item.url_alias = item.url_alias.substr(7);
     let eventTypes = [];
-    if (item.event_types) {
+    if (item.event_type) {
       item.event_type.split(', ').forEach(function(j) {
         eventTypes.push(j);
       });
@@ -67,15 +67,9 @@ function manipulateData(object) {
     });
   });
   return _.sortBy(formattedArray, 'startDate');
-
-  // edit title
-  // object.forEach(function(item) {
-  //   console.log(item);
-  // });
 }
 
 // Generates a list of event/audience types so events can be filtered
-
 function getTypes(event, key) {
   let keyTypes = [];
   event.forEach(item => {

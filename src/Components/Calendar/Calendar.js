@@ -3,7 +3,7 @@ import { APIFetch } from './CalendarHelper';
 import { animateScroll } from 'react-scroll';
 import axios from 'axios';
 import BigCalendar from 'react-big-calendar';
-import {CalendarDisplay} from './CalendarDisplay';
+import { CalendarDisplay } from './CalendarDisplay';
 import { CalendarRow } from './CalendarRow';
 import Filter from './Filter/Filter';
 import moment from 'moment';
