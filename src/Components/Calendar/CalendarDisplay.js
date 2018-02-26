@@ -6,7 +6,6 @@ import Pagination from 'react-js-pagination';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import BigCalendar from 'react-big-calendar';
 
-
 export const CalendarDisplay = props => {
   return (
     <div className="content calendar-wrapper container">
@@ -16,9 +15,7 @@ export const CalendarDisplay = props => {
           <div className="row margin-bottom-20">
             <div className="col-sm-9">
               <h1>Events</h1>
-              <p>
-                {props.calendarConfig}
-              </p>
+              <p>{props.calendarConfig}</p>
             </div>
             <div className="col-sm-3 btn-switch">
               <button className="btn btn-primary btn-wcc" onClick={props.handleCalendarViewSwitch}>
@@ -84,7 +81,7 @@ export const CalendarDisplay = props => {
                   >
                     <EventBigCalendar
                       events={props.filteredCalenderEvents}
-                      onSelectEvent={event => window.location.href = event.path}
+                      onSelectEvent={event => (window.location.href = '/events-calendar' / +event.path)}
                       views={['month', 'week', 'day']}
                     />
                   </CSSTransitionGroup>
