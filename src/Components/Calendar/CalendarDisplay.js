@@ -81,7 +81,7 @@ export const CalendarDisplay = props => {
                   >
                     <EventBigCalendar
                       events={props.filteredCalenderEvents}
-                      onSelectEvent={event => (window.location.href = '/events-calendar' / +event.path)}
+                      onSelectEvent={event => (window.location.href = `../events-calendar${event.path}`)}
                       views={['month', 'week', 'day']}
                     />
                   </CSSTransitionGroup>
