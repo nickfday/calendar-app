@@ -76,7 +76,7 @@ function DisplayCalendarSingle(props) {
   const item = props.event;
   return (
     <Loader type="ball-pulse" loaded={props.loaded}>
-      <div className="content exercise-list container">
+      <div className="exercise-list container">
         <div className="inner-content">
           {/* <div className="wcc-breadcrumb">
             <a href={env.API.domain}>Home</a>

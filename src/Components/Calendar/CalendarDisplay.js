@@ -8,7 +8,7 @@ import BigCalendar from 'react-big-calendar';
 
 export const CalendarDisplay = props => {
   return (
-    <div className="content calendar-wrapper container">
+    <div className="calendar-wrapper container">
       <div className="sp-breadcrumbs" />
       <Loader type="ball-pulse" loaded={props.loaded}>
         <div className="inner-content">
