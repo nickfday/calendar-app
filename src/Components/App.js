@@ -5,6 +5,7 @@ import './app.css';
 import Footer from './Footer';
 import Calendar from './Calendar/Calendar';
 import CalendarSingle from './Calendar/CalendarSingle';
+import PageWrapper from './PageWrapper';
 
 /* polyfills.js */
 import 'core-js/fn/array/for-each.js';
@@ -15,7 +16,7 @@ import 'core-js/fn/object/keys.js';
 const NoMatch = ({ location }) => (
   <div className="container content">
     <h3>
-			404- No match for <code>{location.pathname}</code>
+      404- No match for <code>{location.pathname}</code>
     </h3>
   </div>
 );
@@ -27,8 +28,8 @@ class App extends Component {
         <div>
           {<Layout />}
           <Switch>
-            <Route exact path="/" component={Calendar} />
-            <Route exact path="/events/:id" component={CalendarSingle} />
+            <Route exact path="/" component={PageWrapper(Calendar)} />
+            <Route exact path="/events/:id" component={PageWrapper(CalendarSingle)} />
             <Route component={NoMatch} />
           </Switch>
           <Footer />
