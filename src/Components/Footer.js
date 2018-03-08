@@ -6,9 +6,7 @@ function Footer(/*props*/) {
   return (
     <footer>
       <div className="pre-cont">
-        <div className="container text-right">
-          {/* <div id="google_translate_element" /> */}
-        </div>
+        <div className="container text-right">{/* <div id="google_translate_element" /> */}</div>
       </div>
       <div className="main">
         <div className="container">
@@ -37,7 +35,7 @@ function Footer(/*props*/) {
             <div className="col-sm-3 col-xs-6">
               <ul>
                 <li>
-                  <a href="">Births, deasths and marriages</a>
+                  <a href="">Births, deaths and marriages</a>
                 </li>
                 <li>
                   <a href="">Libraries</a>
