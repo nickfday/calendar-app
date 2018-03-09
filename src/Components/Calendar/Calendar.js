@@ -48,7 +48,6 @@ class Calendar extends Component {
   }
 
   invokeLoader() {
-    console.log('loader');
     const self = this;
     this.setState({
       loaded: false
