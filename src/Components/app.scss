@@ -214,29 +214,6 @@ nav input {
   margin-top: 40px;
 }
 
-//Media Queries
-
-@media screen and (min-width: 768px) {
-  h1 {
-    margin-top: 0;
-  }
-  .date-info {
-    margin-top: 0;
-  }
-  .inner-content {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-  .btn-switch {
-    text-align: right;
-    position: static;
-  }
-  .col-sm-right {
-    clear: none;
-    float: right;
-  }
-}
-
 .react-datepicker {
   font-size: 1.3rem !important;
 }
@@ -266,4 +243,47 @@ nav input {
 
 div.spinner {
   top: 300px !important;
+}
+
+.rbc-calendar .rbc-toolbar {
+  display: block;
+  .rbc-btn-group {
+    display: block;
+    text-align: center;
+  }
+  .rbc-toolbar-label {
+    display: block;
+    text-align: center;
+  }
+  .rbc-toolbar-label {
+    white-space: nowrap;
+  }
+}
+
+//Media Queries
+@media screen and (min-width: 550px) {
+  .rbc-calendar .rbc-toolbar {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    margin-top: 0;
+  }
+  .date-info {
+    margin-top: 0;
+  }
+  .inner-content {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+  .btn-switch {
+    text-align: right;
+    position: static;
+  }
+  .col-sm-right {
+    clear: none;
+    float: right;
+  }
 }
