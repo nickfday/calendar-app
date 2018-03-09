@@ -210,10 +210,6 @@ nav input {
   color: $color-grey;
 }
 
-.date-info {
-  margin-top: 40px;
-}
-
 .react-datepicker {
   font-size: 1.3rem !important;
 }
@@ -260,6 +256,12 @@ div.spinner {
   }
 }
 
+.calendar-single {
+  .date-info {
+    margin-top: 40px;
+  }
+}
+
 //Media Queries
 @media screen and (min-width: 550px) {
   .rbc-calendar .rbc-toolbar {
@@ -271,7 +273,7 @@ div.spinner {
   h1 {
     margin-top: 0;
   }
-  .date-info {
+  .calendar-single .date-info {
     margin-top: 0;
   }
   .inner-content {
