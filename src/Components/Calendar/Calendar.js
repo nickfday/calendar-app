@@ -47,6 +47,19 @@ class Calendar extends Component {
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
   }
 
+  invokeLoader() {
+    console.log('loader');
+    const self = this;
+    this.setState({
+      loaded: false
+    });
+    setTimeout(function() {
+      self.setState({
+        loaded: true
+      });
+    }, 175);
+  }
+
   handleFiltersButtonOpen() {
     this.setState(prevState => ({
       filtersButtonOpen: !prevState.filtersButtonOpen
@@ -57,6 +70,7 @@ class Calendar extends Component {
     this.setState({
       activePage: pageNo
     });
+    this.invokeLoader();
     animateScroll.scrollToTop(10);
   }
   handleCalendarViewSwitch() {
@@ -128,6 +142,7 @@ class Calendar extends Component {
       startDate: null,
       endDate: null
     });
+    this.invokeLoader();
   }
 
   handleSort(col) {
@@ -215,7 +230,6 @@ class Calendar extends Component {
       if (moment(self.state.startDate) > moment(event.startDate) || moment(self.state.endDate) < moment(event.endDate)) return false;
       if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type)) return false;
       if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience)) return false;
-
       visibleEvents.push(<CalendarRow event={event} key={event.uuid + event.startDate} />);
       filteredCalenderEvents.push({
         title: event.title,

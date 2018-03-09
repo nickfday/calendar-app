@@ -10,42 +10,42 @@ export const CalendarDisplay = props => {
   return (
     <div className="calendar-wrapper container">
       <div className="sp-breadcrumbs" />
-      <Loader type="ball-pulse" loaded={props.loaded}>
-        <div className="inner-content">
-          <div className="row margin-bottom-20">
-            <div className="col-sm-9">
-              <h1>Events</h1>
-              <p>{props.calendarConfig}</p>
-            </div>
-            <div className="col-sm-3 btn-switch">
-              <button className="btn btn-primary btn-wcc" onClick={props.handleCalendarViewSwitch}>
-                {props.isListViewOn ? 'Switch to calendar view' : 'Switch to list view'}
-              </button>
-            </div>
+      <div className="inner-content">
+        <div className="row margin-bottom-20">
+          <div className="col-sm-9">
+            <h1>Events</h1>
+            <p>{props.calendarConfig}</p>
           </div>
+          <div className="col-sm-3 btn-switch">
+            <button className="btn btn-primary btn-wcc" onClick={props.handleCalendarViewSwitch}>
+              {props.isListViewOn ? 'Switch to calendar view' : 'Switch to list view'}
+            </button>
+          </div>
+        </div>
 
-          <MediaQuery maxWidth={767}>
-            <div className="mobile">
-              <Button bsStyle="info" onClick={props.handleFiltersButtonOpen}>
-                Filters&nbsp;
-                {props.filtersButtonOpen ? <Glyphicon glyph="minus" /> : <Glyphicon glyph="plus" />}
-              </Button>
-              <Panel collapsible expanded={props.filtersButtonOpen}>
+        <MediaQuery maxWidth={767}>
+          <div className="mobile">
+            <Button bsStyle="info" onClick={props.handleFiltersButtonOpen}>
+              Filters&nbsp;
+              {props.filtersButtonOpen ? <Glyphicon glyph="minus" /> : <Glyphicon glyph="plus" />}
+            </Button>
+            <Panel collapsible expanded={props.filtersButtonOpen}>
+              {props.displayFilters}
+            </Panel>
+          </div>
+        </MediaQuery>
+
+        <div className="row">
+          <div className="col-sm-3">
+            <MediaQuery minWidth={768}>
+              <Panel header="Filters" bsStyle="info">
                 {props.displayFilters}
               </Panel>
-            </div>
-          </MediaQuery>
+            </MediaQuery>
+          </div>
 
-          <div className="row">
-            <div className="col-sm-3">
-              <MediaQuery minWidth={768}>
-                <Panel header="Filters" bsStyle="info">
-                  {props.displayFilters}
-                </Panel>
-              </MediaQuery>
-            </div>
-
-            <div className="col-sm-9">
+          <div className="col-sm-9">
+            <Loader type="ball-pulse" loaded={props.loaded}>
               {props.isListViewOn ? (
                 <div>
                   {props.paginatedEvents}
@@ -87,10 +87,10 @@ export const CalendarDisplay = props => {
                   </CSSTransitionGroup>
                 </div>
               )}
-            </div>
+            </Loader>
           </div>
         </div>
-      </Loader>
+      </div>
     </div>
   );
 };
