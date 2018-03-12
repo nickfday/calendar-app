@@ -15,40 +15,40 @@ function Footer(/*props*/) {
             <div className="col-sm-3 col-xs-6">
               <ul>
                 <li>
-                  <a href="">Contact us</a>
+                  <a href="/contact">Contact us</a>
                 </li>
                 <li>
-                  <a href="">Council Tax</a>
-                </li>
-              </ul>
-            </div>
-            <div className="col-sm-3 col-xs-6">
-              <ul>
-                <li>
-                  <a href="">Licensing</a>
-                </li>
-                <li>
-                  <a href="">Planning</a>
+                  <a href="/counciltax">Council Tax</a>
                 </li>
               </ul>
             </div>
             <div className="col-sm-3 col-xs-6">
               <ul>
                 <li>
-                  <a href="">Births, deaths and marriages</a>
+                  <a href="/licensing">Licensing</a>
                 </li>
                 <li>
-                  <a href="">Libraries</a>
+                  <a href="/planning">Planning</a>
                 </li>
               </ul>
             </div>
             <div className="col-sm-3 col-xs-6">
               <ul>
                 <li>
-                  <a href="">Parking</a>
+                  <a href="/births-deaths-marriages-and-citizenship">Births, deaths and marriages</a>
                 </li>
                 <li>
-                  <a href="">Recycling, rubbish and waste</a>
+                  <a href="/libraries">Libraries</a>
+                </li>
+              </ul>
+            </div>
+            <div className="col-sm-3 col-xs-6">
+              <ul>
+                <li>
+                  <a href="/parking">Parking</a>
+                </li>
+                <li>
+                  <a href="/household-recycling-rubbish-and-waste">Recycling, rubbish and waste</a>
                 </li>
               </ul>
             </div>
@@ -60,25 +60,25 @@ function Footer(/*props*/) {
         <div className="container">
           <ul>
             <li>
-              <a href="">Disclaimer</a>
+              <a href="/disclaimer">Disclaimer</a>
             </li>
             <li>
-              <a href="">Privacy</a>
+              <a href="/website-privacy-policy">Privacy</a>
             </li>
             <li>
-              <a href="">Freedom of Information</a>
+              <a href="/freedom-of-information">Freedom of Information</a>
             </li>
             <li>
-              <a href="">Copyright</a>
+              <a href="/copyright">Copyright</a>
             </li>
             <li>
-              <a href="">Accessibility</a>
+              <a href="/accessibility">Accessibility</a>
             </li>
             <li>
-              <a href="">Newsletters</a>
+              <a href="/stay-informed-westminster-newsletter">Newsletters</a>
             </li>
             <li>
-              <a href="">Applications and payments</a>
+              <a href="/online-applications-and-payments">Applications and payments</a>
             </li>
           </ul>
         </div>
