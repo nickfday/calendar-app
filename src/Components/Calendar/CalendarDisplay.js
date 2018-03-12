@@ -1,10 +1,10 @@
-import React from 'react';
-import Loader from 'react-loader';
-import MediaQuery from 'react-responsive';
-import { Button, Glyphicon, Panel } from 'react-bootstrap';
-import Pagination from 'react-js-pagination';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-import BigCalendar from 'react-big-calendar';
+import React from "react";
+import Loader from "react-loader";
+import MediaQuery from "react-responsive";
+import { Button, Glyphicon, Panel } from "react-bootstrap";
+import Pagination from "react-js-pagination";
+import CSSTransitionGroup from "react-addons-css-transition-group";
+import BigCalendar from "react-big-calendar";
 
 export const CalendarDisplay = props => {
   return (
@@ -17,8 +17,13 @@ export const CalendarDisplay = props => {
             <p>{props.calendarConfig}</p>
           </div>
           <div className="col-sm-3 btn-switch">
-            <button className="btn btn-primary btn-wcc" onClick={props.handleCalendarViewSwitch}>
-              {props.isListViewOn ? 'Switch to calendar view' : 'Switch to list view'}
+            <button
+              className="btn btn-primary btn-wcc"
+              onClick={props.handleCalendarViewSwitch}
+            >
+              {props.isListViewOn
+                ? "Switch to calendar view"
+                : "Switch to list view"}
             </button>
           </div>
         </div>
@@ -27,7 +32,11 @@ export const CalendarDisplay = props => {
           <div className="mobile">
             <Button bsStyle="info" onClick={props.handleFiltersButtonOpen}>
               Filters&nbsp;
-              {props.filtersButtonOpen ? <Glyphicon glyph="minus" /> : <Glyphicon glyph="plus" />}
+              {props.filtersButtonOpen ? (
+                <Glyphicon glyph="minus" />
+              ) : (
+                <Glyphicon glyph="plus" />
+              )}
             </Button>
             <Panel collapsible expanded={props.filtersButtonOpen}>
               {props.displayFilters}
@@ -54,7 +63,7 @@ export const CalendarDisplay = props => {
                       No results - please adjust or&nbsp;
                       <a href="" onClick={props.handleReset}>
                         reset
-                      </a>{' '}
+                      </a>{" "}
                       filters.
                     </p>
                   )}
@@ -81,8 +90,10 @@ export const CalendarDisplay = props => {
                   >
                     <EventBigCalendar
                       events={props.filteredCalenderEvents}
-                      onSelectEvent={event => (window.location.href = `../events-calendar${event.path}`)}
-                      views={['month', 'week', 'day']}
+                      onSelectEvent={event =>
+                        props.self.props.history.push(`../${event.path}`)
+                      }
+                      views={["month", "week", "day"]}
                     />
                   </CSSTransitionGroup>
                 </div>
@@ -98,7 +109,7 @@ export const CalendarDisplay = props => {
 // extend BigCalendar to manipulate DOM
 class EventBigCalendar extends BigCalendar {
   componentDidMount() {
-    const calendarButtons = document.querySelectorAll('.rbc-btn-group button');
-    calendarButtons[1].textContent = 'Previous';
+    const calendarButtons = document.querySelectorAll(".rbc-btn-group button");
+    calendarButtons[1].textContent = "Previous";
   }
 }
