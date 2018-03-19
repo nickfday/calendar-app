@@ -9,6 +9,7 @@ import { APIFetch } from './CalendarHelper';
 import Loader from 'react-loader';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { animateScroll } from 'react-scroll';
 
 class CalendarSingle extends Component {
   constructor() {
@@ -21,6 +22,7 @@ class CalendarSingle extends Component {
   }
   componentDidMount() {
     const self = this;
+    animateScroll.scrollToTop(10);
 
     axios
       .get(env.API.domain + '/admin/config/event-calendar-auth.json', {
@@ -32,7 +34,8 @@ class CalendarSingle extends Component {
             isEditor: true
           });
         }
-      });
+      })
+      .catch(function(error) {});
 
     if (typeof this.props.location.state === 'undefined') {
       APIFetch(env.API.domain + env.API.endPoint, 'single').then(function(response) {
@@ -78,11 +81,6 @@ function DisplayCalendarSingle(props) {
     <Loader type="ball-pulse" loaded={props.loaded}>
       <div className="calendar-single container">
         <div className="inner-content">
-          {/* <div className="wcc-breadcrumb">
-            <a href={env.API.domain}>Home</a>
-            &nbsp;>&nbsp;
-            <Link to="/">All events</Link>
-          </div> */}
           <CSSTransitionGroup
             component="div"
             transitionName="row"
@@ -171,8 +169,8 @@ function displayTags(tags, className, type) {
   return tagList;
 }
 
-CalendarSingle.PropTypes = {
-  location: PropTypes.string,
+CalendarSingle.propTypes = {
+  location: PropTypes.object,
   pathname: PropTypes.string
 };
 

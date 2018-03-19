@@ -172,6 +172,7 @@ class Calendar extends Component {
   }
 
   componentDidMount() {
+    animateScroll.scrollToTop(10);
     this.getEvents();
     this.getQueryStrings();
     this.getCalendarConfig();
