@@ -1,15 +1,15 @@
-import * as env from '../../env';
-import { APIFetch } from './CalendarHelper';
-import { animateScroll } from 'react-scroll';
-import axios from 'axios';
-import BigCalendar from 'react-big-calendar';
-import { CalendarDisplay } from './CalendarDisplay';
-import { CalendarRow } from './CalendarRow';
-import Filter from './Filter/Filter';
-import moment from 'moment';
-import React, { Component } from 'react';
-import { searchFilter, filterMultiSelect } from '../Misc/Helper';
-import queryString from 'query-string';
+import * as env from "../../env";
+import { APIFetch } from "./CalendarHelper";
+import { animateScroll } from "react-scroll";
+import axios from "axios";
+import BigCalendar from "react-big-calendar";
+import { CalendarDisplay } from "./CalendarDisplay";
+import { CalendarRow } from "./CalendarRow";
+import Filter from "./Filter/Filter";
+import moment from "moment";
+import React, { Component } from "react";
+import { searchFilter, filterMultiSelect } from "../Misc/Helper";
+import queryString from "query-string";
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class Calendar extends Component {
@@ -17,20 +17,20 @@ class Calendar extends Component {
     super(props);
     this.state = {
       activePage: 1,
-      addressText: '',
+      addressText: "",
       audienceTypes: [],
-      calendarConfig: '',
+      calendarConfig: "",
       endDate: null,
       events: [],
       eventTypes: [],
       filtersButtonOpen: false,
       isListViewOn: true,
       loaded: false,
-      selectedAudienceTypes: '',
-      selectedEventTypes: '',
+      selectedAudienceTypes: "",
+      selectedEventTypes: "",
       startDate: moment(),
       visibleEvents: [],
-      titleText: ''
+      titleText: ""
     };
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
     this.handleAudienceInput = this.handleAudienceInput.bind(this);
@@ -41,7 +41,9 @@ class Calendar extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
-    this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(this);
+    this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(
+      this
+    );
     this.handleSort = this.handleSort.bind(this);
     this.handleStartDate = this.handleStartDate.bind(this);
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
@@ -134,10 +136,10 @@ class Calendar extends Component {
   handleReset(event) {
     event.preventDefault();
     this.setState({
-      titleText: '',
-      addressText: '',
-      selectedEventTypes: '',
-      selectedAudienceTypes: '',
+      titleText: "",
+      addressText: "",
+      selectedEventTypes: "",
+      selectedAudienceTypes: "",
       startDate: null,
       endDate: null
     });
@@ -157,7 +159,7 @@ class Calendar extends Component {
 
   getEvents() {
     const self = this;
-    APIFetch(env.API.domain + env.API.endPoint, 'list')
+    APIFetch(env.API.domain + env.API.endPoint, "list")
       .then(function(response) {
         self.setState({
           events: response.response,
@@ -180,7 +182,9 @@ class Calendar extends Component {
 
   getCalendarConfig() {
     const self = this;
-    axios(env.API.domain + '/api/event-calendar-config').then(function(response) {
+    axios(env.API.domain + "/api/event-calendar-config").then(function(
+      response
+    ) {
       self.setState({
         calendarConfig: response.data.description
       });
@@ -190,7 +194,7 @@ class Calendar extends Component {
   getQueryStrings() {
     let search = queryString.parse(this.props.location.search);
     for (let key in search) {
-      if (key === 'event_type') {
+      if (key === "event_type") {
         this.setState({
           selectedEventTypes: [
             {
@@ -200,7 +204,7 @@ class Calendar extends Component {
           ]
         });
       }
-      if (key === 'audience') {
+      if (key === "audience") {
         this.setState({
           selectedAudienceTypes: [
             {
@@ -210,7 +214,7 @@ class Calendar extends Component {
           ]
         });
       }
-      if (key === 'location') {
+      if (key === "location") {
         this.setState({
           addressText: search[key].toString()
         });
@@ -227,10 +231,18 @@ class Calendar extends Component {
     this.state.events.forEach(function(event) {
       if (!searchFilter(self.state.titleText, event.title)) return false;
       if (!searchFilter(self.state.addressText, event.location)) return false;
-      if (moment(self.state.startDate) > moment(event.startDate) || moment(self.state.endDate) < moment(event.endDate)) return false;
-      if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type)) return false;
-      if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience)) return false;
-      visibleEvents.push(<CalendarRow event={event} key={event.uuid + event.startDate} />);
+      if (
+        moment(self.state.startDate) > moment(event.startDate) ||
+        moment(self.state.endDate) < moment(event.endDate)
+      )
+        return false;
+      if (!filterMultiSelect(self.state.selectedEventTypes, event.event_type))
+        return false;
+      if (!filterMultiSelect(self.state.selectedAudienceTypes, event.audience))
+        return false;
+      visibleEvents.push(
+        <CalendarRow event={event} key={event.uuid + event.startDate} />
+      );
       filteredCalenderEvents.push({
         title: event.title,
         id: event.uuid,
@@ -243,7 +255,10 @@ class Calendar extends Component {
       });
     });
 
-    let paginatedEvents = visibleEvents.slice(this.state.activePage * eventsPerPage - eventsPerPage, this.state.activePage * eventsPerPage);
+    let paginatedEvents = visibleEvents.slice(
+      this.state.activePage * eventsPerPage - eventsPerPage,
+      this.state.activePage * eventsPerPage
+    );
     let displayFilters = (
       <Filter
         calenderState={this.state}

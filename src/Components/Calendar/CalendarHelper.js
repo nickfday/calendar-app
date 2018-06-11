@@ -1,16 +1,16 @@
-import axios from 'axios';
-import moment from 'moment';
-import _ from 'lodash';
+import axios from "axios";
+import moment from "moment";
+import _ from "lodash";
 
 export function APIFetch(path, type) {
-  return axios.get(path).then(function(response) {
-    if (type === 'list') {
+  return axios.get(path, { withCredentials: true }).then(function(response) {
+    if (type === "list") {
       return {
         response: manipulateData(response.data),
-        eventTypes: getListData(response.data, 'event_type'),
-        audienceTypes: getListData(response.data, 'audience')
+        eventTypes: getListData(response.data, "event_type"),
+        audienceTypes: getListData(response.data, "audience")
       };
-    } else if (type === 'single') {
+    } else if (type === "single") {
       return {
         response: manipulateData(response.data)
       };
@@ -29,7 +29,7 @@ function manipulateData(object) {
     item.url_alias = item.url_alias.substr(7);
     let eventTypes = [];
     if (item.event_type) {
-      item.event_type.split(', ').forEach(function(j) {
+      item.event_type.split(", ").forEach(function(j) {
         eventTypes.push(j);
       });
     }
@@ -37,7 +37,7 @@ function manipulateData(object) {
 
     let audienceTypes = [];
     if (item.audience) {
-      item.audience.split(', ').forEach(function(j) {
+      item.audience.split(", ").forEach(function(j) {
         audienceTypes.push(j);
       });
     }
@@ -47,26 +47,26 @@ function manipulateData(object) {
   let formattedArray = [];
 
   object.forEach(function(item) {
-    item.date_repeat.split(', ').forEach(function(date) {
+    item.date_repeat.split(", ").forEach(function(date) {
       let splitDates = [];
-      date.split(' to ').forEach(function(splitDate) {
+      date.split(" to ").forEach(function(splitDate) {
         splitDates.push(splitDate);
         item.startDate = splitDates[0];
         item.endDate = splitDates[1];
         item.path =
-          '/events/' +
+          "/events/" +
           item.url_alias +
-          '-' +
+          "-" +
           moment(item.startDate)
-            .format('D M YY')
-            .replace(/\s+/g, '-');
+            .format("D M YY")
+            .replace(/\s+/g, "-");
       });
 
       delete item.date_repeat;
       formattedArray.push(Object.assign({}, item));
     });
   });
-  return _.sortBy(formattedArray, 'startDate');
+  return _.sortBy(formattedArray, "startDate");
 }
 
 // Generates a list of event/audience types so events can be filtered
