@@ -11,6 +11,11 @@ import Loader from "react-loader";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { animateScroll } from "react-scroll";
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2
+} from "react-html-parser";
 
 class CalendarSingle extends Component {
   constructor() {
@@ -110,7 +115,7 @@ function DisplayCalendarSingle(props) {
             <div className="event-info">
               <div className="row">
                 <div className="col-xs-9">
-                  <h1>{item.title}</h1>
+                  <h1>{ReactHtmlParser(item.title)}</h1>
                 </div>
                 <div className="col-xs-3 no-height">
                   <DatePanel date={item.startDate} />
@@ -136,22 +141,18 @@ function DisplayCalendarSingle(props) {
               <h3>How to book</h3>
               {item.how_to_book && (
                 <div>
-                  <p dangerouslySetInnerHTML={{ __html: item.how_to_book }} />
+                  <p>{ReactHtmlParser(item.how_to_book)}</p>
                 </div>
               )}
               {!item.how_to_book && <p>No booking needed</p>}
               {/* Price */}
               <h3>Price</h3>
-              {item.price && (
-                <div>
-                  <p dangerouslySetInnerHTML={{ __html: item.price }} />
-                </div>
-              )}
+              {item.price && <div>{ReactHtmlParser(item.price)}</div>}
               {!item.price && <p>Free</p>}
               {item.body && (
                 <div>
                   <h3>Description</h3>
-                  <p dangerouslySetInnerHTML={{ __html: item.body }} />
+                  <p>{ReactHtmlParser(item.body)}</p>
                 </div>
               )}
 
