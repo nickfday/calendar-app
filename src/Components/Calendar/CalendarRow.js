@@ -1,9 +1,14 @@
-import React from 'react';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import BSModal from '../Misc/BSModal';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
-import { Link } from 'react-router-dom';
-import { DatePanel } from '../Misc/DatePanel';
+import React from "react";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import BSModal from "../Misc/BSModal";
+import CSSTransitionGroup from "react-addons-css-transition-group";
+import { Link } from "react-router-dom";
+import { DatePanel } from "../Misc/DatePanel";
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2
+} from "react-html-parser";
 
 export const CalendarRow = props => {
   return (
@@ -29,14 +34,17 @@ export const CalendarRow = props => {
               }
             }}
           >
-            {props.event.title}
+            <span>{ReactHtmlParser(props.event.title)}</span>
           </Link>
         </h3>
-        <p dangerouslySetInnerHTML={{ __html: props.event.summary }} />
+        <p>{ReactHtmlParser(props.event.summary)}</p>
         {props.event.location && (
           <BSModal
             buttonLabel={props.event.location}
-            map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=' + props.event.location}
+            map={
+              "https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q=" +
+              props.event.location
+            }
           />
         )}
       </div>

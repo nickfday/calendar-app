@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import moment from "moment";
 
 export function splitMap(string, separator, className) {
   if (string) {
@@ -20,7 +21,7 @@ export function searchFilter(searchVal, itemVal) {
   }
   if (
     itemVal &&
-    (searchVal !== '' &&
+    (searchVal !== "" &&
       itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1)
   ) {
     return false;
@@ -53,5 +54,17 @@ export function filterMultiSelect(selectedTag, itemTag) {
     return false;
   } else {
     return true;
+  }
+}
+
+export function displayTimeDST(date) {
+  if (moment().isDST()) {
+    return moment(date)
+      .add(1, "hours")
+      .format("h:mma");
+  } else {
+    return moment(date)
+      .add(1, "hours")
+      .format("h:mma");
   }
 }
