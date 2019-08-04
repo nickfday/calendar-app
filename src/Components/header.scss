@@ -1,92 +1,702 @@
 /*@import url("https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc/css/main-sm.css");
 @import url("https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc/css/content-sm.css");*/
-body {
-  background: #f3f4ff;
-}
+// body {
+//   background: #f3f4ff;
+// }
 
-body,
-input,
-textarea {
-  font-family: "Open Sans", sans-serif;
-}
+// body,
+// input,
+// textarea {
+//   font-family: "Open Sans", sans-serif;
+// }
 
-.top-bar {
-  height: 50px;
-  //margin: 0 -40px;
-  //padding: 0 40px;
-  background: #0d0e16;
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(15%, #0d0e16),
-    color-stop(50%, #0b2265),
-    color-stop(85%, #0d0e16)
-  );
-  background: -webkit-linear-gradient(
-    left,
-    #0d0e16 15%,
-    #0b2265 50%,
-    #0d0e16 85%
-  );
-  background: -o-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-  background: -ms-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-  background: linear-gradient(to right, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
-}
+// .top-bar {
+//   height: 50px;
+//   //margin: 0 -40px;
+//   //padding: 0 40px;
+//   background: #0d0e16;
+//   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+//   background: -moz-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+//   background: -webkit-gradient(
+//     linear,
+//     left top,
+//     right top,
+//     color-stop(15%, #0d0e16),
+//     color-stop(50%, #0b2265),
+//     color-stop(85%, #0d0e16)
+//   );
+//   background: -webkit-linear-gradient(
+//     left,
+//     #0d0e16 15%,
+//     #0b2265 50%,
+//     #0d0e16 85%
+//   );
+//   background: -o-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+//   background: -ms-linear-gradient(left, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+//   background: linear-gradient(to right, #0d0e16 15%, #0b2265 50%, #0d0e16 85%);
+// }
 
-.hide-md-up {
-  display: none;
-}
+// .hide-md-up {
+//   display: none;
+// }
 
-.sp-head {
-  margin: 0 -10px;
-  background: #ffdc53;
-  padding-left: 100px;
-  position: relative;
-  z-index: 1000;
-  margin-bottom: 20px;
-  //margin-left: -80px;
-  //margin-right: -80px;
-}
+// .sp-head {
+//   margin: 0 -10px;
+//   background: #ffdc53;
+//   padding-left: 100px;
+//   position: relative;
+//   z-index: 1000;
+//   margin-bottom: 20px;
+//   //margin-left: -80px;
+//   //margin-right: -80px;
+// }
 
-.sp-head h1 {
-  font-size: 24px;
-  padding: 28px 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
+// .sp-head h1 {
+//   font-size: 24px;
+//   padding: 28px 0;
+//   margin-top: 0;
+//   margin-bottom: 0;
+// }
 
-.sp-head .go-up {
-  background: #fecb00;
-  font-size: 35.2px;
-  width: 80px;
-  line-height: 84px;
-  border-right: 0;
-  position: absolute;
-  color: #fff;
-  left: 0;
-  top: 0;
-  height: 100%;
-  text-align: center;
-}
+// .sp-head .go-up {
+//   background: #fecb00;
+//   font-size: 35.2px;
+//   width: 80px;
+//   line-height: 84px;
+//   border-right: 0;
+//   position: absolute;
+//   color: #fff;
+//   left: 0;
+//   top: 0;
+//   height: 100%;
+//   text-align: center;
+// }
 
-.content {
-  background: #fff;
-}
+// .page.content {
+//   background: #fff;
+// }
 
-.sp-breadcrumbs {
-  //margin: 0 -80px;
-  padding: 12px 10px;
-  font-size: 13px;
-  color: #292b36;
-  display: block;
-}
+// .sp-breadcrumbs {
+//   //margin: 0 -80px;
+//   padding: 12px 10px;
+//   font-size: 13px;
+//   color: #292b36;
+//   display: block;
+// }
 
-.content.calendar-wrapper {
-  margin-top: 0;
-}
+// .content.calendar-wrapper {
+//   margin-top: 0;
+// }
 
-@media screen and (min-width: 768px) {
+// @media screen and (min-width: 768px) {
+// }
+
+// Header 2019
+
+// .top {
+//   border-bottom: 3px solid;
+//   border-color: #fecb00;
+// }
+
+// .header__logo {
+//   text-align: center;
+
+//   a {
+//     display: inline-block;
+//     font-size: 30px;
+//     text-decoration: none;
+//     position: relative;
+//     width: 120px;
+//   }
+//   img {
+//     vertical-align: middle;
+//     max-width: 100%;
+//   }
+// }
+
+
+
+ /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css ; media=all */
+ @media all{
+  .container-inline div,.container-inline label{display:inline;}
+  .element-invisible{position:absolute!important;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);overflow:hidden;height:1px;}
+  ul.menu{border:none;list-style:none;text-align:left;}
+  ul.menu li{margin:0 0 0 0.5em;}
+  ul li.leaf{list-style-image:url(https://www.westminster.gov.uk/misc/menu-leaf.png);list-style-type:square;}
+  li.leaf{padding:0.2em 0.5em 0 0;margin:0;}
+  li a.active{color:#000;}
+  ul.primary{border-bottom:1px solid #bbb;border-collapse:collapse;height:auto;line-height:normal;list-style:none;margin:5px;padding:0 0 0 1em;white-space:nowrap;}
+  ul.primary li{display:inline;}
+  ul.primary li a{background-color:#ddd;border-color:#bbb;border-style:solid solid none solid;border-width:1px;height:auto;margin-right:0.5em;padding:0 1em;text-decoration:none;}
+  ul.primary li.active a{background-color:#fff;border:1px solid #bbb;border-bottom:1px solid #fff;}
+  ul.primary li a:hover{background-color:#eee;border-color:#ccc;border-bottom-color:#eee;}
+  div.messages{background-position:8px 8px;background-repeat:no-repeat;border:1px solid;margin:6px 0;padding:10px 10px 10px 50px;}
+  div.error{background-image:url(https://www.westminster.gov.uk/misc/message-24-error.png);border-color:#ed541d;}
+  div.error,.error{color:#8c2e0b;}
+  div.error{background-color:#fef5f1;}
+  div.messages ul{margin:0 0 0 1em;padding:0;}
+  form{margin:0;padding:0;}
+  img{border:0;}
+  .form-item,.form-actions{margin-top:1em;margin-bottom:1em;}
+  label{display:block;font-weight:bold;}
+  .form-required{color:#f00;}
+  .container-inline .form-actions{margin-top:0;margin-bottom:0;}
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_i2gxdKJZ9vp-Jz_NFRa4nakk2kvuZQtbCzH05kVltEA.css ; media=all */
+  @media all{
+  .contextual-links-region{outline:none;position:relative;}
+  div.contextual-links-wrapper{display:none;font-size:90%;position:absolute;right:5px;top:2px;z-index:999;}
+  html.js div.contextual-links-wrapper{display:block;}
+  a.contextual-links-trigger{background:transparent url(https://www.westminster.gov.uk/modules/contextual/images/gear-select.png) no-repeat 2px 0;border:1px solid transparent;display:none;height:18px;margin:0;padding:0 2px;outline:none;text-indent:34px;width:28px;overflow:hidden;-khtml-border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;}
+  a.contextual-links-trigger:hover{background-position:2px -18px;}
+  div.contextual-links-wrapper ul.contextual-links{background-color:#fff;border:1px solid #ccc;display:none;margin:0;padding:0.25em 0;position:absolute;right:0;text-align:left;top:18px;white-space:nowrap;-moz-border-radius:4px 0 4px 4px;-webkit-border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-webkit-border-top-right-radius:0;-webkit-border-top-left-radius:4px;border-radius:4px 0 4px 4px;}
+  ul.contextual-links li{line-height:100%;list-style:none;list-style-image:none;margin:0;padding:0;}
+  div.contextual-links-wrapper a{text-decoration:none;}
+  ul.contextual-links li a{color:#333!important;display:block;margin:0.25em 0;padding:0.25em 1em 0.25em 0.5em;}
+  ul.contextual-links li a:hover{background-color:#bfdcee;}
+  .ui-helper-hidden-accessible{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;}
+  .ui-front{z-index:100;}
+  .ui-widget{font-family:Verdana,Arial,sans-serif;font-size:1.1em;}
+  .ui-widget-content{border:1px solid #aaa;background:#fff url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/modules/contrib/jquery_update/replace/ui/themes/base/minified/images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;color:#222;}
+  .ui-corner-all{border-top-left-radius:4px;}
+  .ui-corner-all{border-top-right-radius:4px;}
+  .ui-corner-all{border-bottom-left-radius:4px;}
+  .ui-corner-all{border-bottom-right-radius:4px;}
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_jcA49E65Iw8Nz3sEi90UmnMUE9KCseBMvSPKMngokBo.css ; media=all */
+  @media all{
+  span.ext{background:url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/modules/contrib/extlink/extlink.png) right center no-repeat;padding-right:12px;}
+  @media print{
+  span.ext{display:none;padding:0;}
+  }
+  #admin-menu{background:#101010 url(https://www.westminster.gov.uk/sites/all/modules/contrib/admin_menu/images/bkg.png) bottom left repeat-x;font-size:9px;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;left:0;position:absolute;text-align:left;top:0;width:100%;}
+  #admin-menu-wrapper{overflow:hidden;}
+  #admin-menu .dropdown .admin-menu-icon a{padding:1px 8px 4px;}
+  #admin-menu .dropdown .admin-menu-icon ul a{padding:4px 8px;}
+  #admin-menu .dropdown .admin-menu-action{float:right;}
+  #admin-menu .dropdown .admin-menu-action a{border-left:1px solid #323232;border-right:none;}
+  body.admin-menu{margin-top:20px!important;}
+  #admin-menu,#admin-menu .dropdown{line-height:1.4em;list-style:none;margin:0;padding:0;z-index:999;}
+  #admin-menu .dropdown{position:static;}
+  #admin-menu a{background:transparent none;border:none;color:#EEE;font-weight:normal;text-align:left;text-decoration:none;}
+  #admin-menu .dropdown a{border-right:1px solid #323232;display:block;padding:4px 8px;}
+  #admin-menu .dropdown li li a{border-right:none;border-top:1px solid #323232;}
+  #admin-menu .dropdown li{background-image:none;float:left;height:100%;list-style-image:none;list-style-type:none;margin:0!important;padding:0;}
+  #admin-menu .dropdown li li{background:#202020;filter:Alpha(opacity=88);float:none;opacity:0.88;width:160px;}
+  #admin-menu .dropdown li li li{filter:Alpha(opacity=100);opacity:1;}
+  #admin-menu .dropdown li ul{background:none;display:none;left:-999em;line-height:1.2em;margin:0;position:absolute;width:160px;}
+  #admin-menu .dropdown li li.expandable ul{margin:-20px 0 0 160px;}
+  #admin-menu .dropdown li:hover ul ul,#admin-menu .dropdown li:hover ul ul ul,#admin-menu .dropdown li:hover ul ul ul ul,#admin-menu .dropdown li:hover ul ul ul ul ul{display:none;left:-999em;}
+  #admin-menu .dropdown li:hover ul,#admin-menu .dropdown li li:hover ul,#admin-menu .dropdown li li li:hover ul,#admin-menu .dropdown li li li li:hover ul,#admin-menu .dropdown li li li li li:hover ul{display:block;left:auto;}
+  #admin-menu .dropdown li li.expandable{background:#45454A url(https://www.westminster.gov.uk/sites/all/modules/contrib/admin_menu/images/arrow.png) no-repeat 145px 6px;}
+  #admin-menu .dropdown li li:hover{background-color:#111;}
+  #admin-menu .dropdown li li:hover a,#admin-menu .dropdown li li:hover li:hover a,#admin-menu .dropdown li li:hover li:hover li:hover a{color:#FFF;}
+  #admin-menu .dropdown li li.expandable:hover a,#admin-menu .dropdown li li.expandable:hover li.expandable:hover a{border-color:#444;color:#EEE;}
+  #admin-menu .dropdown li li.expandable:hover li a,#admin-menu .dropdown li li.expandable:hover li.expandable:hover li a{border-color:#323232;}
+  #admin-menu .dropdown li li:hover li a{color:#EEE;}
+  @media print{
+  #admin-menu{display:none!important;}
+  body.admin-menu{margin-top:0!important;}
+  }
+  html body.admin-menu{margin-top:29px!important;}
+  #admin-menu{font:normal small "Lucida Grande",Verdana,sans-serif;-moz-box-shadow:0 -10px 20px 13px #000;-webkit-box-shadow:0 -10px 20px 13px #000;box-shadow:0 -10px 20px 13px #000;right:0;width:auto;}
+  #admin-menu-wrapper{font-size:.846em;padding:5px 10px 0;}
+  #admin-menu .dropdown a{color:#fafafa;}
+  #admin-menu .dropdown .admin-menu-action a{border-left:0;}
+  #admin-menu .dropdown .admin-menu-icon > a{padding:2px 10px 3px;}
+  #admin-menu .dropdown .admin-menu-icon > a span{vertical-align:text-bottom;width:11px;height:14px;display:block;background:url(https://www.westminster.gov.uk/sites/all/modules/contrib/admin_menu/admin_menu_toolbar/toolbar.png) no-repeat 0 -45px;text-indent:-9999px;}
+  #admin-menu > div > .dropdown > li > a{border-right:0;margin-bottom:4px;padding:2px 10px 3px;}
+  #admin-menu .dropdown .admin-menu-toolbar-category > a,#admin-menu .dropdown .admin-menu-action > a{border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;}
+  #admin-menu .dropdown .admin-menu-toolbar-category > a:hover{background-color:#444;}
+  #admin-menu .dropdown li li.expandable ul{margin:-22px 0 0 160px;}
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_XMGmjGL9sdM-SA-UuluCFZBrMNcWIxes8y6eV2RiCzE.css ; media=all */
+  @media all{
+  .ui-helper-hidden-accessible{display:none;}
+  .ui-menu{background-color:white;width:200px;border:1px solid #999;color:#2b5d92;margin-top:5px;border-radius:3px;}
+  .ui-menu{padding:0 0 5px 0;}
+  .ctools-collapsible-container .ctools-toggle{float:left;width:21px;height:21px;cursor:pointer;background-position:7px 7px;background-repeat:no-repeat;background-image:url(https://www.westminster.gov.uk/profiles/acquia/modules/ctools/images/collapsible-expanded.png);}
+  .ctools-collapsible-container .ctools-collapsible-handle{display:none;}
+  html.js .ctools-collapsible-container .ctools-collapsible-handle{display:block;}
+  .ctools-collapsible-container .ctools-collapsible-handle{cursor:pointer;}
+  .ctools-collapsible-container .ctools-toggle-collapsed{background-image:url(https://www.westminster.gov.uk/profiles/acquia/modules/ctools/images/collapsible-collapsed.png);}
+  div.workbench-info-block{background:none repeat scroll 0 0 #FFFBD9;list-style:none outside;padding:0.25em 0.5em 0.25em 0.5em;margin:0;border-color:#FFEBC5;border-style:solid none;border-width:1px;color:#666;font-size:0.95em;}
+  .fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+  .fa-search:before{content:"\f002";}
+  .fa-close:before{content:"\f00d";}
+  .fa-twitter:before{content:"\f099";}
+  .fa-facebook:before{content:"\f09a";}
+  .fa-bars:before{content:"\f0c9";}
+  .fa-instagram:before{content:"\f16d";}
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_WtRUoQzSi7t-zkTDtKiFM3rUCMbPjSanxnkbFEnfE4E.css ; media=all */
+  @media all{
+  footer,header,nav{display:block;}
+  [hidden]{display:none;}
+  html{font-size:100%;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+  html,button,input,select,textarea{font-family:sans-serif;}
+  body{margin:0;}
+  a:focus{outline:thin dotted;}
+  a:active,a:hover{outline:0;}
+  h2{font-size:1.5em;margin:.83em 0;}
+  h3{font-size:1.17em;margin:1em 0;}
+  strong{font-weight:bold;}
+  p{margin:1em 0;}
+  ul{margin:1em 0;}
+  ul{padding:0 0 0 40px;}
+  nav ul{list-style:none;list-style-image:none;}
+  img{border:0;-ms-interpolation-mode:bicubic;}
+  form{margin:0;}
+  button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+  button,input{line-height:normal;}
+  button,select{text-transform:none;}
+  button,input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible;}
+  button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+  textarea{overflow:auto;vertical-align:top;}
+  *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+  *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+  label{font-weight:bold;}
+  :root{--navyblue:#0B2265;--yellow:#FECB00;--pink:#C60F7b;--green:#1C7C71;--blue:#246FC4;--lightgrey:#F7F5F6;--darkgrey:#707070;--lighttext:var(--lightgrey);--section-colour-applynpay:#137C71;--section-colour-reportit:#C8007B;--section-colour-lnp:#1E6DC7;--section-colour-find:#000000;--main-background:var(--lightgrey);--background-navyblue-transparent:rgba(11,34,101,0.7);--background-grey-transparent:rgba(112,112,112,0.3);}
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_djUO_O8-TVrHnlDEzhB6G-YOTkBKUerl1Wk838w22ug.css ; media=(min-width: 1px) */
+  @media (min-width: 1px){
+  .row{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;*zoom:1;}
+  .row:before,.row:after{content:" ";display:table;}
+  .row:after{clear:both;}
+  .column,.columns{position:relative;padding-left:0.625rem;padding-right:0.625rem;width:100%;float:left;}
+  @media only screen{
+  .column,.columns{position:relative;padding-left:0.625rem;padding-right:0.625rem;float:left;}
+  .small-1{position:relative;width:8.33333%;}
+  .small-10{position:relative;width:83.33333%;}
+  [class*="column"] + [class*="column"]:last-child{float:right;}
+  }
+  @media only screen and (min-width:45.063em){
+  .column,.columns{position:relative;padding-left:0.625rem;padding-right:0.625rem;float:left;}
+  [class*="column"] + [class*="column"]:last-child{float:right;}
+  }
+  @media only screen and (min-width:961px){
+  .column,.columns{position:relative;padding-left:0.625rem;padding-right:0.625rem;float:left;}
+  .large-1{position:relative;width:8.33333%;}
+  .large-3{position:relative;width:25%;}
+  .large-5{position:relative;width:41.66667%;}
+  [class*="column"] + [class*="column"]:last-child{float:right;}
+  }
+  .sp-content p{font-size:15.008px;line-height:26px;color:#292b36;}
+  .sp-content h2,.sp-content h3{color:#0B2265;font-weight:600;}
+  .sp-content h2{font-size:30px;line-height:36px;}
+  .sp-content h3{font-size:24px;line-height:30px;}
+  .sp-content ul{margin:0.75em 0;line-height:30px;font-size:15.008px;}
+  .sp-content ul > li{position:relative;padding-left:15.008px;color:#292b36;}
+  .sp-content ul > li:before{content:"";background:#0b2265;position:absolute;top:15.2px;left:0;width:4px;height:4px;margin-top:-0.8px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+  .sp-content .field-type-image img{width:100%;}
+  .button{cursor:pointer;background:#528dcf!important;font-size:20px;color:#fff!important;text-decoration:none!important;padding-left:25px;padding-right:25px;display:inline-block;line-height:50px;text-align:center;outline:none;position:relative;top:-3px;font-family:"Open Sans";background-image:linear-gradient(#7ba3cf,#1d61ad)!important;border:1px solid #1a579b;box-shadow:1px 1px 3px 0 #1c1c1c;border-radius:5px;font-weight:normal;}
+  .sp-content input[type="submit"]{padding-left:25px;padding-right:25px;background-image:linear-gradient(#7ba3cf,#1d61ad)!important;border:1px solid #1a579b;box-shadow:1px 1px 3px 0 #1c1c1c;border-radius:5px;cursor:pointer;font-weight:600;font-size:20px;color:#fff!important;text-decoration:none!important;display:inline-block;max-width:220px;text-align:center;outline:none;position:relative;top:-3px;font-family:"Open Sans";}
+  .button:hover,.button:focus,.sp-content input[type="submit"]:hover,.sp-content input[type="submit"]:focus{background:#2457b5;}
+  .button:active,.sp-content input[type="submit"]:active{-webkit-box-shadow:none;box-shadow:none;top:0;}
+  .sp-content:after{display:table;content:"";clear:both;}
+  .webform-client-form label,.webform-client-form p{font-size:15.008px;line-height:26px;color:#292b36;}
+  input#edit-webform-ajax-submit-14966{margin:0 auto;width:125px;line-height:50px;display:block;}
+  .sp-content h2{font-size:30px;line-height:36px;}
+  .sp-content h3{font-size:24px;line-height:30px;}
+  select::-ms-expand{display:none;}
+  html,button,input,select,textarea{color:#222;}
+  body{font-size:100%;line-height:1.4;}
+  ::-moz-selection{background:#b3d4fc;text-shadow:none;}
+  ::selection{background:#b3d4fc;text-shadow:none;}
+  img{vertical-align:middle;max-width:100%;}
+  textarea{resize:vertical;}
+  [class^="icon-"]:before,[class*=" icon-"]:before{font-family:"wcc";speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+  .icon-error:before{content:"\e620";}
+  .icon-arrow-down:before{content:"\e628";}
+  html,body{overflow-x:hidden;}
+  body > .wrapper{overflow:hidden;position:relative;}
+  .mobile-overlay{display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:1005;background:#e0e3f6;background:rgba(224,227,246,0.8);}
+  body,input,textarea{font-family:"Open Sans",sans-serif;}
+  body{font-size:16px;background:var(--main-background);overflow:hidden;}
+  *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;word-wrap:break-word;}
+  input,textarea{width:100%;border-radius:0;-webkit-border-radius:0;}
+  ul{list-style:none;margin:0;padding:0;}
+  a,a:visited,a:hover,a:active{color:inherit;text-decoration:none;background:inherit;}
+  .top-bar{position:relative;height:auto;}
+  .top-bar .inner{position:relative;bottom:0;width:100%;z-index:1100;}
+  .top-bar .logo{display:inline-block;font-size:30px;text-decoration:none;position:relative;width:120px;}
+  .search-box form{position:relative;padding:10px 47px 10px 0px;}
+  .search-box input{border:none;}
+  .search-box .form-text{background:#f8f8f8;height:44px;padding:0 5px;font-size:19px;color:#0f0f74;}
+  .search-box .form-actions{position:absolute;top:10px;right:10px;}
+  .search-box .form-actions input{width:44px;text-indent:-9999px;height:44px;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC79B0ED,endColorstr=#CC79B0ED);}
+  .search-box .form-actions:hover input{background:rgba(121,176,237,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#9979B0ED,endColorstr=#9979B0ED);}
+  .search-box .form-actions:before{position:absolute;color:#1c1c1c;font-size:33.6px;display:block;width:100%;height:100%;line-height:42px;text-align:center;}
+  .search-box.search-box-small{padding-right:0;margin-left:0;}
+  .search-box.search-box-small form{padding:10px 42px 10px 0;}
+  .search-box.search-box-small .form-text{height:30px;font-size:16px;padding:0 6.4px;}
+  .search-box.search-box-small .form-actions input{width:35.008px;height:30px;}
+  .search-box.search-box-small .form-actions:before{color:#ffffff;cursor:pointer;font-size:27.008px;line-height:100%;padding-top:2px;}
+  @media (max-width:720px){
+  .search-box.search-box-small form{position:relative;padding:10px 57px 10px 10px;margin:0 -10px;background:#e3e6f7;}
+  .search-box.search-box-small .form-text{background:var(--lightgrey);height:44px;padding:0 5px;font-size:19px;color:var(--darkgrey);}
+  .search-box.search-box-small .form-actions{position:absolute;top:10px;right:10px;}
+  .search-box.search-box-small .form-actions input{width:50px;text-indent:-9999px;height:44px;background:var(--lightgrey);}
+  .search-box.search-box-small .form-actions input:hover{opacity:0.75;filter:alpha(opacity=75);color:#000000;}
+  .search-box.search-box-small .form-actions:before{position:absolute;color:var(--darkgrey);display:block;width:100%;height:100%;line-height:42px;text-align:center;}
+  }
+  .sp-content .form-text{width:50%;}
+  .sp-content input[type="submit"]{width:auto;line-height:50px;}
+  .sp-content .form-text,.sp-content select{border:1px solid #b9bcce;background:#fff;font-size:15px;color:#292b36;padding:12px;-webkit-transition:0.2s;-moz-transition:0.2s;-ms-transition:0.2s;-o-transition:0.2s;transition:0.2s;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
+  .sp-content .form-text{line-height:40px;height:40px;padding:0 12px;width:100%;}
+  .sp-content select{height:40px;padding:5px 10px;font-size:15px;font-family:"Open Sans",sans-serif;}
+  .sp-content .form-text:focus{border:1px solid #0b2265;}
+  .sp-content form label{color:#292b36;font-weight:400;font-size:15px;margin-bottom:4px;}
+  .sp-content a{color:var(--navyblue);text-decoration:underline;}
+  .report-inactive{display:none!important;}
+  .search-box .form-actions{right:0;top:10px;}
+  .search-box-small .form-actions{top:10px;}
+  div.messages{background:#f3f4ff;border:0;padding:17px 20px 17px 80px;position:relative;}
+  div.error{border-left:5px solid #c8252f;color:#c8252f;}
+  div.messages:before{position:absolute;font-size:56px;top:50%;left:8px;margin-top:-26px;}
+  div.messages ul{padding:0;margin:0;}
+  span.ext{height:10px;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  .menu-toggle{display:inline-block;font-size:0.8em;padding-top:5px;}
+  .search-toggle{font-size:0.8em;position:absolute;right:10px;top:5px;}
+  .menu-toggle:hover,.menu-toggle:focus,.search-toggle:hover,.search-toggle:focus{color:var(--darkgrey);outline:none;}
+  .main-menu,#search-block-form{display:none;left:-200px;top:0;height:100%;overflow-x:visible;transition:left 0.3s ease,box-shadow 0.3s ease;z-index:999;background-color:#FFFFFF;}
+  .main-menu a{display:block;padding:5px 15px 5px 0;line-height:1em;font-size:1em;text-decoration:none;}
+  .main-menu a:hover,.main-menu a:focus{text-decoration:underline;}
+  #main-menu-close{text-align:right;padding-bottom:20px;}
+  .main-menu:target{display:flex;flex-direction:column;left:0;outline:none;width:100%;margin:auto;-webkit-box-shadow:0 0 0 4px white,0 6px 4px rgba(104,104,104,0.4);-moz-box-shadow:0 0 0 4px white,0 6px 4px rgba(104,104,104,0.4);box-shadow:0 0 0 4px white,0 6px 4px rgba(104,104,104,0.4);}
+  #search-block-form:target{display:block;margin-top:15px;left:0;border:none;border-bottom:solid var(--lightgrey);background-color:var(--lightgrey);width:110%;}
+  .main-menu:target .menu-close{z-index:1001;font-size:1.5em;}
+  .main-menu:target ul{margin-bottom:2em;}
+  .bignav li.leaf{list-style:none;margin-left:0;font-size:0.8em;}
+  .top-bar{position:relative;height:auto;border-bottom:5px solid;border-color:var(--yellow);font-size:27px;background-color:#ffffff;}
+  .top-bar .logo{display:inline-block;color:#000000;text-decoration:none;}
+  .header__row{padding:10px 5px 15px 0px;background-color:#FFFFFF;}
+  .header__logo{text-align:center;}
+  .bignav,.section-menu-wrapper{display:none;}
+  .smallnav{width:100%;margin:0 1em 0 1em;}
+  .smallnav a{font-size:2em;padding:0.5em;}
+  .mobile-menu__item{border-bottom:solid 1px var(--lightgrey);font-weight:bold;}
+  .mobile-menu__item--applynpay{color:var(--section-colour-applynpay);}
+  .mobile-menu__item--reportit{color:var(--section-colour-reportit);}
+  .mobile-menu__item--lnp{color:var(--section-colour-lnp);}
+  .mobile-menu__item--find{color:var(--section-colour-find);border-bottom:none;}
+  .footer{background-color:var(--navyblue);color:var(--lighttext);padding:1em;font-size:0.9rem;}
+  .footer-top__tab-border{border-top:5px solid var(--yellow);position:absolute;left:0;width:100%;}
+  .footer span.ext{display:none;}
+  .footer__logo{width:100%;margin:1em auto 2em auto;}
+  .footer__logo img{width:130px;margin:auto;display:block;}
+  .footer__links{padding-top:1.5em;padding-bottom:1rem;border-top:1px var(--lightgrey) solid;}
+  .footer__social{margin:1em auto 2em auto;width:max-content;}
+  .footer__social a{margin-right:0.7em;}
+  .footer__links ul.menu{display:flex;font-size:0.9em;justify-content:center;flex-wrap:wrap;}
+  .footer__links .menu li{margin:0.3em 0.5em 0.3em 0.5em;}
+  .footer__links .menu li.leaf{list-style-type:none;list-style-image:none;}
+  .footer__section-menu{text-align:center;}
+  .footer__section-menu li{margin-bottom:1em;font-size:1.3em;}
+  .footer .fa{padding:10px;width:38px;height:38px!important;text-align:center;display:inline-block;border-radius:50%;line-height:18px;background-color:var(--lightgrey);color:var(--navyblue);font-size:1.5em;}
+  .footer-top{background-color:var(--main-background);}
+  .footer-top__tab-handle{background-color:var(--yellow);max-width:max-content;margin-left:auto!important;margin-right:auto!important;padding:2px 6px 2px 6px;font-size:0.8em;color:var(--darkgrey);display:block;float:none;}
+  .footer-top__tab-label{padding:0 10px;}
+  .footer-top .ctools-toggle{display:none;}
+  .square{position:relative;width:100%;}
+  .square:after{content:"";display:block;padding-bottom:100%;}
+  .square__content{position:absolute;width:100%;height:100%;}
+  .node-type-homepage{background-color:var(--lightgrey);}
+  .node-type-homepage .campaign{position:relative;margin-bottom:1rem;}
+  .node-type-homepage .campaign__imagebox .campaign__title--colourbox{display:none;}
+  .node-type-homepage .campaign__imagebox .field-name-field-promo-image img{position:absolute;top:0;left:0;min-width:100%;min-height:100%;width:auto;height:auto;}
+  .node-type-homepage .campaign__imagebox .campaign__caption{position:absolute;bottom:0;left:0;background-color:#FFFFFF;width:75%;padding:10px 7px 10px 7px;}
+  .node-type-homepage .campaign__title--colourbox{font-size:2em;padding:2rem;text-decoration:underline;}
+  .node-type-homepage a.campaign__link{text-decoration:none;}
+  .main-top .hero{position:relative;margin-bottom:1rem;margin-top:10px;}
+  .main-top .field-name-field-hero-image{position:relative;width:100%;overflow:hidden;}
+  .main-top .field-name-field-hero-image > .field-items{top:0;left:0;}
+  .main-top .field-name-field-hero-image img{height:100%;object-fit:cover;}
+  .main-top .caption{position:absolute;bottom:0;width:75%;font-size:0.8em;}
+  .main-top .caption__header{background-color:var(--background-navyblue-transparent);padding:10px;margin:0;color:white;font-size:1em;font-weight:bold;}
+  .main-top .caption__text{padding:10px;background-color:var(--lightgrey);color:var(--navyblue);}
+  .main-top .welcome-message-wrapper{position:absolute;bottom:50%;text-align:center;width:100%;font-size:1.5em;font-weight:bold;}
+  .main-top .welcome-message-wrapper .message-snippet{background-color:var(--background-navyblue-transparent);color:#fff;display:inline-block;margin-left:auto;margin-right:auto;width:max-content;margin-top:2px;padding:2px 7px 2px 7px;}
+  .main-top .header-image{background-position:0 0;background-size:cover;height:100%;width:100%;}
+  .main-top .landing-link{width:100%;border:1px solid #eeeeee;height:250px;-webkit-box-shadow:0px 4px 5px 1px rgba(204,204,204,0.7);-moz-box-shadow:0px 4px 5px 1px rgba(204,204,204,0.7);box-shadow:0px 4px 5px 1px rgba(148,110,110,0.7);margin-bottom:1rem;text-align:center;background-color:#ffffff;background-repeat:no-repeat;background-size:200px;background-position:50% 1.7rem;}
+  .landing-link--applynpay{background-image:url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/img/icons/apply-and-pay-icon.png');}
+  .landing-link--reportit{background-image:url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/img/icons/report-it-icon.png');}
+  .landing-link--lnp{background-image:url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/img/icons/licensing-planning-icon.png');}
+  .landing-link--find{background-image:url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/img/icons/find-icon.png');}
+  h3.landing-link__title{position:relative;display:inline-block;top:9.5rem;font-size:1.5em;font-weight:bold;}
+  .landing-link--applynpay h3{color:var(--section-colour-applynpay);}
+  .landing-link--reportit h3{color:var(--section-colour-reportit);}
+  .landing-link--lnp h3{color:var(--section-colour-lnp);}
+  .landing-link--find h3{color:var(--section-colour-find);}
+  .node-type-homepage .icon-arrow-down{display:none;}
+  .node-type-homepage ul.news > li::before{display:none;}
+  .node-type-homepage ul.news{display:flex;flex-direction:column;justify-content:space-between;background-color:#fff;-webkit-box-shadow:0px 4px 5px 1px rgba(204,204,204,0.7);-moz-box-shadow:0px 4px 5px 1px rgba(204,204,204,0.7);box-shadow:0px 4px 5px 1px rgba(204,204,204,0.7);}
+  .node-type-homepage ul.news li{border-bottom:1px solid;border-bottom-color:var(--lightgrey);padding:0.5em 1em 0.5em 1em;}
+  .node-type-homepage ul.news li:last-child{border-bottom:none;}
+  .node-type-homepage ul.news a{text-decoration:none;display:inline-block;line-height:1.5em;font-weight:bold;}
+  .node-type-homepage h3.news__header{color:var(--navyblue);font-weight:bold;}
+  .node-type-homepage .show-more-wrapper{text-align:center;margin-bottom:1em;margin-top:85px;}
+  .node-type-homepage .show-more-wrapper .hline{border-bottom:1px solid var(--darkgrey);height:2px;color:var(--darkgrey);width:100%;}
+  #show-more-button{display:inline-block;background:#b3d4fc;position:relative;padding:25px 10px 45px 10px;margin:0;top:-35px;height:25px;color:var(--darkgrey);background-color:var(--main-background);text-align:center;border:none;}
+  #show-more-button span{border:1px solid var(--darkgrey);padding:18px;margin:10px;height:65px;top:-25px;}
+  .column .content-wrap{margin-top:30px;}
+  input[type=text]::-ms-clear{display:none;}
+  .node-type-homepage .news__twitter .news__header{display:none;}
+  ul.ui-autocomplete{z-index:99999!important;}
+  @media screen and (-ms-high-contrast:active),screen and (-ms-high-contrast:none){
+  .footer{background-color:#0B2265;color:#F7F5F6;border-top:5px solid #FECB00;}
+  .footer__links{border-top:#F7F5F6;}
+  .footer-top{background-color:#F7F5F6;}
+  .footer-top__tab-handle{background-color:#FECB00;color:#707070;display:inline-flex!important;width:20em;}
+  .footer-top__tab-label{width:100%;text-align:center;}
+  .footer-top__tab-border{border-top:#FECB00;}
+  .top-bar{border-color:#FECB00;}
+  .footer .fa{background-color:#F7F5F6;color:#0B2265;}
+  .mobile-menu__item{border-bottom:#F7F5F6;}
+  .mobile-menu__item--applynpay{color:#137C71;}
+  .mobile-menu__item--reportit{color:#C8007B;}
+  .mobile-menu__item--lnp{color:#1E6DC7;}
+  .mobile-menu__item--find{color:#000000;}
+  .node-type-homepage{background-color:#F7F5F6;}
+  .main-top .caption__header{background-color:rgba(11,34,101,0.7);}
+  .main-top .caption__text{background-color:#F7F5F6;color:#0B2265;}
+  .main-top .welcome-message-wrapper .message-snippet{background-color:rgba(11,34,101,0.7);}
+  .node-type-homepage ul.news li{border-bottom-color:#F7F5F6;}
+  .node-type-homepage h3.news__header{color:#0B2265;}
+  .node-type-homepage .show-more-wrapper .hline{color:#707070;}
+  #show-more-button{color:#707070;background-color:#F7F5F6;border:#F7F5F6;}
+  .landing-link--applynpay h3{color:#137C71;}
+  .landing-link--reportit h3{color:#C8007B;}
+  .landing-link--lnp h3{color:#1E6DC7;}
+  .landing-link--find h3{color:#000000;}
+  .node-type-homepage .show-more-wrapper{align-items:center!important;height:70px;-ms-flex-pack:center!important;}
+  .node-type-homepage .show-more-wrapper .hline{border-bottom:1px solid #707070;height:2px;color:#707070;}
+  #show-more-button{color:#707070;background-color:#F7F5F6;}
+  #show-more-button span{border:1px solid #707070;}
+  .sp-content a{color:#0B2265;}
+  }
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_OgGK1K2n0LdCa7woydUckJnqe0h9izTLW0ov9liEK_w.css ; media=(min-width: 45.063em) */
+  @media (min-width: 45.063em){
+  body{background:var(--main-background);}
+  .top-bar{margin:0 -40px;padding:0 40px;}
+  .top-bar .inner{background:none;position:relative;padding:0 10px;-webkit-transition:none;-moz-transition:none;-ms-transition:none;-o-transition:none;transition:none;}
+  .search-box form{padding:10px 86px 10px 0;margin:30px 0;}
+  .search-box-small form{margin:0;}
+  .search-box .form-text{color:#000;font-size:28px;height:64px;padding:0 30px;}
+  .search-box .form-actions{right:0;}
+  .search-box .form-actions input{width:80px;height:64px;}
+  .search-box .form-actions:before{font-size:60px;line-height:64px;}
+  .ui-widget{font-family:"Open Sans",sans-serif;}
+  .footer__section-menu li{margin-bottom:0.7em;}
+  .footer-top__tab-handle{margin-left:0!important;}
+  .search-box .form-text{background:var(--lightgrey);}
+  .search-box .form-actions input{width:44px;height:44px;background:var(--lightgrey);}
+  .search-box .form-actions:hover input{background:var(--blue);}
+  .search-box.search-box-small form{padding:10px 0 10px 0;}
+  .search-box.search-box-small .form-actions:before{color:var(--darkgrey);cursor:pointer;font-size:0.75em;line-height:100%;opacity:0.75;filter:alpha(opacity=75);padding-top:4px;}
+  .search-box.search-box-small .form-actions input:hover{opacity:0.75;filter:alpha(opacity=75);color:#000000;background-color:var(--lightgrey);}
+  .header__menu-toggle{padding-left:0;}
+  .bignav{background-color:#FFFFFF;display:flex;margin-left:auto;margin-right:auto;font-size:1.65em;width:100%;max-width:1200px;min-height:500px;}
+  .bignav ul{display:flex;flex-direction:column;font-size:0.7em;}
+  .main-menu:target{z-index:1;padding-top:1em;margin-bottom:15px;-webkit-box-shadow:0 0 0 4px white,0 6px 4px rgba(104,104,104,0.4);-moz-box-shadow:0 0 0 4px white,0 6px 4px rgba(104,104,104,0.4);box-shadow:0 0 0 4px white,0 6px 4px rgba(104,104,104,0.4);}
+  .main-menu:target .menu-close{padding-top:0;}
+  #main-menu-close{min-width:100%;max-width:1200px;margin-left:auto;margin-right:auto;text-align:right;}
+  .main-menu a{line-height:1.5em;}
+  .section-menu__item{padding-right:2em;}
+  .search-box.search-box-small form{padding-top:0;padding-bottom:5px;}
+  .search-box.search-box-small .form-actions input{height:1em;}
+  .search-box.search-box-small .form-text{font-size:0.5em;}
+  .bignav__header{font-size:1rem;height:2em;margin-top:0;}
+  .bignav__header--applynpay{color:var(--section-colour-applynpay);}
+  .bignav__header--reportit{color:var(--section-colour-reportit);}
+  .bignav__header--lnp{color:var(--section-colour-lnp);}
+  .bignav__header--find{color:var(--section-colour-find);}
+  .section-menu__item--applynpay{color:var(--section-colour-applynpay);}
+  .section-menu__item--reportit{color:var(--section-colour-reportit);}
+  .section-menu__item--lnp{color:var(--section-colour-lnp);}
+  .section-menu__item--find{color:var(--section-colour-find);}
+  .smallnav{display:none;}
+  .node-type-homepage .paragraphs-items-field-promo-items{width:100%;}
+  .field-name-field-promo-items > .field-items{display:grid;grid-gap:20px;grid-template-columns:repeat(4,1fr);}
+  .field-name-field-promo-items > .field-items > .field-item:first-child{grid-column:1 / 3;grid-row:1 / 3;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(2){grid-column:3 / 4;grid-row:1/2;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(3){grid-column:4 / 5;grid-row:1/2;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(4){grid-column:1 / 2;grid-row:3/4;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(5){grid-column:2 / 3;grid-row:3/4;}
+  .field-name-field-promo-items > .field-items > .field-item:last-child{grid-column:3 / 5;grid-row:2/4;}
+  .field-name-field-promo-items .campaign__title--colourbox{font-size:1em;}
+  .campaign__title--imagebox{font-size:0.8em;}
+  .main-top{display:grid;grid-gap:20px;grid-template-columns:repeat(5,1fr);margin-bottom:20px;}
+  .main-top .hero{grid-column:1/5;height:600px;margin-bottom:0;margin-top:0;overflow:hidden;}
+  .main-top .landing-links{grid-column:5/6;display:flex;flex-direction:column;justify-content:space-between;}
+  .main-top .landing-link{margin-bottom:0;height:140px;background-size:125px;background-position:50% 0px;background-color:#ffffff;}
+  .main-top .landing-link__title{top:80px;font-size:0.8em;}
+  .main-top .field-name-field-hero-image{padding:0;overflow:inherit;}
+  .main-top .header-image{background-position:0 0;background-size:cover;height:100%;width:100%;}
+  .main-top .welcome-message-wrapper{bottom:8rem;text-align:left;margin-left:2rem;width:50%;font-size:2em;font-weight:bold;}
+  .main-top .caption{margin-left:2rem;bottom:1.5rem;width:50%;background-color:var(--background-grey-transparent);color:#ffffff;}
+  .node-type-homepage .news-wrapper{display:grid;grid-template-columns:67% 33%;margin-bottom:30px;}
+  .node-type-homepage .news__feed{padding-right:2em;}
+  .node-type-homepage ul.news li{font-size:0.9em;padding:0.7em 1em 0.7em 1em;}
+  .node-type-homepage .news__twitter .news__header{display:inherit;color:var(--main-background);}
+  .node-type-homepage .news__twitter iframe{box-shadow:0px 4px 5px 1px rgba(204,204,204,0.7);}
+  #show-more-button{left:40%;}
+  #search-block-form:target{width:100%;height:auto;padding:0;position:relative;}
+  .node-type-homepage .show-more-wrapper{text-align:unset;}
+  @media screen and (-ms-high-contrast:active),screen and (-ms-high-contrast:none){
+  body{background:#F7F5F6;}
+  .search-box .form-text{background:#F7F5F6;}
+  .search-box .form-actions input{background:#F7F5F6;}
+  .search-box .form-actions:hover input{background:#246FC4;}
+  .search-box.search-box-small .form-actions:before{color:#707070;}
+  .search-box.search-box-small .form-actions input:hover{background-color:#F7F5F6;}
+  .main-top{display:-ms-grid;-ms-grid-columns:1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;}
+  .main-top .hero{-ms-grid-column:1;-ms-grid-column-span:7;}
+  .main-top .caption{background-color:rgba(112,112,112,0.3);}
+  .main-top .landing-links{-ms-grid-column:9;}
+  .bignav__header--applynpay{color:#137C71;}
+  .bignav__header--reportit{color:#C8007B;}
+  .bignav__header--lnp{color:#1E6DC7;}
+  .bignav__header--find{color:#000000;}
+  .section-menu__item--applynpay{color:#137C71;}
+  .section-menu__item--reportit{color:#C8007B;}
+  .section-menu__item--lnp{color:#1E6DC7;}
+  .section-menu__item--find{color:#000000;}
+  .field-name-field-promo-items > .field-items{display:-ms-grid;-ms-grid-columns:1fr 20px 1fr 20px 1fr 20px 1fr;}
+  .field-name-field-promo-items > .field-items > .field-item:first-child{-ms-grid-column:1;-ms-grid-column-span:3;-ms-grid-row:1;-ms-grid-row-span:2;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(2){-ms-grid-column:5;-ms-grid-column-span:1;-ms-grid-row:1;-ms-grid-row-span:1;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(3){-ms-grid-column:7;-ms-grid-column-span:1;-ms-grid-row:1;-ms-grid-row-span:1;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(4){-ms-grid-column:1;-ms-grid-column-span:1;-ms-grid-row:3;-ms-grid-row-span:1;}
+  .field-name-field-promo-items > .field-items > .field-item:nth-child(5){-ms-grid-column:3;-ms-grid-column-span:1;-ms-grid-row:3;-ms-grid-row-span:1;}
+  .field-name-field-promo-items > .field-items > .field-item:last-child{-ms-grid-column:5;-ms-grid-column-span:3;-ms-grid-row:2;-ms-grid-row-span:2;}
+  .node-type-homepage .news__twitter .news__header{color:#F7F5F6;}
+  .node-type-homepage .news-wrapper{display:-ms-grid;-ms-grid-columns:2fr 20px 1fr;}
+  .node-type-homepage .news-wrapper .news__feed{-ms-grid-column:1;}
+  .node-type-homepage .news-wrapper .news__twitter{-ms-grid-column:3;}
+  #show-more-button{left:0;}
+  }
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_CqsWK2kMP0TGl7zURk6DwZGmxzG0fq1cuUDskQVNx7E.css ; media=(min-width: 60.063em) */
+  @media (min-width: 961px){
+  :after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+  body{background:var(--main-background);margin:0;}
+  .search-box{margin:0;padding:0;}
+  .search-box form{margin:0 0;}
+  @media (min-width:1080px){
+  .wrapper{padding-bottom:0;}
+  }
+  .tabs{height:41px;}
+  .tabs ul.primary{border-bottom:medium none;float:right;font-size:0.923em;height:2.6em;margin:5px 14px 6px 0;padding-top:0;text-transform:uppercase;}
+  .tabs ul.primary li{float:left;list-style:none;margin:0 2px;}
+  .tabs ul.primary li a:link,.tabs ul.primary li a.active,.tabs ul.primary li a:active,.tabs ul.primary li a:visited,.tabs ul.primary li a:hover,.tabs ul.primary li.active a{display:block;float:left;line-height:18px;background-color:#a6a7a2;color:#000;font-weight:normal;border-width:1px 1px 0 1px;border-style:solid;border-color:#a6a7a2;font-family:Open Sans,Helvetica,sans-serif;font-size:16px;font-weight:300;margin:0;padding:10px 20px 7px 20px;text-transform:none;}
+  .tabs ul.primary li.active a,.tabs ul.primary li.active a.active,.tabs ul.primary li.active a:active,.tabs ul.primary li.active a:visited{background-color:#fff;border:none;border-top:5px solid #0074bd;margin-top:-4px;}
+  .tabs ul.primary li a:hover{color:#fff;}
+  .tabs ul.primary li.active a:hover{color:#000;}
+  @media only screen and (min-width:1200px){
+  .node-type-homepage .row{min-width:1200px;}
+  }
+  .top-bar{position:relative;height:auto;font-size:27px;}
+  .header__row{max-width:1200px;}
+  .header__logo{text-align:left;}
+  .top-bar .logo{left:-60px;top:-3px;}
+  .section-menu-wrapper{display:block;}
+  .section-menu{display:flex;flex-direction:row;font-size:0.5em;padding:0;margin-top:15px;justify-content:flex-end;font-weight:bold;}
+  .search-toggle{display:none;}
+  .search-box{margin:0 -10px;}
+  #search-block-form{display:block;right:0;position:relative;left:0;}
+  .main-menu,#search-block-form{top:0;}
+  .bignav__header{font-size:1em;}
+  .main-menu .menu-close{padding:0;height:1em;}
+  #main-menu-close{min-width:inherit;width:100%;padding-right:1em;}
+  .footer__logo{width:200px;position:absolute;right:0;top:70px;}
+  .footer__logo img{width:200px;padding:0;margin:0;float:right;}
+  .footer__section-menu{text-align:left;margin-top:0.5em;}
+  .footer__section-menu li{margin-bottom:0.5em;}
+  .footer__social{float:left;}
+  .main-top .welcome-message-wrapper{font-size:2.7em;width:70%;}
+  .main-top .caption{width:50%;}
+  .main-top .landing-link__title{font-size:1em;}
+  .node-type-homepage .icon-arrow-down{display:block;text-align:center;height:2em;position:relative;top:-18px;}
+  .node-type-homepage .icon-arrow-down::before{font-size:3em;color:var(--navyblue);font-weight:bold;}
+  .campaign__title--imagebox{font-size:1em;}
+  .field-name-field-promo-items .campaign__title--colourbox{font-size:2em;}
+  .node-type-homepage ul.news li{font-size:1.2em;}
+  #show-more-button{left:510px;}
+  .node-type-homepage .show-more-wrapper{text-align:unset;}
+  @media screen and (-ms-high-contrast:active),screen and (-ms-high-contrast:none){
+  .main-menu .menu-close{right:-85rem;}
+  #show-more-button{left:0;}
+  }
+  }
+  /*! CSS Used from: https://www.westminster.gov.uk/sites/default/files/css/css_ZbFQmpRW4ycJ4Bppm88emPPFexW5Bf1qBluM_0hMzfQ.css ; media=(min-width: 2px) */
+  @media (min-width: 2px){
+  .cf:before,.cf:after{content:" ";display:table;}
+  .cf:after{clear:both;}
+  .cf{*zoom:1;}
+  #admin-menu{z-index:9999;}
+  @media print{
+  *{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important;}
+  }
+  }
+  /*! CSS Used from: Embedded */
+  .ui-autocomplete{font-family:"Open Sans", sans-serif;font-size:1em;}
+  /*! CSS Used from: Embedded */
+  .atlwdg-blanket{background:black;height:100%;left:0;opacity:.5;position:fixed;top:0;width:100%;z-index:1000000;}
+  .atlwdg-popup{background:white;border:1px solid #ccc;position:fixed;top:0;right:0;bottom:0;left:0;margin:auto;z-index:10000011;border-radius:5px;background-clip:padding-box;overflow:hidden;width:810px;height:0;max-height:calc(100% - 100px);}
+  .atlwdg-hidden{visibility:hidden;}
+  @media screen and (max-width: 820px){
+  .atlwdg-popup{max-width:810px;width:90%;max-height:90%;}
+  }
+  /*! CSS Used from: https://d10lpsik1i8c69.cloudfront.net/css/reset.css ; media=all */
+  @media all{
+  #lo_chat_box textarea{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+  #lo_chat_box{bottom:-400px;-webkit-transition:bottom .7s cubic-bezier(.65,.05,.36,1),background-color .5s ease-in-out;transition:bottom .7s cubic-bezier(.65,.05,.36,1),background-color .5s ease-in-out;}
+  #lo_chat_box #lo_operator{padding:10px;}
+  #lo_chat_box textarea{font-size:12px;min-height:initial;margin:0;}
+  #lo_chat_box{text-align:start;}
+  @media all and (max-device-width:480px){
+  #lo_chat_box textarea{font-size:16px;}
+  }
+  }
+  /*! CSS Used fontfaces */
+  @font-face{font-family:'FontAwesome';src:url(https://www.westminster.gov.uk/sites/all/libraries/fontawesome/fonts/fontawesome-webfont.eot?v=4.2.0);src:url(https://www.westminster.gov.uk/sites/all/libraries/fontawesome/fonts/fontawesome-webfont.eot#iefix&v=4.2.0) format('embedded-opentype'),url(https://www.westminster.gov.uk/sites/all/libraries/fontawesome/fonts/fontawesome-webfont.woff?v=4.2.0) format('woff'),url(https://www.westminster.gov.uk/sites/all/libraries/fontawesome/fonts/fontawesome-webfont.ttf?v=4.2.0) format('truetype'),url(https://www.westminster.gov.uk/sites/all/libraries/fontawesome/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular) format('svg');font-weight:normal;font-style:normal;}
+  @font-face{font-family:'FontAwesome';src:url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/css/fonts/font-awesome/fa-solid-900.eot');src:url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/css/fonts/font-awesome/fa-solid-900.eot#iefix') format('embedded-opentype'),url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/css/fonts/font-awesome/fa-solid-900.woff2') format('woff2'),url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/css/fonts/font-awesome/fa-solid-900.woff') format('woff'),url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/css/fonts/font-awesome/fa-solid-900.ttf')  format('truetype'),url('https://www.westminster.gov.uk/sites/default/themes/wcc2019/css/fonts/font-awesome/fa-solid-900.svg#svgFontName') format('svg');}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OX-hpKKSTj5PW.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OVuhpKKSTj5PW.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OXuhpKKSTj5PW.woff2) format('woff2');unicode-range:U+1F00-1FFF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OUehpKKSTj5PW.woff2) format('woff2');unicode-range:U+0370-03FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OXehpKKSTj5PW.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OXOhpKKSTj5PW.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN_r8OUuhpKKSTjw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFWJ0bf8pkAp6a.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFUZ0bf8pkAp6a.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFWZ0bf8pkAp6a.woff2) format('woff2');unicode-range:U+1F00-1FFF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVp0bf8pkAp6a.woff2) format('woff2');unicode-range:U+0370-03FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFWp0bf8pkAp6a.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFW50bf8pkAp6a.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOX-hpKKSTj5PW.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOVuhpKKSTj5PW.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOXuhpKKSTj5PW.woff2) format('woff2');unicode-range:U+1F00-1FFF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUehpKKSTj5PW.woff2) format('woff2');unicode-range:U+0370-03FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOXehpKKSTj5PW.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOXOhpKKSTj5PW.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UNirkOUuhpKKSTjw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOX-hpKKSTj5PW.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOVuhpKKSTj5PW.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOXuhpKKSTj5PW.woff2) format('woff2');unicode-range:U+1F00-1FFF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUehpKKSTj5PW.woff2) format('woff2');unicode-range:U+0370-03FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOXehpKKSTj5PW.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOXOhpKKSTj5PW.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+  @font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v16/mem5YaGs126MiZpBA-UN7rgOUuhpKKSTjw.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+  @font-face{font-family:"wcc";src:url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.eot);src:url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.eot#iefix) format("embedded-opentype"),url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.ttf) format("truetype"),url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.woff) format("woff"),url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.svg#wcc) format("svg");font-weight:normal;font-style:normal;}
+  @font-face{font-family:"wcc";src:url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.eot);src:url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.eot#iefix) format("embedded-opentype"),url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.ttf) format("truetype"),url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.woff) format("woff"),url(https://www.westminster.gov.uk/sites/www.westminster.gov.uk/themes/wcc2019/css/fonts/wcc.svg#wcc) format("svg");font-weight:normal;font-style:normal;}
+
+  @media (max-width: 960px){
+  .top-bar .logo {
+    left: inherit;
+    top: inherit;
+    }
 }

@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
-import './style/SearchBar.css';
+import React, { Component } from "react";
+import "./style/SearchBar.css";
 //import "./westminster-main-sm.css";
 
 const SearchBarStyle = {
-  marginTop: '12px'
+  //marginTop: "12px"
 };
 
 class SearchBar extends Component {
   constructor() {
     super();
     this.state = {
-      query: ''
+      query: "",
+      visible: true
     };
 
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
   }
 
   handleTitleTextInput(e) {
-    console.log('text change');
+    console.log("text change");
     this.setState({
       query: e.target.value
     });
@@ -25,17 +26,32 @@ class SearchBar extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    window.location = 'https://www.westminster.gov.uk/search?collection=wcc-web-website&query=' + this.state.query;
+    window.location =
+      "https://www.westminster.gov.uk/search?collection=wcc-web-website&query=" +
+      this.state.query;
   }
 
   render() {
     return (
-      <div className="search-box search-box-small" style={SearchBarStyle}>
+      <div
+        for="edit-search-block-form--2"
+        className={`search-box search-box-small ${
+          this.props.displayMobileSearch ? "mobile-active" : "mobile-hidden"
+        }`}
+        style={SearchBarStyle}
+      >
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" placeholder="What would you like to do?" onChange={this.handleTitleTextInput.bind(this)} />
-          <a className="btn" onClick={this.handleSubmit.bind(this)} href="">
-            <span className="glyphicon glyphicon-search search" aria-hidden="true" />
-          </a>
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={this.handleTitleTextInput.bind(this)}
+            id="edit-search-block-form--2"
+          />
+          <a
+            className="fa fa-search"
+            onClick={this.handleSubmit.bind(this)}
+            href=""
+          ></a>
           <input type="submit" hidden />
         </form>
       </div>
