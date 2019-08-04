@@ -6,6 +6,8 @@ export const API = {
   // wcc stage settings:
   // domain: 'https://wcc-ce-stage.codeenigma.net',
   // wcc prod settings:
+  //domain: "https://www.westminster.gov.uk",
+  //domain: "https://localhost:32779",
   domain: "https://www.westminster.gov.uk",
   endPoint: "/api/calendar/views/calendar_json.json"
 };

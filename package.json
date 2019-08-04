@@ -2,10 +2,11 @@
   "name": "wcc-calendar-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wcc-ce-master.codeenigma.net/events-calendar",
+  "homepage": "https://www.westminster.gov.uk/events-calendar/",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
+    "env-cmd": "^9.0.3",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.20.0",
@@ -51,6 +52,7 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
+    "build:staging": "env-cmd .env.staging npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
