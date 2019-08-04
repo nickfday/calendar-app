@@ -64,7 +64,6 @@ body {
 }
 
 h1 {
-  margin-top: 20px;
   margin-left: -15px;
 }
 
@@ -223,11 +222,11 @@ nav input {
 }
 
 .react-datepicker {
-  font-size: 1.3rem !important;
+  font-size: 13px !important;
 }
 
 .react-datepicker__current-month {
-  font-size: 1.5rem !important;
+  font-size: 13px !important;
 }
 
 .react-datepicker__header {
@@ -240,7 +239,7 @@ nav input {
 
 .react-datepicker__day-name,
 .react-datepicker__day {
-  margin: 0.5rem !important;
+  margin: 1px !important;
 }
 
 // Helper Classes
@@ -274,6 +273,25 @@ div.spinner {
   }
 }
 
+.Select-control,
+Select-input,
+.Select-menu-outer,
+option {
+  font-size: 14px;
+}
+
+.react-datepicker__navigation {
+  top: 10px !important;
+  border-width: 6px solid transparent;
+}
+
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--previous:active,
+.react-datepicker__navigation--next,
+.react-datepicker__navigation--next:active {
+  background-color: #f0f0f0;
+}
+
 //Media Queries
 @media screen and (min-width: 550px) {
   .rbc-calendar .rbc-toolbar {
@@ -282,11 +300,8 @@ div.spinner {
 }
 
 @media screen and (min-width: 768px) {
-  h1 {
-    margin-top: 0;
-  }
   .calendar-single .date-info {
-    margin-top: 0;
+    margin-top: 20px;
   }
   .inner-content {
     // padding-left: 70px;
@@ -307,4 +322,23 @@ div.spinner {
     margin-left: 0;
     margin-top: 10px;
   }
+}
+
+.content {
+  a,
+  a:visited {
+    color: #337ab7;
+  }
+  a:hover,
+  a:visited:hover {
+    text-decoration: underline;
+  }
+}
+
+body {
+  background: var(--navyblue);
+}
+
+.page.content {
+  padding-top: 20px;
 }
